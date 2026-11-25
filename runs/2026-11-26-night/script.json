@@ -1,0 +1,500 @@
+{
+ "title": "India US Tariff 17% or 25%? Nasdaq Slides 📉🇮🇳 | StickBiz Brief | 26 Nov 2026",
+ "voice_provider": "elevenlabs",
+ "elevenlabs": {
+  "voice_id": "dloMvYEKtYloiwx06kR4",
+  "voice_name": "Bhavesh - Indian English & Hindi",
+  "model": "eleven_v3",
+  "language_code": "en",
+  "tempo": 1.15,
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  }
+ },
+ "date_label": "26 NOVEMBER 2026",
+ "ticker": [
+  "INDIA TARIFF ▲ 17% WITH DEAL",
+  "NO DEAL: UP TO 25%",
+  "NASDAQ 100 ▼ 20% FROM PEAK",
+  "US CORE INFLATION 3.3%",
+  "TATA STEEL DEAL: ₹28,000 CR",
+  "SEBI KYC RULES FROM 24 DEC",
+  "AIRTEL ASSAM: ₹1,200 CR"
+ ],
+ "captions": false,
+ "gap": 0.3,
+ "lead_in": 0.5,
+ "music": {
+  "style": "energy",
+  "bpm": 128,
+  "level": 1.6
+ },
+ "sting": {
+  "pill": "STORY"
+ },
+ "outro_lines": [
+  "Comment below:",
+  "Which story mattered most?"
+ ],
+ "outro_banner": [
+  "Not investment advice",
+  "Educational only · Not SEBI-registered"
+ ],
+ "disclaimer": [
+  "Educational only. Not investment advice.",
+  "Not a SEBI-registered adviser."
+ ],
+ "segments": [
+  {
+   "id": "hook",
+   "tag": "TODAY'S TOP NEWS",
+   "hook_title": "TODAY'S TOP NEWS",
+   "headline": "India's tariff: 17% or 25% · AI shares slide in the US",
+   "broll": "hook",
+   "hook_items": [
+    [
+     "India tariff: 17% or 25%",
+     "India",
+     "amber",
+     "warn"
+    ],
+    [
+     "Nasdaq 100 down 20%",
+     "Global",
+     "red",
+     "warn"
+    ],
+    [
+     "SEBI eases KYC rules",
+     "India",
+     "mint",
+     "deal"
+    ]
+   ],
+   "cap": "India may face a 17% or 25% US tariff. And the Nasdaq 100 briefly fell 20% from its record.",
+   "tts": "[excited] India may face a seventeen percent or twenty-five percent US tariff. And the Nasdaq one hundred briefly fell twenty percent from its record.",
+   "beats": [
+    {
+     "banner": [
+      "US tariffs, AI sell-off",
+      "Big night for markets"
+     ]
+    }
+   ],
+   "refs": []
+  },
+  {
+   "id": "tariff",
+   "tag": "US TARIFFS",
+   "headline": "India's tariff: 17% or 25%",
+   "broll": "stocks",
+   "cap": "The US has proposed new tariffs on 14 trading partners, India included. India would face 17% with a trade deal, and up to 25% without one. Five Asian rivals face 18%.",
+   "tts": "[excited] The US has proposed new tariffs on fourteen trading partners, India included. India would face seventeen percent with a trade deal, and up to twenty-five percent without one. Five Asian rivals face eighteen percent.",
+   "beats": [
+    {
+     "banner": [
+      "New US tariff plan",
+      "14 partners, India included"
+     ],
+     "tone": "down",
+     "tag": "US TARIFFS",
+     "v": {
+      "kind": "video",
+      "video": "../media/videos/shipping_containers.mp4",
+      "start": 0,
+      "credit": "Video: Pexels",
+      "name": "CONTAINER PORT · REPRESENTATIONAL"
+     }
+    },
+    {
+     "banner": [
+      "India: 17% with a deal",
+      "Up to 25% without one"
+     ],
+     "tone": "neutral",
+     "tag": "US TARIFFS",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/trump.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: Public domain",
+      "name": "US PRESIDENT DONALD TRUMP",
+      "rows": [
+       [
+        "WITH DEAL",
+        "17%",
+        "up"
+       ],
+       [
+        "NO DEAL",
+        "UP TO 25%",
+        "down"
+       ]
+      ]
+     },
+     "at": "India would face"
+    },
+    {
+     "banner": [
+      "Asian rivals at 18%",
+      "Indonesia, Thailand and more"
+     ],
+     "tone": "neutral",
+     "tag": "US TARIFFS",
+     "v": {
+      "kind": "video",
+      "video": "../media/videos/ecommerce_warehouse.mp4",
+      "start": 8,
+      "credit": "Video: Pexels",
+      "name": "EXPORT GOODS · REPRESENTATIONAL"
+     },
+     "at": "Five Asian rivals"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Business Standard",
+     "title": "New US tariff may give India edge over Asian peers if trade deal done: GTRI",
+     "link": "https://www.business-standard.com/world-news/new-us-tariff-may-give-india-edge-over-asian-peers-if-trade-deal-done-gtri-126112501238_1.html"
+    },
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Tariff Turmoil: US links lower 17% tariff for India to reciprocal trade deal, proposes up to 25% otherwise",
+     "link": "https://www.thehindubusinessline.com/economy/tariff-turmoil-us-links-lower-17-tariff-for-india-to-reciprocal-trade-deal-proposes-up-to-25-otherwise/article71743699.ece"
+    }
+   ]
+  },
+  {
+   "id": "nasdaq",
+   "tag": "WALL STREET",
+   "headline": "AI shares slide in the US",
+   "broll": "stocks",
+   "cap": "Wall Street fell sharply on Wednesday as AI stocks were sold. The Nasdaq 100 briefly dropped 20% from its record close. US core inflation hit 3.3%, above the 3.2% expected.",
+   "tts": "[excited] Wall Street fell sharply on Wednesday as AI stocks were sold. The Nasdaq one hundred briefly dropped twenty percent from its record close. US core inflation hit three point three percent, above the three point two percent expected.",
+   "beats": [
+    {
+     "banner": [
+      "AI stocks sold off",
+      "Wall Street slips on Wednesday"
+     ],
+     "tone": "down",
+     "tag": "WALL STREET",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/nasdaq.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: Luca Marfè at Italia all'ONU · CC BY 2.0",
+      "name": "NASDAQ · NEW YORK"
+     }
+    },
+    {
+     "banner": [
+      "Nasdaq 100 down 20%",
+      "From its record close"
+     ],
+     "tone": "down",
+     "tag": "WALL STREET",
+     "v": {
+      "kind": "video",
+      "video": "../media/videos/candle_screen.mp4",
+      "start": 4,
+      "credit": "Video: Pexels",
+      "name": "TRADING SCREEN · REPRESENTATIONAL",
+      "rows": [
+       [
+        "NASDAQ 100",
+        "-20% FROM PEAK",
+        "down"
+       ]
+      ]
+     },
+     "at": "The Nasdaq 100"
+    },
+    {
+     "banner": [
+      "US core inflation 3.3%",
+      "Higher than the 3.2% expected"
+     ],
+     "tone": "down",
+     "tag": "WALL STREET",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/fed_eccles.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: Public domain",
+      "name": "US FEDERAL RESERVE · WASHINGTON",
+      "rows": [
+       [
+        "CORE PCE",
+        "3.3% · EST 3.2%",
+        "down"
+       ]
+      ]
+     },
+     "at": "US core inflation"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Nasdaq plunges 4% as AI stocks sell off and fresh US tariff fears hit Wall Street",
+     "link": "https://www.thehindubusinessline.com/markets/nasdaq-plunges-4-as-ai-stocks-sell-off-and-fresh-us-tariff-fears-hit-wall-street/article71743891.ece"
+    },
+    {
+     "publisher": "Mint Markets",
+     "title": "Nasdaq 100 plunges nearly 5%, briefly enters bear-market zone as AI fears and fresh tariffs hit sentiment",
+     "link": "https://www.livemint.com/market/stock-market-news/nasdaq-100-plunges-nearly-5-briefly-enters-bear-market-zone-as-ai-fears-and-fresh-tariffs-hit-sentiment-11795626875336.html"
+    }
+   ]
+  },
+  {
+   "id": "tata",
+   "tag": "CORPORATE DEAL",
+   "headline": "Tata Steel may rework deal",
+   "broll": "stocks",
+   "cap": "Tata Steel may rework its deal with APL Apollo Tubes. APL Apollo would pay about ₹28,000 crore, mostly debt, for Tata Steel's tubes businesses. Investors are worried, and talks are on with no conclusion yet.",
+   "tts": "[excited] Tata Steel may rework its deal with APL Apollo Tubes. APL Apollo would pay about twenty-eight thousand crore rupees, mostly debt, for Tata Steel's tubes businesses. Investors are worried, and talks are on with no conclusion yet.",
+   "beats": [
+    {
+     "banner": [
+      "Tata Steel, APL Apollo",
+      "Deal structure may change"
+     ],
+     "tone": "neutral",
+     "tag": "CORPORATE DEAL",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/tata_steel.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: Kharbaan Ghaltaan · CC BY 4.0",
+      "name": "TATA STEEL · JAMSHEDPUR"
+     }
+    },
+    {
+     "banner": [
+      "₹28,000 crore purchase",
+      "Mostly funded by debt"
+     ],
+     "tone": "down",
+     "tag": "CORPORATE DEAL",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/bombay_house.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: AroundTheGlobe · CC BY-SA 3.0",
+      "name": "BOMBAY HOUSE · TATA GROUP",
+      "rows": [
+       [
+        "DEAL SIZE",
+        "₹28,000 CRORE",
+        ""
+       ]
+      ]
+     },
+     "at": "APL Apollo would"
+    },
+    {
+     "banner": [
+      "Investors raise concerns",
+      "Talks on, no conclusion yet"
+     ],
+     "tone": "neutral",
+     "tag": "CORPORATE DEAL",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/tata_steel2.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: Kharbaan Ghaltaan · CC BY-SA 4.0",
+      "name": "TATA STEEL · PLANT"
+     },
+     "at": "Investors are worried"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Mint Companies",
+     "title": "Tata Steel open to revisiting APL Apollo deal structure after investor backlash",
+     "link": "https://www.livemint.com/companies/news/tata-steel-open-to-revisiting-apl-apollo-deal-structure-after-investor-backlash-11795616029618.html"
+    },
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Tata Steel, APL Apollo in talks to rework deal structure amid shareholder concerns",
+     "link": "https://www.thehindubusinessline.com/companies/tata-steel-apl-apollo-in-talks-to-rework-deal-structure-amid-shareholder-concerns/article71742882.ece"
+    }
+   ]
+  },
+  {
+   "id": "sebi",
+   "tag": "SEBI RULES",
+   "headline": "Simpler KYC from 24 Dec",
+   "broll": "stocks",
+   "cap": "SEBI is easing KYC rules from 24 December. Common extra KYC details will be stored centrally at KYC registration agencies. Investors will not need to submit them again to every intermediary.",
+   "tts": "[excited] SEBI is easing KYC rules from the twenty-fourth of December. Common extra KYC details will be stored centrally at KYC registration agencies. Investors will not need to submit them again to every intermediary.",
+   "beats": [
+    {
+     "banner": [
+      "SEBI eases KYC rules",
+      "Effective 24 December"
+     ],
+     "tone": "up",
+     "tag": "SEBI RULES",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/sebi_bhavan.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: Jimmy vikas · CC BY-SA 3.0",
+      "name": "SEBI BHAVAN · MUMBAI",
+      "rows": [
+       [
+        "NEW KYC RULES",
+        "FROM 24 DEC",
+        "up"
+       ]
+      ]
+     }
+    },
+    {
+     "banner": [
+      "Details kept in one place",
+      "At KYC registration agencies"
+     ],
+     "tone": "up",
+     "tag": "SEBI RULES",
+     "v": {
+      "kind": "video",
+      "video": "../media/videos/office_team.mp4",
+      "start": 4,
+      "credit": "Video: Pexels",
+      "name": "ONBOARDING · REPRESENTATIONAL"
+     },
+     "at": "Common extra KYC"
+    },
+    {
+     "banner": [
+      "No repeat submissions",
+      "For every intermediary"
+     ],
+     "tone": "up",
+     "tag": "SEBI RULES",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/whatsapp.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: Helar Lukats · CC BY-SA 4.0",
+      "name": "DIGITAL ONBOARDING · REPRESENTATIONAL"
+     },
+     "at": "Investors will not"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Business Standard",
+     "title": "Sebi to ease KYC norms, centralise client details at registration agencies",
+     "link": "https://www.business-standard.com/markets/news/sebi-to-ease-kyc-norms-centralise-client-details-at-registration-agencies-126112500950_1.html"
+    },
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "SEBI simplifies KYC norms, streamlines investor onboarding",
+     "link": "https://www.thehindubusinessline.com/markets/sebi-simplifies-kyc-norms-streamlines-investor-onboarding/article71743649.ece"
+    }
+   ]
+  },
+  {
+   "id": "airtel",
+   "tag": "COMPANY NEWS",
+   "headline": "Airtel's Assam data centres",
+   "broll": "stocks",
+   "cap": "Airtel will invest about ₹1,200 crore in three data centres in Assam. They are planned in Guwahati, Jorhat and Silchar, and could be ready by 2028.",
+   "tts": "[excited] Airtel will invest about one thousand two hundred crore rupees in three data centres in Assam. They are planned in Guwahati, Jorhat and Silchar, and could be ready by twenty twenty-eight.",
+   "beats": [
+    {
+     "banner": [
+      "Airtel plans Assam push",
+      "₹1,200 crore investment"
+     ],
+     "tone": "up",
+     "tag": "COMPANY NEWS",
+     "v": {
+      "kind": "photo",
+      "image": "../media/images/telecom_tower.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "credit": "Photo: Kailash Mohankar · CC BY 3.0",
+      "name": "BHARTI AIRTEL · TELECOM TOWER",
+      "rows": [
+       [
+        "INVESTMENT",
+        "₹1,200 CRORE",
+        "up"
+       ]
+      ]
+     }
+    },
+    {
+     "banner": [
+      "Three data centres",
+      "Guwahati, Jorhat, Silchar"
+     ],
+     "tone": "up",
+     "tag": "COMPANY NEWS",
+     "v": {
+      "kind": "video",
+      "video": "../media/videos/ai_datacenter.mp4",
+      "start": 4,
+      "credit": "Video: Pexels",
+      "name": "DATA CENTRE · REPRESENTATIONAL"
+     },
+     "at": "They are planned"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Bharti Airtel to invest ₹1,200 crore in three data centres in Assam",
+     "link": "https://www.thehindubusinessline.com/info-tech/bharti-airtel-to-invest-1200-crore-in-three-data-centres-in-assam/article71743545.ece"
+    },
+    {
+     "publisher": "Business Standard",
+     "title": "Bharti Airtel to invest ₹1,200 crore in three data centres in Assam",
+     "link": "https://www.business-standard.com/companies/news/bharti-airtel-to-invest-1-200-crore-in-three-data-centres-in-assam-126112501173_1.html"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "tag": "STICKBIZ BRIEF",
+   "headline": "Follow for daily market news",
+   "broll": "outro",
+   "cap": "This is for information only, not investment advice. See you next time on StickBiz Brief.",
+   "tts": "[excited] This is for information only, not investment advice. See you next time on StickBiz Brief.",
+   "refs": []
+  }
+ ]
+}
