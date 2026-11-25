@@ -1,0 +1,63 @@
+# 1/3 — Research + script at each slot, then ask for approval (GitHub issue + ntfy).
+name: Slot - write script
+on:
+  schedule:            # GitHub cron is UTC and can start 5-30 min late; the job waits for the news cut-off itself
+    - cron: "20 1 * * *"    # 06:50 IST -> 8 AM Short   (cut-off 07:20)
+    - cron: "20 9 * * *"    # 14:50 IST -> 4 PM Short   (cut-off 15:40)
+    - cron: "20 14 * * *"   # 19:50 IST -> 9 PM Short   (cut-off 20:20)
+  workflow_dispatch:
+    inputs:
+      slot: {description: "am | pm | night (blank = by time)", required: false, default: ""}
+      skip_wait: {description: "Start now (do not wait for the news cut-off)", type: boolean, default: false}
+
+permissions: {contents: write, issues: write}
+concurrency: {group: slot-${{ github.ref }}, cancel-in-progress: false}
+
+jobs:
+  script:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONIOENCODING: utf-8
+      GH_TOKEN: ${{ github.token }}
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - name: Install
+        run: |
+          pip install -q -r requirements.txt
+          npm install -g -s @anthropic-ai/claude-code
+      - name: Which slot
+        id: s
+        run: python bot/slot.py detect "${{ inputs.slot }}" >> "$GITHUB_OUTPUT"
+      - name: Wait for the news cut-off
+        if: ${{ !inputs.skip_wait }}
+        run: python bot/slot.py wait-cutoff ${{ steps.s.outputs.slot }}
+      - name: Research (Trend Scout + full articles)
+        run: python bot/research.py ${{ steps.s.outputs.slot }}
+      - name: Claude writes the script, code checks it
+        id: w
+        run: |
+          python bot/build_script.py media
+          if python bot/write.py ${{ steps.s.outputs.slot }}; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "ok=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Build kit + review page
+        run: |
+          python bot/build_script.py build ${{ steps.s.outputs.slot }} || true
+          python bot/review.py ${{ steps.s.outputs.slot }} ${{ steps.s.outputs.date }}
+      - name: Save state + open review issue + notify
+        run: |
+          KEY="${{ steps.s.outputs.date }}-${{ steps.s.outputs.slot }}"
+          bash bot/state.sh push "$KEY"
+          gh label create short-review --color FF5722 --force >/dev/null
+          URL=$(gh issue create --label short-review --title "[$KEY] Short for review" --body-file run/review.md)
+          echo "Review: $URL"
+          python bot/notify.py "StickBiz ${{ steps.s.outputs.post }} Short: please review" run/notify.md \
+            --click "$URL" --action "Review & reply|$URL" --tags clapper --priority 4
+      - name: Tell me if something broke
+        if: failure()
+        run: python bot/notify.py "StickBiz bot FAILED (script step)" "Open ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" --priority 5 --tags warning

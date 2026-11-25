@@ -1,0 +1,470 @@
+{
+ "bse": {
+  "title": "File:BSE building at Dalal Street.JPG",
+  "artist": "BSEINDIA",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:BSE_building_at_Dalal_Street.JPG",
+  "type": "image",
+  "file": "images/bse.jpg"
+ },
+ "nyse": {
+  "title": "File:New York Stock Exchange August 2017 02.jpg",
+  "artist": "Arild Vågen",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:New_York_Stock_Exchange_August_2017_02.jpg",
+  "type": "image",
+  "file": "images/nyse.jpg"
+ },
+ "huang": {
+  "title": "File:Jensen huang stanford 2026-04-30 025.jpg",
+  "artist": "Anders Eidesvik",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Jensen_huang_stanford_2026-04-30_025.jpg",
+  "type": "image",
+  "file": "images/huang.jpg"
+ },
+ "trump": {
+  "title": "File:Official Presidential Portrait of President Donald J. Trump (2025).jpg",
+  "artist": "Daniel Torok",
+  "license": "Public domain",
+  "license_url": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025).jpg",
+  "type": "image",
+  "file": "images/trump.jpg"
+ },
+ "bombay_house": {
+  "title": "File:Bombay House, Tata Group Headquarters in Mumbai.jpg",
+  "artist": "AroundTheGlobe",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bombay_House,_Tata_Group_Headquarters_in_Mumbai.jpg",
+  "type": "image",
+  "file": "images/bombay_house.jpg"
+ },
+ "mcl_hq": {
+  "title": "File:Mahanadi Coalfields Limited, Sambalpur.jpg",
+  "artist": "Rosehubwiki, Ramkesh Patel",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mahanadi_Coalfields_Limited,_Sambalpur.jpg",
+  "type": "image",
+  "file": "images/mcl_hq.jpg"
+ },
+ "coal_plant": {
+  "title": "File:Coal Handling Plant Dudhichua Coal Mine Singrauli.jpg",
+  "artist": "Rosehubwiki, Kuber Patel",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Coal_Handling_Plant_Dudhichua_Coal_Mine_Singrauli.jpg",
+  "type": "image",
+  "file": "images/coal_plant.jpg"
+ },
+ "coal_mine": {
+  "title": "File:Coal mine in West bengal.jpg",
+  "artist": "Choti hussain",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Coal_mine_in_West_bengal.jpg",
+  "type": "image",
+  "file": "images/coal_mine.jpg"
+ },
+ "nasdaq": {
+  "title": "File:NASDAQ Market Site 201506.jpg",
+  "artist": "Luca Marfè at Italia all'ONU",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:NASDAQ_Market_Site_201506.jpg",
+  "type": "image",
+  "file": "images/nasdaq.jpg"
+ },
+ "amodei": {
+  "title": "File:Dario Amodei at TechCrunch Disrupt 2023 04.jpg",
+  "artist": "TechCrunch",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dario_Amodei_at_TechCrunch_Disrupt_2023_04.jpg",
+  "type": "image",
+  "file": "images/amodei.jpg"
+ },
+ "coke": {
+  "title": "File:Coca-Cola Bottles Alaska 2010.jpg",
+  "artist": "Rowanswiki",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Coca-Cola_Bottles_Alaska_2010.jpg",
+  "type": "image",
+  "file": "images/coke.jpg"
+ },
+ "spraying": {
+  "title": "File:Spraying pesticide 04.jpg",
+  "artist": "Azorbli",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Spraying_pesticide_04.jpg",
+  "type": "image",
+  "file": "images/spraying.jpg"
+ },
+ "nse": {
+  "title": "File:National Stock Exchange.jpg",
+  "artist": "312user",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:National_Stock_Exchange.jpg",
+  "type": "image",
+  "file": "images/nse.jpg"
+ },
+ "dalal": {
+  "title": "File:DalalStreetSign.jpg",
+  "artist": "Homieg340",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:DalalStreetSign.jpg",
+  "type": "image",
+  "file": "images/dalal.jpg"
+ },
+ "forklift": {
+  "title": "File:Container loading with forklift at warehouse in Thailand.jpg",
+  "artist": "Goterrestrial",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Container_loading_with_forklift_at_warehouse_in_Thailand.jpg",
+  "type": "image",
+  "file": "images/forklift.jpg"
+ },
+ "lic": {
+  "title": "File:LIC Central Office.jpg",
+  "artist": "PIYUSH P PUJARI",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:LIC_Central_Office.jpg",
+  "type": "image",
+  "file": "images/lic.jpg"
+ },
+ "meta_hq": {
+  "title": "File:Meta Platforms Headquarters Menlo Park California.jpg",
+  "artist": "LPS.1",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Meta_Platforms_Headquarters_Menlo_Park_California.jpg",
+  "type": "image",
+  "file": "images/meta_hq.jpg"
+ },
+ "netflix_hq": {
+  "title": "File:Netflix headquarters.jpg",
+  "artist": "Coolcaesar at English Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Netflix_headquarters.jpg",
+  "type": "image",
+  "file": "images/netflix_hq.jpg"
+ },
+ "dlf": {
+  "title": "File:DLF Cyber City with Rapid Metro, Gurgaon.jpg",
+  "artist": "Slyronit",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:DLF_Cyber_City_with_Rapid_Metro,_Gurgaon.jpg",
+  "type": "image",
+  "file": "images/dlf.jpg"
+ },
+ "telecom_tower": {
+  "title": "File:National Flag of India and A Telecom Tower seen from KVS RO Jabalpur - panoramio.jpg",
+  "artist": "Kailash Mohankar",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:National_Flag_of_India_and_A_Telecom_Tower_seen_from_KVS_RO_Jabalpur_-_panoramio.jpg",
+  "type": "image",
+  "file": "images/telecom_tower.jpg"
+ },
+ "tata_steel": {
+  "title": "File:TISCO JAmshedpur 2025-10-14 at 7.40.29 PM (1).jpg",
+  "artist": "Kharbaan Ghaltaan",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:TISCO_JAmshedpur_2025-10-14_at_7.40.29_PM_(1).jpg",
+  "type": "image",
+  "file": "images/tata_steel.jpg"
+ },
+ "tata_steel2": {
+  "title": "File:Tata Steel view 2.png",
+  "artist": "Kharbaan Ghaltaan",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tata_Steel_view_2.png",
+  "type": "image",
+  "file": "images/tata_steel2.jpg"
+ },
+ "solar": {
+  "title": "File:AMP Energy Bhadla Solar Power Plant.jpg",
+  "artist": "Sarvajanik Puralekh",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:AMP_Energy_Bhadla_Solar_Power_Plant.jpg",
+  "type": "image",
+  "file": "images/solar.jpg"
+ },
+ "maruti": {
+  "title": "File:Maruti Ciaz 2017.jpg",
+  "artist": "Alishahessle",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Maruti_Ciaz_2017.jpg",
+  "type": "image",
+  "file": "images/maruti.jpg"
+ },
+ "transmission": {
+  "title": "File:Transmission Tower in Kerala.jpg",
+  "artist": "Vis M",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Transmission_Tower_in_Kerala.jpg",
+  "type": "image",
+  "file": "images/transmission.jpg"
+ },
+ "escooter": {
+  "title": "File:Optima Plus (Hero Electric, India).jpg",
+  "artist": "Viswaprabha",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Optima_Plus_(Hero_Electric,_India).jpg",
+  "type": "image",
+  "file": "images/escooter.jpg"
+ },
+ "glass_line": {
+  "title": "File:NEW BEER BOTTLES ON ASSEMBLY LINE AFTER BEING MOLDED FROM 100^ OLD GLASS. PART OF A NEW GLASS RECYCLING PROCESS FOR... - NARA - 543703.jpg",
+  "artist": "Bill Gillette",
+  "license": "Public domain",
+  "license_url": "",
+  "page": "https://commons.wikimedia.org/wiki/File:NEW_BEER_BOTTLES_ON_ASSEMBLY_LINE_AFTER_BEING_MOLDED_FROM_100%5E_OLD_GLASS._PART_OF_A_NEW_GLASS_RECYCLING_PROCESS_FOR..._-_NARA_-_543703.jpg",
+  "type": "image",
+  "file": "images/glass_line.jpg"
+ },
+ "rbi": {
+  "title": "File:Mumbai, reserve bank of india 01.jpg",
+  "artist": "Sailko",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mumbai,_reserve_bank_of_india_01.jpg",
+  "type": "image",
+  "file": "images/rbi.jpg"
+ },
+ "gold": {
+  "title": "File:Gold Ingots on white background.jpg",
+  "artist": "Szaaman",
+  "license": "Public domain",
+  "license_url": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Gold_Ingots_on_white_background.jpg",
+  "type": "image",
+  "file": "images/gold.jpg"
+ },
+ "rupee_notes": {
+  "title": "File:Indian 100 and 2000 rupee notes (32190943222).jpg",
+  "artist": "Monito - Money Transfer Comparison",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Indian_100_and_2000_rupee_notes_(32190943222).jpg",
+  "type": "image",
+  "file": "images/rupee_notes.jpg"
+ },
+ "crowdstrike_hq": {
+  "title": "File:Crowdstrike HQ (54987419728).jpg",
+  "artist": "ajay_suresh",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Crowdstrike_HQ_(54987419728).jpg",
+  "type": "image",
+  "file": "images/crowdstrike_hq.jpg"
+ },
+ "fed_eccles": {
+  "title": "File:Eccles Building (26088200676).jpg",
+  "artist": "Federalreserve",
+  "license": "Public domain",
+  "license_url": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Eccles_Building_(26088200676).jpg",
+  "type": "image",
+  "file": "images/fed_eccles.jpg"
+ },
+ "john_williams": {
+  "title": "File:John C. Williams.jpg",
+  "artist": "Federal Reserve Bank of New York",
+  "license": "Public domain",
+  "license_url": "",
+  "page": "https://commons.wikimedia.org/wiki/File:John_C._Williams.jpg",
+  "type": "image",
+  "file": "images/john_williams.jpg"
+ },
+ "sebi_bhavan": {
+  "title": "File:SEBI Bhavan.jpg",
+  "artist": "Jimmy vikas",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:SEBI_Bhavan.jpg",
+  "type": "image",
+  "file": "images/sebi_bhavan.jpg"
+ },
+ "nvidia_hq": {
+  "title": "File:NVIDIA Headquarters.jpg",
+  "artist": "Coolcaesar",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:NVIDIA_Headquarters.jpg",
+  "type": "image",
+  "file": "images/nvidia_hq.jpg"
+ },
+ "umich": {
+  "title": "File:A picture of the University of Michigan campus in Ann Arbor, Michigan, USA.jpg",
+  "artist": "Jha4ceb (Wikivoyage)",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:A_picture_of_the_University_of_Michigan_campus_in_Ann_Arbor,_Michigan,_USA.jpg",
+  "type": "image",
+  "file": "images/umich.jpg"
+ },
+ "lucknow": {
+  "title": "File:Lucknow Skyline From Gomti Nagar.jpg",
+  "artist": "Timestance",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lucknow_Skyline_From_Gomti_Nagar.jpg",
+  "type": "image",
+  "file": "images/lucknow.jpg"
+ },
+ "sf_skyline": {
+  "title": "File:Golden Gate Bridge and San Francisco skyline from Hawk Hill at Blue Hour dllu.jpg",
+  "artist": "Daniel L. Lu (user:dllu)",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Golden_Gate_Bridge_and_San_Francisco_skyline_from_Hawk_Hill_at_Blue_Hour_dllu.jpg",
+  "type": "image",
+  "file": "images/sf_skyline.jpg"
+ },
+ "hackathon": {
+  "title": "File:Junction 2015.jpg",
+  "artist": "Vmuru",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Junction_2015.jpg",
+  "type": "image",
+  "file": "images/hackathon.jpg"
+ },
+ "whatsapp": {
+  "title": "File:Whatsapp texting.jpg",
+  "artist": "Helar Lukats",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Whatsapp_texting.jpg",
+  "type": "image",
+  "file": "images/whatsapp.jpg"
+ },
+ "nyc_times_square_night": {
+  "title": "New York stock shots (Internet Archive CVAN_MI-296)",
+  "artist": "Urban Safari Films Inc.",
+  "license": "CC BY 3.0",
+  "license_url": "http://creativecommons.org/licenses/by/3.0/",
+  "page": "https://archive.org/details/CVAN_MI-296",
+  "type": "video",
+  "file": "videos/nyc_times_square_night.mp4"
+ },
+ "nyc_taxis_night": {
+  "title": "New York stock shots (Internet Archive CVAN_MI-296)",
+  "artist": "Urban Safari Films Inc.",
+  "license": "CC BY 3.0",
+  "license_url": "http://creativecommons.org/licenses/by/3.0/",
+  "page": "https://archive.org/details/CVAN_MI-296",
+  "type": "video",
+  "file": "videos/nyc_taxis_night.mp4"
+ },
+ "candle_screen": {
+  "title": "Candlestick chart on trading screens",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/video/16177096/",
+  "file": "videos/candle_screen.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "order_book": {
+  "title": "Order book on a trading screen",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/video/16320068/",
+  "file": "videos/order_book.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "chemical_lab": {
+  "title": "Chemistry lab titration",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/video/16974288/",
+  "file": "videos/chemical_lab.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "cable_factory": {
+  "title": "Hands working with wires at a machine",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/video/6079436/",
+  "file": "videos/cable_factory.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "ai_datacenter": {
+  "title": "Aerial view of a data centre campus",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/license/",
+  "file": "videos/ai_datacenter.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "furniture_store": {
+  "title": "Furniture showroom interior",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/license/",
+  "file": "videos/furniture_store.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "shipping_containers": {
+  "title": "Container port with gantry cranes",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/license/",
+  "file": "videos/shipping_containers.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "ecommerce_warehouse": {
+  "title": "Parcels on a warehouse conveyor",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/license/",
+  "file": "videos/ecommerce_warehouse.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "construction_equipment": {
+  "title": "Excavator at a demolition site",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/license/",
+  "file": "videos/construction_equipment.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ },
+ "office_team": {
+  "title": "Office team working at a computer",
+  "artist": "Pexels contributor",
+  "license": "Pexels License",
+  "page": "https://www.pexels.com/license/",
+  "file": "videos/office_team.mp4",
+  "kind": "video",
+  "source": "Pexels (downloaded by owner)"
+ }
+}

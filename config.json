@@ -1,0 +1,15 @@
+{
+ "_note": "Bot settings. holdings: company names you own shares in (a disclosure line is added when a story mentions one).",
+ "slots": {
+  "am":    {"post": "08:00", "news_cutoff": "07:20"},
+  "pm":    {"post": "16:00", "news_cutoff": "15:40"},
+  "night": {"post": "21:00", "news_cutoff": "20:20"}
+ },
+ "max_late_minutes": 30,
+ "approve_by_minutes_before": -20,
+ "elevenlabs": {"voice_id": "dloMvYEKtYloiwx06kR4", "voice_name": "Bhavesh - Indian English & Hindi", "model": "eleven_v3",
+                "language_code": "en", "tempo": 1.15, "settings": {"stability": 0.5, "similarity_boost": 0.8}},
+ "music": {"style": "energy", "bpm": 128, "level": 1.6},
+ "holdings": [],
+ "post_to": {"youtube": true, "instagram": true}
+}

@@ -1,0 +1,143 @@
+# 3/3 — After your OK: voice -> render on 4 machines -> join -> preview -> post at the slot time.
+name: Produce + post
+on:
+  workflow_dispatch:
+    inputs:
+      issue: {required: true}
+      key: {required: true}
+      slot: {required: true}
+      date: {required: true}
+
+permissions: {contents: write, issues: write}
+env:
+  PYTHONIOENCODING: utf-8
+  GH_TOKEN: ${{ github.token }}
+  NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - name: State
+        run: bash bot/state.sh pull "${{ inputs.key }}"
+      - name: Voice (ElevenLabs) + music mix
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          STICKBIZ_OUT: ${{ github.workspace }}/run
+          STICKBIZ_SCRIPT: ${{ github.workspace }}/run/script.json
+        run: cd bot && python build_audio.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audio
+          path: |
+            run/mix.wav
+            run/timeline.json
+            run/envelope.npy
+            run/script.json
+          retention-days: 3
+
+  render:
+    needs: voice
+    runs-on: windows-latest          # Windows machines have the Segoe UI fonts the channel's look uses
+    timeout-minutes: 20
+    strategy:
+      matrix: {part: [0, 1, 2, 3]}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with: {name: audio, path: run}
+      - name: Render part ${{ matrix.part }} of 4
+        shell: bash
+        env:
+          STICKBIZ_OUT: ${{ github.workspace }}/run
+          STICKBIZ_SCRIPT: ${{ github.workspace }}/run/script.json
+        run: cd bot && python render2.py part ${{ matrix.part }} 4
+      - uses: actions/upload-artifact@v4
+        with: {name: "part-${{ matrix.part }}", path: "run/part_${{ matrix.part }}.mp4", retention-days: 3}
+
+  publish:
+    needs: render
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      ISSUE: ${{ inputs.issue }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - name: State
+        run: bash bot/state.sh pull "${{ inputs.key }}"
+      - uses: actions/download-artifact@v4
+        with: {path: dl}
+      - name: Join parts + add sound
+        run: |
+          FF=$(python -c "import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())")
+          for k in 0 1 2 3; do echo "file '$PWD/dl/part-$k/part_$k.mp4'" >> parts.txt; done
+          "$FF" -v error -y -f concat -safe 0 -i parts.txt -i dl/audio/mix.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k \
+                -movflags +faststart -shortest run/final.mp4
+          ls -la run/final.mp4
+      - name: Public preview (GitHub release) + notify
+        id: rel
+        run: |
+          TAG="short-${{ inputs.key }}-${{ github.run_id }}"
+          gh release create "$TAG" run/final.mp4 run/description.txt --title "Short ${{ inputs.key }}" --notes "Preview for issue #$ISSUE" --latest=false
+          URL="${{ github.server_url }}/${{ github.repository }}/releases/download/$TAG/final.mp4"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          gh issue comment "$ISSUE" -b "🎬 Preview: $URL — posting at the slot time. Reply STOP to cancel."
+          python bot/notify.py "StickBiz video ready" "Posting at the slot time. Reply STOP on the review page to cancel." \
+            --click "$URL" --action "Watch preview|$URL" --action "Review page|${{ github.server_url }}/${{ github.repository }}/issues/$ISSUE" --tags movie_camera
+      - name: Wait for the slot time
+        id: wait
+        run: |
+          if python bot/slot.py wait-post ${{ inputs.slot }} ${{ inputs.date }}; then echo "go=true" >> "$GITHUB_OUTPUT"; else echo "go=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Stopped or too late?
+        id: gate
+        run: |
+          if gh issue view "$ISSUE" --json labels -q '.labels[].name' | grep -qx stop; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=STOP" >> "$GITHUB_OUTPUT";
+          elif [ "${{ steps.wait.outputs.go }}" != "true" ]; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=too late" >> "$GITHUB_OUTPUT";
+          else echo "go=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Post to YouTube
+        id: yt
+        if: steps.gate.outputs.go == 'true'
+        continue-on-error: true
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python bot/upload_youtube.py run/final.mp4
+      - name: Post to Instagram
+        id: ig
+        if: steps.gate.outputs.go == 'true'
+        continue-on-error: true
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python bot/upload_instagram.py "${{ steps.rel.outputs.url }}"
+      - name: Report
+        if: always()
+        run: |
+          python - <<'EOF' > report.md
+          import json, os
+          from pathlib import Path
+          r = lambda f: json.loads(Path(f).read_text()) if Path(f).exists() else {}
+          yt, ig = r("run/youtube.json"), r("run/instagram.json")
+          gate = "${{ steps.gate.outputs.go }}"
+          if gate != "true":
+              print(f"Not posted (${{ steps.gate.outputs.why }}).")
+          else:
+              print(f"YouTube: {yt.get('url', 'FAILED - see the run log')}" + (" (PRIVATE until the API audit: make it public in Studio)" if yt.get("privacy") == "private" else ""))
+              print(f"Instagram: {ig.get('url', 'FAILED - see the run log')}")
+          EOF
+          cat report.md
+          gh issue comment "$ISSUE" -F report.md
+          gh issue close "$ISSUE"
+          python bot/notify.py "StickBiz: ${{ inputs.key }} result" report.md --click "${{ github.server_url }}/${{ github.repository }}/issues/$ISSUE" --tags white_check_mark

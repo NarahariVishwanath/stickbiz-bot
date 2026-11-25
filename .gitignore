@@ -1,0 +1,12 @@
+run/
+.state/
+bot/out/
+bot/__pycache__/
+bot/topics.json
+bot/story.json
+bot/story.html
+bot/trend_report.html
+media/videos/_frames/
+*.pyc
+.env
+*.key

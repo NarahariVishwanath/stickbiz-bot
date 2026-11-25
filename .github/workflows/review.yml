@@ -1,0 +1,80 @@
+# 2/3 — Your reply on the review issue: OK (produce + post), SKIP, STOP, or a change request.
+name: Review - your reply
+on:
+  issue_comment:
+    types: [created]
+
+permissions: {contents: write, issues: write, actions: write}
+
+jobs:
+  reply:
+    # only the channel owner's comments on review issues count
+    if: ${{ contains(github.event.issue.labels.*.name, 'short-review') && github.event.comment.user.login == github.repository_owner && github.event.issue.state == 'open' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    concurrency: {group: review-${{ github.event.issue.number }}, cancel-in-progress: false}
+    env:
+      PYTHONIOENCODING: utf-8
+      GH_TOKEN: ${{ github.token }}
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      ISSUE: ${{ github.event.issue.number }}
+      ISSUE_URL: ${{ github.event.issue.html_url }}
+      COMMENT: ${{ github.event.comment.body }}
+      BODY: ${{ github.event.issue.body }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Read the reply
+        id: r
+        run: |
+          python - <<'EOF' >> "$GITHUB_OUTPUT"
+          import os, re
+          c = os.environ["COMMENT"].strip()
+          m = re.search(r"slot=(\w+) date=([\d-]+)", os.environ["BODY"])
+          print(f"slot={m.group(1)}\ndate={m.group(2)}")
+          w = re.sub(r"[^a-z]", "", c.lower())
+          print("cmd=" + ("ok" if w in ("ok", "okay", "approve", "approved", "yes", "go", "post") else
+                          "skip" if w in ("skip", "no", "cancel") else "stop" if w == "stop" else "change"))
+          EOF
+      - name: OK -> produce and post
+        if: steps.r.outputs.cmd == 'ok'
+        run: |
+          if ! python bot/slot.py window ${{ steps.r.outputs.slot }} ${{ steps.r.outputs.date }}; then
+            gh issue comment "$ISSUE" -b "⏰ Too late for this slot — skipped."; gh issue close "$ISSUE"; exit 0; fi
+          gh issue edit "$ISSUE" --add-label approved
+          gh workflow run produce.yml -f issue="$ISSUE" -f key="${{ steps.r.outputs.date }}-${{ steps.r.outputs.slot }}" -f slot="${{ steps.r.outputs.slot }}" -f date="${{ steps.r.outputs.date }}"
+          gh issue comment "$ISSUE" -b "✅ Approved — voicing, rendering and posting now."
+      - name: SKIP
+        if: steps.r.outputs.cmd == 'skip'
+        run: |
+          gh issue comment "$ISSUE" -b "⏭️ Skipped — nothing will be posted for this slot."
+          gh issue close "$ISSUE"
+      - name: STOP
+        if: steps.r.outputs.cmd == 'stop'
+        run: |
+          gh label create stop --color B60205 --force >/dev/null
+          gh issue edit "$ISSUE" --add-label stop
+          gh issue comment "$ISSUE" -b "🛑 Stopped — the post will be cancelled."
+      - uses: actions/setup-node@v4
+        if: steps.r.outputs.cmd == 'change'
+        with: {node-version: "22"}
+      - name: Change request -> Claude revises, checks run again
+        if: steps.r.outputs.cmd == 'change'
+        run: |
+          KEY="${{ steps.r.outputs.date }}-${{ steps.r.outputs.slot }}"
+          pip install -q -r requirements.txt
+          npm install -g -s @anthropic-ai/claude-code
+          gh issue comment "$ISSUE" -b "✍️ Working on your changes…"
+          bash bot/state.sh pull "$KEY"
+          python bot/write.py ${{ steps.r.outputs.slot }} --feedback "$COMMENT" || true
+          python bot/build_script.py build ${{ steps.r.outputs.slot }} || true
+          python bot/review.py ${{ steps.r.outputs.slot }} ${{ steps.r.outputs.date }}
+          bash bot/state.sh push "$KEY"
+          gh issue edit "$ISSUE" --body-file run/review.md
+          gh issue comment "$ISSUE" -b "🔁 Updated script is in the issue description above. Reply OK, SKIP or more changes."
+          python bot/notify.py "StickBiz: updated script ready" run/notify.md --click "$ISSUE_URL" --action "Review & reply|$ISSUE_URL" --tags pencil --priority 4
+      - name: Tell me if something broke
+        if: failure()
+        run: python bot/notify.py "StickBiz bot FAILED (review step)" "Issue $ISSUE_URL — run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" --priority 5 --tags warning

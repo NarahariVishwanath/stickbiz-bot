@@ -1,0 +1,38 @@
+{
+ "_help": "Edit freely. Names here get priority in story selection. 'boost' = extra points when a story mentions any name in that list. 'avoid' words push a story down unless it is clearly about money.",
+ "indices": {
+  "boost": 6,
+  "names": ["sensex", "nifty", "bank nifty", "nifty bank", "midcap", "smallcap", "gift nifty", "dalal street",
+            "s&p 500", "nasdaq", "dow jones", "wall street", "stock market"]
+ },
+ "policy": {
+  "boost": 5,
+  "names": ["sebi", "rbi", "repo rate", "budget", "ltcg", "stcg", "capital gains", "gst", "income tax", "cbdt",
+            "inflation", "cpi", "wpi", "gdp", "fii", "fpi", "dii", "rupee", "crude", "fed", "rate cut", "rate hike",
+            "finance ministry", "finmin", "sitharaman", "tariff"]
+ },
+ "corporate_events": {
+  "boost": 4,
+  "names": ["ipo", "listing", "q1", "q2", "q3", "q4", "results", "earnings", "profit", "revenue", "dividend",
+            "bonus", "buyback", "split", "merger", "acquisition", "acquire", "stake", "deal", "block deal",
+            "order", "guidance", "valuation", "rights issue", "qip", "delisting"]
+ },
+ "large_caps_and_watchlist": {
+  "boost": 3,
+  "names": ["reliance", "tcs", "hdfc", "icici", "infosys", "sbi", "lic", "bharti airtel", "airtel", "itc",
+            "larsen", "l&t", "kotak", "axis bank", "bajaj", "maruti", "mahindra", "tata", "adani", "wipro",
+            "hcl", "sun pharma", "asian paints", "zomato", "eternal", "paytm", "coal india", "ongc", "ntpc",
+            "hindalco", "jsw", "vedanta", "nvidia", "apple", "microsoft", "alphabet", "google", "amazon", "meta",
+            "tesla", "openai", "anthropic"]
+ },
+ "avoid_always": {
+  "penalty": 8,
+  "names": ["black friday", "cyber monday", "deals:", "best deals", "early deals", "discount", "coupon",
+            "buying guide", "gift guide", "how to watch", "live stream", "review:"]
+ },
+ "avoid": {
+  "penalty": 6,
+  "names": ["rocket", "satellite", "starship", "spacex launch", "game", "gta", "playstation", "xbox", "movie",
+            "film", "box office", "cricket", "celebrity", "bollywood", "air quality", "weather", "exam", "result declared"]
+ }
+}
