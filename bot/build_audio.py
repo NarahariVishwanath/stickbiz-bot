@@ -179,7 +179,7 @@ def load_eleven_voice():
     import base64, hashlib, re
     cfg = eleven_cfg()
     vdir = HERE / "out" / "vo_eleven"  # shared voice cache (keyed by text + settings)
-    vdir.mkdir(exist_ok=True)
+    vdir.mkdir(parents=True, exist_ok=True)
     clips = []
     for k, seg in enumerate(SEGS):
         text = seg["tts"]
