@@ -4,6 +4,7 @@
     python bot/slot.py wait-cutoff <slot>   -> sleeps until the slot's news cut-off
     python bot/slot.py wait-post <slot> <date>  -> sleeps until post time; exit 3 if already past the late limit
     python bot/slot.py window <slot> <date> -> exit 0 if approval is still in time, 3 if too late
+    python bot/slot.py minutes-to-post <slot> <date> -> minutes until the post time (negative = past)
 """
 import datetime as dt, json, sys, time
 from pathlib import Path
@@ -43,6 +44,8 @@ if __name__ == "__main__":
         print(f"slot={s}\ndate={now().date().isoformat()}\npost={SLOTS[s]['post']}")
     elif cmd == "wait-cutoff":
         sleep_until(at(now().date().isoformat(), SLOTS[sys.argv[2]]["news_cutoff"]))
+    elif cmd == "minutes-to-post":
+        print(int((at(sys.argv[3], SLOTS[sys.argv[2]]["post"]) - now()).total_seconds() // 60))
     elif cmd in ("wait-post", "window"):
         slot, date = sys.argv[2], sys.argv[3]
         post = at(date, SLOTS[slot]["post"])

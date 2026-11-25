@@ -43,11 +43,16 @@ jobs:
       - name: OK -> produce and post
         if: steps.r.outputs.cmd == 'ok'
         run: |
-          if ! python bot/slot.py window ${{ steps.r.outputs.slot }} ${{ steps.r.outputs.date }}; then
+          SLOT=${{ steps.r.outputs.slot }}; DATE=${{ steps.r.outputs.date }}
+          if ! python bot/slot.py window $SLOT $DATE; then
             gh issue comment "$ISSUE" -b "⏰ Too late for this slot — skipped."; gh issue close "$ISSUE"; exit 0; fi
+          gh label create approved --color 0E8A16 --force >/dev/null
           gh issue edit "$ISSUE" --add-label approved
-          gh workflow run produce.yml -f issue="$ISSUE" -f key="${{ steps.r.outputs.date }}-${{ steps.r.outputs.slot }}" -f slot="${{ steps.r.outputs.slot }}" -f date="${{ steps.r.outputs.date }}"
-          gh issue comment "$ISSUE" -b "✅ Approved — voicing, rendering and posting now."
+          MIN=$(python bot/slot.py minutes-to-post $SLOT $DATE)
+          if [ "$MIN" -gt 90 ]; then TEST=true; MSG="🧪 Test mode (the slot is $MIN min away): making the video and the preview only — nothing will be posted."
+          else TEST=false; MSG="✅ Approved — voicing, rendering and posting at the slot time."; fi
+          gh workflow run produce.yml -f issue="$ISSUE" -f key="$DATE-$SLOT" -f slot="$SLOT" -f date="$DATE" -f test="$TEST"
+          gh issue comment "$ISSUE" -b "$MSG"
       - name: SKIP
         if: steps.r.outputs.cmd == 'skip'
         run: |

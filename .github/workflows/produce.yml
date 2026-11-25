@@ -7,6 +7,7 @@ on:
       key: {required: true}
       slot: {required: true}
       date: {required: true}
+      test: {description: "true = make the video + preview only, post nothing", required: false, default: "false"}
 
 permissions: {contents: write, issues: write}
 env:
@@ -97,12 +98,14 @@ jobs:
             --click "$URL" --action "Watch preview|$URL" --action "Review page|${{ github.server_url }}/${{ github.repository }}/issues/$ISSUE" --tags movie_camera
       - name: Wait for the slot time
         id: wait
+        if: inputs.test != 'true'
         run: |
           if python bot/slot.py wait-post ${{ inputs.slot }} ${{ inputs.date }}; then echo "go=true" >> "$GITHUB_OUTPUT"; else echo "go=false" >> "$GITHUB_OUTPUT"; fi
       - name: Stopped or too late?
         id: gate
         run: |
-          if gh issue view "$ISSUE" --json labels -q '.labels[].name' | grep -qx stop; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=STOP" >> "$GITHUB_OUTPUT";
+          if [ "${{ inputs.test }}" = "true" ]; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=test mode - preview only" >> "$GITHUB_OUTPUT";
+          elif gh issue view "$ISSUE" --json labels -q '.labels[].name' | grep -qx stop; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=STOP" >> "$GITHUB_OUTPUT";
           elif [ "${{ steps.wait.outputs.go }}" != "true" ]; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=too late" >> "$GITHUB_OUTPUT";
           else echo "go=true" >> "$GITHUB_OUTPUT"; fi
       - name: Post to YouTube
