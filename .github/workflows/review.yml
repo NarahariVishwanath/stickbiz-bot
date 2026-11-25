@@ -12,7 +12,9 @@ jobs:
     if: ${{ contains(github.event.issue.labels.*.name, 'short-review') && github.event.comment.user.login == github.repository_owner && github.event.issue.state == 'open' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    concurrency: {group: review-${{ github.event.issue.number }}, cancel-in-progress: false}
+    concurrency:
+      group: review-${{ github.event.issue.number }}
+      cancel-in-progress: false
     env:
       PYTHONIOENCODING: utf-8
       GH_TOKEN: ${{ github.token }}

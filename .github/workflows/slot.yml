@@ -11,7 +11,9 @@ on:
       skip_wait: {description: "Start now (do not wait for the news cut-off)", type: boolean, default: false}
 
 permissions: {contents: write, issues: write}
-concurrency: {group: slot-${{ github.ref }}, cancel-in-progress: false}
+concurrency:
+  group: slot-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   script:
