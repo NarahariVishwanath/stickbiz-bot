@@ -93,8 +93,10 @@ jobs:
           gh release create "$TAG" run/final.mp4 run/description.txt --title "Short ${{ inputs.key }}" --notes "Preview for issue #$ISSUE" --latest=false
           URL="${{ github.server_url }}/${{ github.repository }}/releases/download/$TAG/final.mp4"
           echo "url=$URL" >> "$GITHUB_OUTPUT"
-          gh issue comment "$ISSUE" -b "🎬 Preview: $URL — posting at the slot time. Reply STOP to cancel."
-          python bot/notify.py "StickBiz video ready" "Posting at the slot time. Reply STOP on the review page to cancel." \
+          if [ "${{ inputs.test }}" = "true" ]; then NOTE="Test mode: preview only, nothing will be posted."
+          else NOTE="Posting at the slot time. Reply STOP on the review page to cancel."; fi
+          gh issue comment "$ISSUE" -b "🎬 Preview: $URL — $NOTE"
+          python bot/notify.py "StickBiz video ready" "$NOTE" \
             --click "$URL" --action "Watch preview|$URL" --action "Review page|${{ github.server_url }}/${{ github.repository }}/issues/$ISSUE" --tags movie_camera
       - name: Wait for the slot time
         id: wait
