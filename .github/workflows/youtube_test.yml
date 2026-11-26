@@ -1,0 +1,37 @@
+# One-time check that the YouTube secrets work: uploads a 5-second PRIVATE test clip. Delete it afterwards.
+name: YouTube upload test
+on:
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONIOENCODING: utf-8
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - name: Make a 5-second test clip
+        run: |
+          mkdir -p run
+          FF=$(python -c "import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())")
+          "$FF" -v error -y -f lavfi -i "color=c=0x14204a:s=1080x1920:d=5" -f lavfi -i "sine=frequency=440:duration=5" \
+                -shortest -c:v libx264 -pix_fmt yuv420p -c:a aac run/test.mp4
+      - name: Upload as private
+        env:
+          YT_TEST: "1"
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python bot/upload_youtube.py run/test.mp4
+      - name: Tell me
+        if: always()
+        run: |
+          if [ -f run/youtube.json ]; then python bot/notify.py "YouTube test worked" "A private test clip is in YouTube Studio - you can delete it." --tags white_check_mark;
+          else python bot/notify.py "YouTube test FAILED" "Open ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" --tags warning --priority 4; fi

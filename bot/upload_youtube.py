@@ -17,7 +17,11 @@ def token():
 
 
 def main(video):
-    kit = json.loads((RUN / "kit.json").read_text(encoding="utf-8"))
+    if os.environ.get("YT_TEST") == "1":     # connection test: a private clip with a plain title, no comment
+        kit = {"tags": "stickbiz bot test", "titles": ["StickBiz bot upload test (private) - delete me"],
+               "description": "Automatic connection test from the StickBiz bot. Safe to delete.", "pinned_comment": ""}
+    else:
+        kit = json.loads((RUN / "kit.json").read_text(encoding="utf-8"))
     tags, total = [], 0
     for t in [x.strip() for x in kit["tags"].split(",") if x.strip()]:
         if total + len(t) + 3 > 480:
@@ -29,7 +33,7 @@ def main(video):
         title += " #Shorts"
     meta = {"snippet": {"title": title[:100], "description": kit["description"][:4990], "tags": tags,
                         "categoryId": "27", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
-            "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False}}
+            "status": {"privacyStatus": "private" if os.environ.get("YT_TEST") == "1" else "public", "selfDeclaredMadeForKids": False}}
     at = token()
     size = os.path.getsize(video)
     req = urllib.request.Request(
@@ -45,6 +49,9 @@ def main(video):
     vid = res["id"]
     url = f"https://youtube.com/shorts/{vid}"
     print("YouTube:", url, "| privacy:", res.get("status", {}).get("privacyStatus"))
+    if not kit.get("pinned_comment"):
+        (RUN / "youtube.json").write_text(json.dumps({"id": vid, "url": url, "privacy": res.get("status", {}).get("privacyStatus")}), encoding="utf-8")
+        return
     try:   # the pinned-comment text as the first comment (pin it in the app - the API cannot pin)
         body = {"snippet": {"videoId": vid, "topLevelComment": {"snippet": {"textOriginal": kit["pinned_comment"]}}}}
         urllib.request.urlopen(urllib.request.Request(
