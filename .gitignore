@@ -14,3 +14,5 @@ voice_ab/
 run_test/
 run_x/
 run_t/
+client_secret*.json
+*.apps.googleusercontent.com.json
