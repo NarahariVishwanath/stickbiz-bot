@@ -47,14 +47,14 @@ if __name__ == "__main__":
     from pathlib import Path
     args = sys.argv[1:]
     if not args:   # no argument: use the newest client_secret_*.json in Downloads
-        found = sorted((Path.home() / "Downloads").glob("client_secret*.json"), key=lambda p: p.stat().st_mtime)
+        found = sorted((p for p in (Path.home() / "Downloads").glob("client_secret*") if p.is_file()), key=lambda p: p.stat().st_mtime)
         if not found:
             sys.exit("No client_secret_....json in your Downloads folder. In Google Cloud -> Credentials, open your "
                      "Desktop OAuth client and click 'Download JSON', then run this again.")
         args = [str(found[-1])]
         print("Using", found[-1].name)
     if len(args) == 1:
-        if not args[0].lower().strip('"').endswith(".json"):
+        if not Path(args[0].strip('"')).is_file():
             sys.exit("Give either the downloaded .json file, or the Client ID and the Client secret.")
         # the "Download JSON" file from Google Cloud -> Credentials (no copy-paste mistakes)
         info = json.load(open(args[0].strip('"'), encoding="utf-8"))
