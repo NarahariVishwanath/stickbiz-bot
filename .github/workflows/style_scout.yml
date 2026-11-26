@@ -1,0 +1,59 @@
+# Weekly (and on demand): study catchy finance reels + the owner's saved references, propose 1-3 upgrades to our look.
+# Paste reference links any time as comments on the pinned "📌 Style references" issue.
+name: Style scout
+on:
+  schedule:
+    - cron: "0 5 * * 0"       # Sundays 10:30 IST
+  workflow_dispatch:
+    inputs:
+      note: {description: "Optional: what to focus on this time", required: false, default: ""}
+
+permissions: {contents: read, issues: write}
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONIOENCODING: utf-8
+      GH_TOKEN: ${{ github.token }}
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      FOCUS: ${{ inputs.note }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - run: npm install -g -s @anthropic-ai/claude-code
+      - name: The reference inbox (create it the first time)
+        id: inbox
+        run: |
+          gh label create style-refs --color 5319E7 --force >/dev/null
+          N=$(gh issue list --label style-refs --state open --json number,title -q '.[] | select(.title | startswith("📌")) | .number' | head -1)
+          if [ -z "$N" ]; then
+            N=$(gh issue create --label style-refs --title "📌 Style references — paste reel / Short / profile links here" \
+                 --body "Comment any Instagram reel or profile, or YouTube Short / channel link you like, with a few words on what you liked (e.g. *the way numbers pop*, *the opening hook*). The weekly style scout reads every comment here and turns them into upgrade ideas for our Shorts. Claude studies the techniques only — it never copies anyone's content." | grep -o '[0-9]*$')
+            gh issue pin "$N" || true
+          fi
+          echo "n=$N" >> "$GITHUB_OUTPUT"
+          mkdir -p run
+          { echo "# Saved references (newest first)"; echo;
+            gh issue view "$N" --comments --json comments -q '.comments | reverse | .[] | "- " + .createdAt[0:10] + ": " + (.body | gsub("\n"; " "))'; } > run/refs.md
+          cat run/refs.md
+      - name: Claude researches and writes the ideas
+        run: |
+          TASK="$(cat prompts/style_scout.md)"
+          if [ -n "$FOCUS" ]; then TASK="$TASK
+
+          The owner asked to focus on: $FOCUS"; fi
+          claude -p "$TASK" --allowedTools "Read,Write,WebSearch,WebFetch,Bash(curl:*),Bash(mkdir:*)" \
+                 --permission-mode acceptEdits --max-turns 60 --output-format text | tail -20
+          test -s run/style_ideas.md
+      - name: Post the ideas + notify
+        run: |
+          URL=$(gh issue create --label style-refs --title "🎨 Style ideas — $(date +'%d %b %Y')" --body-file run/style_ideas.md)
+          python3 bot/notify.py "StickBiz: new style ideas" "1-3 upgrade ideas for the Shorts are ready. Reply 'sample 1' (or 2/3) on the issue." \
+            --click "$URL" --action "Open ideas|$URL" --tags art
+      - name: Tell me if something broke
+        if: failure()
+        run: python3 bot/notify.py "Style scout FAILED" "Open ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" --tags warning
