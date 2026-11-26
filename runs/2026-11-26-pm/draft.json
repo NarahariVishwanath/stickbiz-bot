@@ -1,0 +1,70 @@
+{
+  "hook": {"cap": "India faces a US tariff of 17% with a trade deal, or up to 25% without one. The rupee, Tata Sons and Adani bonds are also in focus.",
+           "banner": ["US tariff: 17% or 25%?", "It all hinges on a deal"],
+           "items": [["17% with a deal", "India", "mint", "deal"], ["Up to 25% without", "India", "red", "warn"], ["Rupee at 92.40", "India", "amber", "coin"]]},
+  "stories": [
+    {"id": "market", "tag": "MARKET UPDATE", "headline": "Mixed start, weaker rupee",
+     "cap": "Sensex and Nifty were mixed in morning trade on Thursday. The Sensex was up 0.17% at 84,076.82, while the Nifty was down 0.10% at 25,793.20. The rupee slipped 20 paise to 92.40 against the dollar. Oil above $95 a barrel and the US tariff plan raised dollar demand, traders said. Still, the rupee has recovered nearly 5% from its record low close of 96.88 on 8 October.",
+     "beats": [
+       {"at": null, "banner": ["Indices split in morning", "Sensex up, Nifty down"], "tone": "neutral", "visual": "bse", "name": "BSE · DALAL STREET",
+        "rows": [["SENSEX", "84,076.82 · +0.17%", "up"], ["NIFTY", "25,793.20 · -0.10%", "down"]]},
+       {"at": "The rupee slipped", "banner": ["Rupee loses 20 paise", "Now at 92.40 per dollar"], "tone": "down", "visual": "rupee_notes", "name": "INDIAN RUPEE NOTES",
+        "rows": [["RUPEE", "92.40 · -20 PAISE", "down"]]},
+       {"at": "Oil above", "banner": ["Oil and tariffs hit rupee", "Still up 5% from low"], "tone": "neutral", "visual": "nse", "name": "NSE · MUMBAI",
+        "rows": [["BRENT", "$95+ A BARREL", "down"]]}
+     ],
+     "sources": [{"publisher": "Business Standard", "title": "Rupee depreciates 20 paise to 92.40 against US dollar in early trade", "link": "https://www.business-standard.com/finance/news/rupee-depreciates-20-paise-to-92-40-against-us-dollar-in-early-trade-126112600182_1.html"},
+                 {"publisher": "Hindu BusinessLine", "title": "Rupee falls 20 paise to 92.40 against US dollar in early trade", "link": "https://www.thehindubusinessline.com/markets/forex/rupee-falls-20-paise-to-9240-against-us-dollar-in-early-trade/article71745273.ece"}],
+     "summary": {"emoji": "📊", "line": "Sensex edged up 0.17% to 84,076.82 and Nifty dipped 0.10% to 25,793.20 in morning trade; the rupee slipped 20 paise to 92.40."}},
+    {"id": "tariff", "tag": "US TARIFF", "headline": "17% or 25%: deal decides",
+     "cap": "The US has proposed new tariffs on 14 trading partners, India included. India would face 17% if a trade deal is signed, and up to 25% without one. With a deal, Bangladesh would face 18%, and Vietnam and China 20%. Think tank GTRI says the two-rate design is a way to push countries into deals. India rejects the claim of excess capacity and says it wants an early trade deal.",
+     "beats": [
+       {"at": null, "banner": ["New US tariff plan", "14 partners, India included"], "tone": "down", "visual": "shipping_containers", "name": "CONTAINER PORT · REPRESENTATIONAL"},
+       {"at": "India would face", "banner": ["India: 17% with a deal", "Up to 25% without one"], "tone": "neutral", "visual": "trump", "name": "US PRESIDENT DONALD TRUMP",
+        "rows": [["WITH DEAL", "17%", "up"], ["NO DEAL", "UP TO 25%", "down"]]},
+       {"at": "With a deal", "banner": ["Rivals face higher rates", "Vietnam, China: 20%"], "tone": "up", "visual": "cable_factory", "name": "FACTORY · REPRESENTATIONAL",
+        "rows": [["BANGLADESH", "18%", ""], ["VIETNAM · CHINA", "20%", ""]]},
+       {"at": "Think tank", "banner": ["GTRI questions the plan", "India wants an early deal"], "tone": "neutral", "visual": "office_team", "name": "POLICY TEAM · REPRESENTATIONAL"}
+     ],
+     "sources": [{"publisher": "Business Standard", "title": "New US tariff may give India edge over Asian peers if trade deal done: GTRI", "link": "https://www.business-standard.com/world-news/new-us-tariff-may-give-india-edge-over-asian-peers-if-trade-deal-done-gtri-126112501238_1.html"},
+                 {"publisher": "Hindu BusinessLine", "title": "GTRI calls US tariff under Section 301 coercive bargaining tool, urges India to reject it", "link": "https://www.thehindubusinessline.com/economy/gtri-calls-us-tariff-under-section-301-coercive-bargaining-tool-urges-india-to-reject-it/article71745146.ece"}],
+     "summary": {"emoji": "🌐", "line": "The US proposed a 17% tariff on India if a trade deal is signed and up to 25% without one; Bangladesh would face 18% and Vietnam and China 20% with a deal."}},
+    {"id": "tata", "tag": "TATA SONS", "headline": "Tata Sons board showdown",
+     "cap": "The Tata Sons board will meet on 30 November, after the date moved from 26 November. The RBI told Tata Sons on 16 November to follow listing rules for large finance companies. Tata Trusts chairman Noel Tata wants his own issues discussed first, and prefers a plan to keep Tata Sons private. Tata Trusts is also taking the chairman's reappointment to the Bombay High Court.",
+     "beats": [
+       {"at": null, "banner": ["Tata Sons board meets", "Now on 30 November"], "tone": "neutral", "visual": "bombay_house", "name": "BOMBAY HOUSE · TATA GROUP HQ"},
+       {"at": "The RBI told", "banner": ["RBI says: follow listing rules", "Letter dated 16 November"], "tone": "neutral", "visual": "rbi", "name": "RBI · MUMBAI"},
+       {"at": "Tata Trusts chairman", "banner": ["Noel Tata wants his items", "Discussed first"], "tone": "down", "visual": "tata_steel", "name": "TATA GROUP · REPRESENTATIONAL"}
+     ],
+     "sources": [{"publisher": "Business Standard", "title": "Now, Noel wants revision of Tata Sons board agenda, pushes restructuring", "link": "https://www.business-standard.com/companies/news/now-noel-wants-revision-of-tata-sons-board-agenda-pushes-restructuring-126112600003_1.html"},
+                 {"publisher": "Mint", "title": "Noel Tata pushes for changes to Tata Sons' November 30 board agenda, seeks priority for issues raised by him", "link": "https://www.livemint.com/companies/people/noel-tata-pushes-for-changes-to-tata-sons-november-30-board-agenda-seeks-priority-for-issues-raised-by-him-11795670457350.html"}],
+     "summary": {"emoji": "🏢", "line": "Tata Sons' board meets on 30 November; the RBI has repeated that listing rules apply, and Noel Tata wants his issues taken up first."}},
+    {"id": "adani", "tag": "BOND MARKET", "headline": "Adani plans public bonds",
+     "cap": "Adani Enterprises and Adani Power plan public bond sales to raise at least ₹2,000 crore, according to people familiar. One offer is aimed for the end of December and the other for March. The terms are not final. Indian firms have raised ₹4,840 crore through public bonds this fiscal year, against ₹11,340 crore in all of the last one.",
+     "beats": [
+       {"at": null, "banner": ["Adani firms eye bonds", "At least ₹2,000 crore"], "tone": "up", "visual": "transmission", "name": "POWER LINES · REPRESENTATIONAL",
+        "rows": [["TARGET", "₹2,000 CRORE+", "up"]]},
+       {"at": "Indian firms", "banner": ["Public bonds still thin", "₹4,840 crore this year"], "tone": "neutral", "visual": "candle_screen", "name": "MARKET SCREEN · REPRESENTATIONAL",
+        "rows": [["THIS FISCAL", "₹4,840 CRORE", ""], ["LAST FISCAL", "₹11,340 CRORE", ""]]}
+     ],
+     "sources": [{"publisher": "Business Standard", "title": "Adani Enterprises, Adani Power planning public bond sale to raise ₹2,000 cr", "link": "https://www.business-standard.com/companies/news/adani-enterprises-adani-power-planning-public-bond-sale-to-raise-2-000-cr-126112600181_1.html"},
+                 {"publisher": "Hindu BusinessLine", "title": "Adani Enterprises and Adani Power plan public bond sale to raise at least $220 million", "link": "https://www.thehindubusinessline.com/companies/adani-enterprises-and-adani-power-plan-public-bond-sale-to-raise-at-least-220-million/article71745193.ece"}],
+     "summary": {"emoji": "💰", "line": "Adani Enterprises and Adani Power plan public bonds to raise at least ₹2,000 crore; Indian firms have raised ₹4,840 crore this fiscal year via public bonds."}},
+    {"id": "gold", "tag": "COMMODITIES", "headline": "Gold and silver bounce",
+     "cap": "Gold rose about 1% and silver about 3% on the MCX on Thursday. Traders still expect the US Federal Reserve to raise interest rates.",
+     "beats": [
+       {"at": null, "banner": ["Metals bounce on MCX", "Silver leads, up about 3%"], "tone": "up", "visual": "gold", "name": "GOLD · REPRESENTATIONAL",
+        "rows": [["GOLD", "+1% · MCX", "up"], ["SILVER", "+3% · MCX", "up"]]}
+     ],
+     "sources": [{"publisher": "Economic Times", "title": "Gold gains 1%, silver rallies 3% on MCX; ETFs surge up to 6%", "link": "https://economictimes.indiatimes.com/markets/stocks/live-blog/url-live-updates-gold-rate-today-26th-november-24k-22k-20k-18-carat-mcx-gold-silver-price-in-delhi-hyderabad-chennai-bengaluru-citywise/liveblog/136176736.cms"},
+                 {"publisher": "Mint", "title": "Gold, Silver rates today LIVE", "link": "https://www.livemint.com/market/commodities/gold-silver-rates-today-live-26-november-2026-why-prices-rising-on-mcx-us-fed-rate-meeting-in-focus-outlook-targets-11795664993084.html"}],
+     "summary": {"emoji": "🥇", "line": "MCX gold gained about 1% and silver about 3% on Thursday while rate-hike expectations in the US remain."}}
+  ],
+  "outro": {"cap": "This is for information only, not investment advice. See you next time on StickBiz Brief."},
+  "ticker": ["SENSEX ▲ 0.17% · 84,076.82", "NIFTY ▼ 0.10% · 25,793.20", "RUPEE ▼ 20 PAISE · 92.40", "US TARIFF ON INDIA: 17% / 25%", "ADANI BONDS: ₹2,000 CR+", "TATA SONS BOARD: 30 NOV"],
+  "titles": ["🇮🇳 US Tariff on India: 17% or 25%? Rupee, Tata Sons & More", "📊 Sensex, Nifty & Rupee 92.40: Today's Market Brief", "⚡ India Tariff Deal Explained + Adani Bonds, Tata Sons"],
+  "thumbnail_texts": ["17% OR 25% TARIFF", "RUPEE AT 92.40", "TATA SONS SHOWDOWN"],
+  "pinned_comment": "Should India sign the US trade deal quickly, or wait? Tell us below 👇",
+  "tags": "sensex,nifty,rupee,us tariff india,india us trade deal,tata sons,noel tata,adani bonds,gold price today,silver price,stock market news,share market india,stickbiz brief",
+  "description_intro": "📈🇮🇳 Today's market brief: US tariff on India, the rupee, Tata Sons, Adani bonds and metals!"
+}

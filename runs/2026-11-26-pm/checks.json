@@ -1,0 +1,12 @@
+{
+ "blocking": [
+  "[gold] number “1%” is in 1 publisher(s) (Economic Times) — needs 2+, or remove it.",
+  "[gold] number “3%” is in 1 publisher(s) (Economic Times) — needs 2+, or remove it.",
+  "Spoken text is 1800 characters; aim for 900-1,250 (60-80 s)."
+ ],
+ "warnings": [
+  "[market] name “Thursday. Sensex” found in 0 publisher(s) — check spelling.",
+  "[tata] name “Bombay High” found in 0 publisher(s) — check spelling.",
+  "[gold] name “Thursday. Traders” found in 0 publisher(s) — check spelling."
+ ]
+}
