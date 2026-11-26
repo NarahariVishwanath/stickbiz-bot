@@ -1,6 +1,7 @@
 """ONE-TIME, on your own PC: give the bot permission to upload to your YouTube channel.
 
     python bot/youtube_auth.py <client_id> <client_secret>
+    python bot/youtube_auth.py <path to the downloaded client_secret_....json>
 
 Opens Google's consent page in your browser (sign in with the channel's Google account and allow).
 Then prints a REFRESH TOKEN. Save it as the GitHub secret YT_REFRESH_TOKEN (never paste it in chat).
@@ -43,4 +44,16 @@ def main(cid, secret):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    if len(sys.argv) == 2 and sys.argv[1].lower().endswith(".json"):
+        # the "Download JSON" file from Google Cloud -> Credentials (no copy-paste mistakes)
+        info = json.load(open(sys.argv[1], encoding="utf-8"))
+        info = info.get("installed") or info.get("web") or info
+        cid, secret = info["client_id"].strip(), info["client_secret"].strip()
+    else:
+        cid, secret = sys.argv[1].strip(), sys.argv[2].strip()
+    if not cid.endswith(".apps.googleusercontent.com"):
+        sys.exit("That does not look like a Client ID (it should end with .apps.googleusercontent.com). "
+                 "Check you did not swap the ID and the secret.")
+    if not secret.startswith("GOCSPX-"):
+        print("Note: the client secret usually starts with GOCSPX- - double-check it if Google says invalid_client.")
+    main(cid, secret)
