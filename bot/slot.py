@@ -24,11 +24,18 @@ def now():
 
 
 def detect(given=""):
+    """A manual run names its slot. A scheduled run belongs to the slot whose window it falls in: from 2 h before
+    the news cut-off until the latest allowed post time. Outside every window -> "" (GitHub started it far too late)."""
     if given in SLOTS:
         return given
     n = now()
-    best = min(SLOTS, key=lambda s: abs((at(n.date().isoformat(), SLOTS[s]["post"]) - n).total_seconds()))
-    return best
+    d = n.date().isoformat()
+    for s, v in SLOTS.items():
+        start = at(d, v["news_cutoff"]) - dt.timedelta(hours=2)
+        end = at(d, v["post"]) + dt.timedelta(minutes=CONFIG["max_late_minutes"] - 25)   # leave time to write + approve
+        if start <= n <= end:
+            return s
+    return ""
 
 
 def sleep_until(t):
@@ -41,7 +48,10 @@ if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "detect":
         s = detect(sys.argv[2] if len(sys.argv) > 2 else "")
-        print(f"slot={s}\ndate={now().date().isoformat()}\npost={SLOTS[s]['post']}")
+        if not s:
+            print("slot=\nskip=true")
+        else:
+            print(f"slot={s}\ndate={now().date().isoformat()}\npost={SLOTS[s]['post']}\nskip=false")
     elif cmd == "wait-cutoff":
         sleep_until(at(now().date().isoformat(), SLOTS[sys.argv[2]]["news_cutoff"]))
     elif cmd == "minutes-to-post":

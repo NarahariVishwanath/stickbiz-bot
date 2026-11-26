@@ -1,0 +1,30 @@
+# Weekly: renew the Instagram token so it never reaches its 60-day expiry.
+name: Instagram token refresh
+on:
+  schedule:
+    - cron: "30 4 * * 1"     # Mondays 10:00 IST
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONIOENCODING: utf-8
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q pynacl
+      - name: Refresh
+        id: r
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python bot/instagram_refresh.py | tee out.txt
+      - name: Tell me only if I must act
+        if: failure()
+        run: python bot/notify.py "Instagram token needs attention" "The weekly refresh failed - open ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" --tags warning --priority 4
