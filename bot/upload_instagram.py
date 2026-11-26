@@ -8,11 +8,14 @@ import json, os, sys, time, urllib.parse, urllib.request
 from pathlib import Path
 
 RUN = Path(__file__).parent.parent / "run"
-API = "https://graph.facebook.com/" + os.environ.get("IG_API_VERSION", "v21.0")
+# Tokens from "Generate access tokens" (Instagram login) start with "IG" and use graph.instagram.com;
+# Facebook-login / system-user tokens ("EAA...") use graph.facebook.com.
+_HOST = "graph.instagram.com" if os.environ.get("IG_ACCESS_TOKEN", "").strip().startswith("IG") else "graph.facebook.com"
+API = f"https://{_HOST}/" + os.environ.get("IG_API_VERSION", "v21.0")
 
 
 def call(path, params, method="POST"):
-    params = dict(params, access_token=os.environ["IG_ACCESS_TOKEN"])
+    params = dict(params, access_token=os.environ["IG_ACCESS_TOKEN"].strip())
     data = urllib.parse.urlencode(params)
     if method == "GET":
         req = urllib.request.Request(f"{API}/{path}?{data}")
@@ -26,7 +29,7 @@ def call(path, params, method="POST"):
 
 def main(video_url):
     kit = json.loads((RUN / "kit.json").read_text(encoding="utf-8"))
-    uid = os.environ["IG_USER_ID"]
+    uid = os.environ.get("IG_USER_ID", "").strip() or "me"
     c = call(f"{uid}/media", {"media_type": "REELS", "video_url": video_url, "caption": kit["instagram_caption"][:2150],
                               "share_to_feed": "true"})
     cid = c["id"]

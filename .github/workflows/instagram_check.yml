@@ -1,0 +1,29 @@
+# One-time check that the Instagram secrets work. Posts NOTHING: it only reads the account name and posting allowance.
+name: Instagram check
+on:
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONIOENCODING: utf-8
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Check the token
+        id: c
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python bot/instagram_check.py | tee ig.txt
+      - name: Tell me
+        if: always()
+        run: |
+          if [ "${{ steps.c.outcome }}" = "success" ]; then python bot/notify.py "Instagram check worked" ig.txt --tags white_check_mark;
+          else python bot/notify.py "Instagram check FAILED" "Open ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" --tags warning --priority 4; fi
