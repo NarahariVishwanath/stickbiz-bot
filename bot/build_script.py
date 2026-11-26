@@ -43,11 +43,17 @@ def quote_of_the_day(now, slot):
     return qs[(now.toordinal() * 3 + ["am", "pm", "night"].index(slot)) % len(qs)]
 
 
+def icon_list():
+    return sorted(p.stem for p in (MEDIA / "icons").glob("*.png"))
+
+
 def write_media_md():
-    lines = ["# Visual library (use the slug in `visual`)", "", "| slug | kind | what it shows |", "|---|---|---|"]
+    lines = ["# Icons (Fluent 3D; use the slug in scenes)", "", ", ".join(icon_list()), "",
+             "# Clips & photos (for `clip` scenes: \"video\" for videos, \"image\" for photos)", "",
+             "| slug | kind | what it shows |", "|---|---|---|"]
     lines += [f"| {s} | {k} | {t} |" for s, k, t in media_list()]
     (RUN / "media.md").write_text("\n".join(lines), encoding="utf-8")
-    print(f"{len(lines) - 4} visuals listed")
+    print(f"{len(icon_list())} icons, {len(media_list())} clips/photos listed")
 
 
 def spoken(cap):
@@ -82,41 +88,56 @@ def visual(b, k):
 def build(slot):
     d = json.loads((RUN / "draft.json").read_text(encoding="utf-8"))
     now = dt.datetime.now(IST)
-    segs = [{"id": "hook", "tag": "TODAY'S TOP NEWS", "hook_title": "TODAY'S TOP NEWS",
-             "headline": " · ".join(s["headline"] for s in d["stories"][:2])[:60], "broll": "hook",
-             "hook_items": d["hook"]["items"][:3], "cap": d["hook"]["cap"], "tts": spoken(d["hook"]["cap"]),
-             "beats": [{"banner": d["hook"]["banner"]}], "refs": []}]
+    def scene(sc):
+        """Check slugs; give clips a credit line."""
+        sc = json.loads(json.dumps(sc or {}))
+        for it in [sc.get("from"), sc.get("to"), sc] + list(sc.get("items") or []):
+            if isinstance(it, dict) and it.get("icon") and it["icon"] not in icon_list():
+                it["icon"] = "red_question_mark"
+        if sc.get("type") == "clip":
+            slug = sc.get("video") or sc.get("image")
+            c = credits().get(slug, {})
+            lic = c.get("license", "")
+            who = (c.get("artist") or "").split("(")[0].strip()[:34]
+            sc["credit"] = ("Video: " if sc.get("video") else "Photo: ") + (
+                "Pexels" if lic == "Pexels License" else "Public domain" if lic == "Public domain" else f"{who} · {lic}".strip(" ·"))
+        return sc
+
+    h = d["hook"]
+    segs = [{"id": "hook", "tag": "TODAY'S TOP NEWS", "headline": " · ".join(s["headline"] for s in d["stories"][:2])[:60],
+             "broll": "hook", "cap": h["cap"], "tts": spoken(h["cap"]),
+             "beats": [{"head": (h.get("head") or ["TODAY'S", "BIG STORIES"])[:2], "kicker": h.get("kicker", ""), "tone": "neutral",
+                        "scene": scene(h.get("scene"))}], "refs": []}]
     for s in d["stories"]:
         beats = []
-        for k, b in enumerate(s["beats"]):
-            bb = {"banner": b["banner"][:2], "tone": b.get("tone", "neutral"), "tag": s["tag"][:16], "v": visual(b, k)}
+        for b in s["beats"]:
+            bb = {"head": b["head"][:2], "kicker": b.get("kicker", ""), "tone": b.get("tone", "neutral"),
+                  "note": b.get("note", ""), "scene": scene(b.get("scene"))}
             if b.get("at"):
                 bb["at"] = b["at"]
+            if b.get("chips"):
+                bb["chips"] = b["chips"][:3]
             beats.append(bb)
-        segs.append({"id": s["id"], "tag": s["tag"][:16], "headline": s["headline"][:30], "broll": "stocks",
+        segs.append({"id": s["id"], "tag": s["tag"][:24], "headline": s["headline"][:30], "broll": "stocks",
                      "cap": s["cap"], "tts": spoken(s["cap"]), "beats": beats, "refs": s["sources"]})
-    segs.append({"id": "outro", "tag": "STICKBIZ BRIEF", "headline": "Follow for daily market news", "broll": "outro",
-                 "cap": d["outro"]["cap"], "tts": spoken(d["outro"]["cap"]), "refs": []})
-    script = {"title": f"{d['titles'][0]} | StickBiz Brief | {now:%d %b %Y}", "voice_provider": "elevenlabs",
-              "elevenlabs": CONFIG["elevenlabs"], "date_label": f"{now:%d %B %Y}".upper(), "ticker": d["ticker"][:8],
-              "captions": False, "gap": 0.3, "lead_in": 0.5, "music": CONFIG["music"], "sting": {"pill": "STORY"},
-              "outro_lines": ["Comment below:", "Which story mattered most?"],
-              "outro_banner": ["Not investment advice", "Educational only · Not SEBI-registered"],
-              "disclaimer": ["Educational only. Not investment advice.", "Not a SEBI-registered adviser."],
-              "quote": quote_of_the_day(now, slot), "side_cards": True,
-              "segments": segs}
+    segs.append({"id": "outro", "tag": "STICKBIZ BRIEF", "headline": "See you next time", "broll": "outro",
+                 "cap": d["outro"]["cap"], "tts": spoken(d["outro"]["cap"]),
+                 "beats": [{"head": ["SEE YOU", "NEXT TIME"], "kicker": "StickBiz Brief", "tone": "neutral"}], "refs": []})
+    slot_time = {"am": "8 AM", "pm": "4 PM", "night": "9 PM"}[slot]
+    script = {"title": f"{d['titles'][0]} | StickBiz Brief | {now:%d %b %Y}", "voice_provider": "elevenlabs", "look": "explainer",
+              "elevenlabs": CONFIG["elevenlabs"], "date_label": f"{now:%d %b %Y}".upper() + f" · {slot_time}",
+              "ticker": d.get("ticker", [])[:8], "captions": False, "gap": 0.35, "lead_in": 0.8, "music": CONFIG["music"],
+              "quote": quote_of_the_day(now, slot), "segments": segs}
     (RUN / "script.json").write_text(json.dumps(script, ensure_ascii=False, indent=1), encoding="utf-8")
 
     # publishing kit
     used, cred = [], credits()
     for g in segs:
         for b in g.get("beats", []):
-            v = b.get("v") or {}
-            f = v.get("image") or v.get("video")
-            if f:
-                slug = Path(f).stem
-                if slug not in used:
-                    used.append(slug)
+            sc = b.get("scene") or {}
+            slug = sc.get("video") or sc.get("image")
+            if slug and slug not in used:
+                used.append(slug)
     hold = [h for h in CONFIG.get("holdings", []) if any(h.lower() in (s["cap"] + s["headline"]).lower() for s in d["stories"])]
 
     def make_desc(n_src, links_in_credits):
@@ -141,6 +162,7 @@ def build(slot):
             # attribution licences (CC BY / BY-SA) always keep their link; others only when there is room
             keep = page and (links_in_credits or lic.upper().startswith("CC BY"))
             out.append(f"• {name}: {who}, {lic}" + (f" — {page}" if keep else ""))
+        out.append("• 3D icons: Microsoft Fluent Emoji (MIT License)")
         out += ["", f"📌 Disclosure: I hold shares of {', '.join(hold)}." if hold else
                 "📌 Disclosure: I do not hold shares of any company mentioned in this video.", "",
                 "⚠️ For educational purposes only. Not investment advice. I am not a SEBI-registered advisor. "

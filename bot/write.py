@@ -9,7 +9,7 @@ import json, os, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-RUN = ROOT / "run"
+RUN = Path(os.environ.get("STICKBIZ_RUN", ROOT / "run"))
 PROMPT = (ROOT / "prompts" / "write_script.md").read_text(encoding="utf-8")
 
 

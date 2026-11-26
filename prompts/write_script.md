@@ -1,7 +1,7 @@
 # StickBiz Brief — write today's Short (you are the scriptwriter)
 
 Read `run/research.md` (today's candidate stories with full article texts) and `run/media.md` (the
-visuals you may use). Write `run/draft.json` exactly in the format at the end. Do NOT write anything else.
+icons and clips you may use). Write `run/draft.json` exactly in the format at the end. Do NOT write anything else.
 
 ## The channel
 - "StickBiz Brief": India-first market-news YouTube Shorts and Instagram Reels, in **English**.
@@ -15,6 +15,7 @@ visuals you may use). Write `run/draft.json` exactly in the format at the end. D
 - A story qualifies only if at least **2 different publishers** in the pack report it, and every number,
   date and name you use appears in at least 2 of those publishers' article texts. If a figure appears in only
   one publisher, drop that figure (or the story). Different sections of one newsroom count as one publisher.
+- This applies to EVERYTHING on screen too: headlines, notes, chips and scene values.
 - India first: Indian market/close, policy, regulators, big Indian companies. Then at most 1–2 global stories
   that matter to Indian viewers.
 - Follow the slot focus line at the top of the research pack (e.g. the 4 PM slot always leads with the Sensex/Nifty close).
@@ -22,8 +23,7 @@ visuals you may use). Write `run/draft.json` exactly in the format at the end. D
 
 ## Writing (own words — never copy)
 - Rewrite everything in your own words. Never copy a source headline or a sentence from an article.
-  On-screen banners, card headlines, ticker lines, titles and summaries must all be your own phrasing.
-  Facts and figures stay exact.
+  Headlines, notes, ticker lines, titles and summaries must all be your own phrasing. Facts and figures stay exact.
 - Short, complete sentences (dub-friendly). No slang, no idioms. Explain an acronym the first time unless it is
   everyday (Sensex, Nifty, RBI, SEBI, CEO, IPO, FMCG are fine).
 - Do NOT say "First story", "Next story", "Second story" or count stories. The tone itself marks the switch.
@@ -38,48 +38,67 @@ visuals you may use). Write `run/draft.json` exactly in the format at the end. D
 - Balanced: when a story has a downside or a condition (e.g. "17% with a deal, up to 25% without"), say it.
 - Avoid single-stock share prices unless the story is about that move; index levels are fine.
 
-## Visuals
-- Every beat needs a `visual`: a slug from `run/media.md` (photos and video clips). Prefer a fitting video clip,
-  then a fitting photo. Use the same slug at most 3 times in the whole Short. Never invent a slug.
-- Photos of a specific person/building are only for that person/building; generic clips are "REPRESENTATIONAL".
+## The look: full-screen explainer scenes
+The host opens the hook, walks off, and the news plays as full-screen animated explainers (like
+infographic finance reels), then he returns for the outro. Every beat (on-screen moment) is one scene.
 
-## Beats (on-screen cards)
-- One beat per sentence or per pair of short sentences. The first beat of a story has `"at": null`; every other
+- **Beats:** one per sentence (or two short sentences). The first beat of a story has `"at": null`; every other
   beat's `"at"` is the EXACT first 2–3 words of the sentence where it starts (must appear verbatim in `cap`).
-- `banner`: 2 short lines, own words, max ~28 characters each (e.g. ["New US tariff plan", "14 countries, India included"]).
-- `tone`: "up" (good news, shown green), "down" (bad news, red) or "neutral". Use "up" for neutral-positive news.
-- `rows` (optional, 1–3): [LABEL, VALUE, "up"|"down"|""], CAPITALS, short (e.g. ["SENSEX", "83,938 · +1.8%", "up"]).
-- `name`: caption for the visual, CAPITALS, e.g. "BSE · DALAL STREET" or "CONTAINER PORT · REPRESENTATIONAL".
+- **`head`**: the big two-line headline, CAPITALS, own words: line 1 white (the hook), line 2 gold (the payoff),
+  max ~18 characters each, often a question or a number (["IS SEBI", "WATCHING?"], ["NO DEAL?", "UP TO 25%"]).
+- **`kicker`**: a tiny line above the headline, 2–5 words ("Deal leg one", "Why it matters", "With a trade deal").
+- **`tone`**: "up" (good news, green glow), "down" (risk/bad news, red glow) or "neutral" (blue).
+- **`note`** (every news beat): ONE short sentence (max ~110 characters) that explains WHY or HOW — the context
+  a viewer needs, in plain words, facts from 2+ publishers only. Wrap 2–3 key phrases in `*stars*`; they light up
+  with a gold marker while the line is read (e.g. "Mostly paid for with *borrowed money*, and shareholders are *worried about the debt.*").
+- **`scene`** — pick the type that EXPLAINS the sentence best; vary them across the Short:
+  - `{"type": "flow", "from": {"icon": "...", "label": "..."}, "to": {"icon": "...", "label": "..."}, "chip": "₹28,000 CR"}`
+    — money/assets/approval moving from A to B (deals, buyouts, investments, approvals). Labels max ~16 characters.
+  - `{"type": "compare", "icon": "...", "left": {"label": "...", "value": "17%", "tone": "up"}, "right": {"label": "...", "value": "18%", "tone": "down"}}`
+    — two numbers side by side (before/after, India vs rivals, two companies).
+  - `{"type": "bignum", "icon": "...", "value": "25%", "tone": "down", "label": "..."}` — one striking number.
+  - `{"type": "icons", "items": [{"icon": "...", "label": "..."}, ...], "arrows": true}` — 1–3 icons that tell the
+    idea (cause → effect with arrows, or three parallel items without arrows).
+  - `{"type": "clip", "video": "<slug>" | "image": "<slug>", "label": "..."}` — a real clip/photo in a card,
+    1–2 per Short, so it feels real.
+- Icons: only slugs from the "Icons" table in `run/media.md`. Clips/photos: only slugs from the "Clips & photos" table.
+  Never invent a slug.
 
 ## Publishing text (own words, emojis welcome, India-first)
 - 3 `titles` (max 70 characters each, 1–2 emojis, search keyword early, no "BUY NOW", no guarantees).
 - 3 `thumbnail_texts` (max 20 characters, CAPITALS).
 - `pinned_comment`: a question to viewers with an emoji.
-- `summaries`: one line per story for the description (emoji + your own sentence with the key facts).
+- `summary` per story: one line for the description (emoji + your own sentence with the key facts).
 - `tags`: comma-separated, lower case, 12–16 tags, last one "stickbiz brief".
-- `ticker`: 5–7 short CAPITAL lines with the key numbers (own words).
+- `ticker`: one short line per story for the TOP NEWS scroller (own words, key number, e.g. "RBI clears NSE corporate bond index futures").
 
 ## If the reviewer asked for changes
-If `run/feedback.md` exists, it contains the reviewer's request and the current `run/draft.json`. Apply the
-request to the existing draft (keep everything else), still following ALL rules above, and overwrite `run/draft.json`.
+If `run/feedback.md` exists, it contains the reviewer's request (or the automatic checks' problems) and the current
+`run/draft.json`. Apply it to the existing draft (keep everything else), still following ALL rules above, and
+overwrite `run/draft.json`.
 
 ## Format of run/draft.json
 ```json
 {
-  "hook": {"cap": "...", "banner": ["...", "..."],
-           "items": [["text max 28 chars", "India|US|Global", "mint|amber|red", "coin|warn|deal"], ["..."], ["..."]]},
+  "hook": {"cap": "...", "head": ["TONIGHT'S", "BIG STORIES"], "kicker": "26 Nov · 9 PM brief",
+           "scene": {"type": "icons", "items": [{"icon": "magnifying_glass_tilted_left", "label": "SEBI CHECK"},
+                                                 {"icon": "ship", "label": "TARIFF EDGE"}, {"icon": "warning", "label": "FOOD LABELS"}]}},
   "stories": [
-    {"id": "market", "tag": "MARKET CLOSE", "headline": "own words, max 26 chars",
+    {"id": "tata", "tag": "TATA STEEL × APL", "headline": "own words, max 26 chars",
      "cap": "Sentence one. Sentence two.",
-     "beats": [{"at": null, "banner": ["...", "..."], "tone": "up", "visual": "bse", "name": "BSE · DALAL STREET",
-                "rows": [["SENSEX", "83,938 · +1.8%", "up"]]},
-               {"at": "The Nifty", "banner": ["...", "..."], "tone": "up", "visual": "nse", "name": "NSE · MUMBAI"}],
+     "beats": [{"at": null, "head": ["IS SEBI", "WATCHING?"], "kicker": "Tata Steel × APL Apollo", "tone": "neutral",
+                "note": "The regulator is checking whether *all parts* of the deal should be *judged together.*",
+                "scene": {"type": "icons", "items": [{"icon": "classical_building", "label": "SEBI"},
+                                                      {"icon": "magnifying_glass_tilted_left", "label": "A CLOSER LOOK"}], "arrows": true}},
+               {"at": "APL Apollo plans", "head": ["APL BUYS", "TATA'S TUBES"], "kicker": "Deal leg one", "tone": "neutral",
+                "note": "...", "scene": {"type": "flow", "from": {"icon": "factory", "label": "TATA STEEL TUBES"},
+                                         "to": {"icon": "office_building", "label": "APL APOLLO"}, "chip": "₹28,000 CR"}}],
      "sources": [{"publisher": "Business Standard", "title": "...", "link": "https://..."},
-                 {"publisher": "Hindu BusinessLine", "title": "...", "link": "https://..."}],
-     "summary": {"emoji": "📈", "line": "own-words one-liner with the key facts"}}
+                 {"publisher": "Mint", "title": "...", "link": "https://..."}],
+     "summary": {"emoji": "🏛️", "line": "own-words one-liner with the key facts"}}
   ],
   "outro": {"cap": "This is for information only, not investment advice. See you next time on StickBiz Brief."},
-  "ticker": ["SENSEX ▲ 1,502 · 83,938", "..."],
+  "ticker": ["SEBI may examine the Tata Steel–APL Apollo deal", "..."],
   "titles": ["...", "...", "..."], "thumbnail_texts": ["...", "...", "..."],
   "pinned_comment": "...", "tags": "...,stickbiz brief",
   "description_intro": "one exciting own-words line with emojis"

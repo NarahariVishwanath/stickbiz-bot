@@ -11,7 +11,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 ROOT = HERE.parent
-RUN = ROOT / "run"
+RUN = Path(__import__("os").environ.get("STICKBIZ_RUN", ROOT / "run"))
 RUN.mkdir(exist_ok=True)
 sys.path.insert(0, str(HERE))
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))

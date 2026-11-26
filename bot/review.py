@@ -5,7 +5,7 @@
 import json, sys
 from pathlib import Path
 
-RUN = Path(__file__).parent.parent / "run"
+RUN = Path(__import__("os").environ.get("STICKBIZ_RUN", Path(__file__).parent.parent / "run"))
 CONFIG = json.loads((Path(__file__).parent.parent / "config.json").read_text(encoding="utf-8"))
 LABEL = {"am": "8 AM", "pm": "4 PM", "night": "9 PM"}
 
@@ -23,8 +23,13 @@ def main(slot, date):
           "### 🎬 Script (voice)", "", f"**Hook:** {d['hook']['cap']}", ""]
     for s in d["stories"]:
         pubs = sorted({r["publisher"] for r in s["sources"]})
-        md += [f"**{s['tag']} — {s['headline']}** · _{len(pubs)} sources: {', '.join(pubs)}_", "", s["cap"], "",
-               "On screen: " + " → ".join(f"“{b['banner'][0]} / {b['banner'][1] if len(b['banner']) > 1 else ''}”" for b in s["beats"]), ""]
+        md += [f"**{s['tag']} — {s['headline']}** · _{len(pubs)} sources: {', '.join(pubs)}_", "", s["cap"], ""]
+        for b in s["beats"]:
+            head = " / ".join(b.get("head", []))
+            sc = (b.get("scene") or {}).get("type", "")
+            note = b.get("note", "").replace("*", "**")
+            md.append(f"- 🖼️ *{sc}* · **{head}** — {note}")
+        md.append("")
     md += [f"**Outro:** {d['outro']['cap']}", "", "### 📺 Titles", ""] + [f"{i}. {t}" for i, t in enumerate(d["titles"], 1)]
     md += ["", f"**Pinned comment:** {d['pinned_comment']}", "", f"**Tags:** {d['tags']}", "", checks]
     if kit.get("description"):

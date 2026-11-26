@@ -60,7 +60,7 @@ jobs:
         env:
           STICKBIZ_OUT: ${{ github.workspace }}/run
           STICKBIZ_SCRIPT: ${{ github.workspace }}/run/script.json
-        run: cd bot && python render2.py part ${{ matrix.part }} 4
+        run: cd bot && python explainer.py part ${{ matrix.part }} 4
       - uses: actions/upload-artifact@v4
         with: {name: "part-${{ matrix.part }}", path: "run/part_${{ matrix.part }}.mp4", retention-days: 3}
 

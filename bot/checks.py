@@ -14,7 +14,7 @@ import difflib, json, re, sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
-RUN, MEDIA = HERE.parent / "run", HERE.parent / "media"
+RUN, MEDIA = Path(__import__("os").environ.get("STICKBIZ_RUN", HERE.parent / "run")), HERE.parent / "media"
 sys.path.insert(0, str(HERE))
 import factcheck_code as FC
 
@@ -41,6 +41,32 @@ def grams(t, n=8, names=frozenset()):
     return out
 
 
+SCENE_TYPES = {"flow", "compare", "bignum", "icons", "clip"}
+
+
+def scene_text(sc):
+    sc = sc or {}
+    parts = [sc.get("chip", ""), sc.get("value", ""), sc.get("label", "")]
+    for k in ("from", "to", "left", "right"):
+        it = sc.get(k) or {}
+        parts += [it.get("label", ""), it.get("value", ""), it.get("note", "")]
+    for it in sc.get("items") or []:
+        parts.append(it.get("label", ""))
+    return " . ".join(x for x in parts if x)
+
+
+def scene_icons(sc):
+    sc = sc or {}
+    out = [sc.get("icon")] + [(sc.get(k) or {}).get("icon") for k in ("from", "to")] + [it.get("icon") for it in sc.get("items") or []]
+    return [x for x in out if x]
+
+
+def beat_text(b):
+    """Headline + explanation note (stars removed) + scene values + chips."""
+    chips = " . ".join(" ".join(map(str, c[:2])) for c in b.get("chips", []))
+    return " . ".join([" ".join(b.get("head", [])), b.get("note", "").replace("*", ""), scene_text(b.get("scene")), chips])
+
+
 def main():
     d = json.loads((RUN / "draft.json").read_text(encoding="utf-8"))
     res = json.loads((RUN / "research.json").read_text(encoding="utf-8"))
@@ -55,11 +81,12 @@ def main():
         src_grams |= grams(h)
 
     # 1. format
-    slugs = {p.stem for p in (MEDIA / "videos").glob("*.mp4")} | {p.stem for p in (MEDIA / "images").glob("*.jpg")}
+    clips = {p.stem for p in (MEDIA / "videos").glob("*.mp4")} | {p.stem for p in (MEDIA / "images").glob("*.jpg")}
+    icons = {p.stem for p in (MEDIA / "icons").glob("*.png")}
     if not 3 <= len(d.get("stories", [])) <= 6:
         block.append(f"Need 3-6 stories, got {len(d.get('stories', []))}.")
-    if len(d["hook"].get("items", [])) < 3:
-        block.append("hook.items needs 3 entries.")
+    if not (d["hook"].get("scene") and d["hook"].get("head")):
+        block.append("hook needs a scene and a head.")
     for s in d["stories"]:
         sid = s.get("id", "?")
         pubs = {FC.publisher(r["publisher"]) for r in s.get("sources", [])}
@@ -68,11 +95,26 @@ def main():
         for k, b in enumerate(s.get("beats", [])):
             if k and (not b.get("at") or b["at"] not in s["cap"]):
                 block.append(f"[{sid}] beat {k + 1}: 'at' words {b.get('at')!r} not found in the caption.")
-            if b.get("visual") not in slugs:
-                block.append(f"[{sid}] beat {k + 1}: unknown visual {b.get('visual')!r}.")
-            for line in b.get("banner", []):
-                if len(line) > 34:
-                    warn.append(f"[{sid}] banner line is long ({len(line)} chars): {line!r}")
+            sc = b.get("scene") or {}
+            if sc.get("type") not in SCENE_TYPES:
+                block.append(f"[{sid}] beat {k + 1}: scene type {sc.get('type')!r} is not one of {sorted(SCENE_TYPES)}.")
+            for ic in scene_icons(sc):
+                if ic not in icons:
+                    block.append(f"[{sid}] beat {k + 1}: unknown icon {ic!r}.")
+            if sc.get("type") == "clip" and (sc.get("video") or sc.get("image")) not in clips:
+                block.append(f"[{sid}] beat {k + 1}: unknown clip {(sc.get('video') or sc.get('image'))!r}.")
+            if len(b.get("head", [])) != 2:
+                block.append(f"[{sid}] beat {k + 1}: head needs exactly 2 lines.")
+            for line in b.get("head", []):
+                if len(line) > 22:
+                    warn.append(f"[{sid}] headline line is long ({len(line)} chars): {line!r}")
+            note = b.get("note", "")
+            if not note:
+                warn.append(f"[{sid}] beat {k + 1} has no explanation note.")
+            elif len(note.replace("*", "")) > 140:
+                warn.append(f"[{sid}] beat {k + 1}: note is long ({len(note)} chars).")
+            if note and note.count("*") % 2:
+                block.append(f"[{sid}] beat {k + 1}: unmatched * in the note.")
         if not s.get("beats"):
             block.append(f"[{sid}] has no beats.")
 
@@ -86,8 +128,7 @@ def main():
         pool.update({l: by_link[l] for l in links if l in by_link})
         arts = [(FC.publisher(a["publisher"]), FC.norm(a["text"])) for a in pool.values()]
         arts = [(p, t, FC.parse_numbers(t)) for p, t in arts]
-        extra = " . ".join(" ".join(b.get("banner", [])) + " " + " ".join(" ".join(map(str, r[:2])) for r in b.get("rows", []))
-                           for b in s["beats"])
+        extra = " . ".join(beat_text(b) for b in s["beats"])
         facts = [f for f in FC.facts_in(s["cap"]) if f["type"] != "name" or not re.search(r"(^|[.!?]\s+)" + re.escape(f["text"]), s["cap"])]
         facts += [f for f in FC.facts_in(extra) if f["type"] in ("number", "date")]
         seen = set()
@@ -113,7 +154,8 @@ def main():
 
     # 3. own words
     texts = [("hook", d["hook"]["cap"])] + [(s["id"], s["cap"]) for s in d["stories"]] + \
-            [(s["id"] + " banner", " ".join(b["banner"])) for s in d["stories"] for b in s["beats"]] + \
+            [(s["id"] + " headline", " ".join(b.get("head", []))) for s in d["stories"] for b in s["beats"]] + \
+            [(s["id"] + " note", b.get("note", "").replace("*", "")) for s in d["stories"] for b in s["beats"]] + \
             [("title", t) for t in d["titles"]] + [(s["id"] + " summary", s["summary"]["line"]) for s in d["stories"]]
     names = frozenset(w.lower() for _, t in texts for w in re.findall(r"\b[A-Z][A-Za-z]+", t)) | {"crore", "lakh", "rs"}
     for where, t in texts:
@@ -121,7 +163,7 @@ def main():
         if hit:
             block.append(f"[{where}] copies the source word for word: “{sorted(hit)[0]}…” — rephrase.")
     short = [(s["id"] + " headline", s["headline"]) for s in d["stories"]] + [("title", t) for t in d["titles"]] + \
-            [(s["id"] + " banner", " ".join(b["banner"])) for s in d["stories"] for b in s["beats"]]
+            [(s["id"] + " headline", " ".join(b.get("head", []))) for s in d["stories"] for b in s["beats"]]
     for where, t in short:
         for h in heads:
             r = difflib.SequenceMatcher(None, t.lower(), h.lower()).ratio()

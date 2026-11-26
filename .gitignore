@@ -12,3 +12,5 @@ media/videos/_frames/
 *.key
 voice_ab/
 run_test/
+run_x/
+run_t/
