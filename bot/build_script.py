@@ -3,12 +3,12 @@
     python bot/build_script.py media        # write run/media.md (visual library list for the writer)
     python bot/build_script.py build <slot> # run/draft.json -> run/script.json, run/kit.json, run/description.txt
 """
-import datetime as dt, json, re, sys
+import datetime as dt, json, os, re, sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
 ROOT = HERE.parent
-RUN, MEDIA = ROOT / "run", ROOT / "media"
+RUN, MEDIA = Path(os.environ.get("STICKBIZ_RUN", ROOT / "run")), ROOT / "media"
 CONFIG = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 sys.path.insert(0, str(HERE))
@@ -35,6 +35,12 @@ def media_list():
             c = cred.get(f.stem, {})
             rows.append((f.stem, kind, (c.get("title") or "").replace("File:", "").rsplit(".", 1)[0][:70]))
     return rows
+
+
+def quote_of_the_day(now, slot):
+    """A famous quote for the side card, rotating by date and slot (never investment advice)."""
+    qs = json.loads((ROOT / "quotes.json").read_text(encoding="utf-8"))
+    return qs[(now.toordinal() * 3 + ["am", "pm", "night"].index(slot)) % len(qs)]
 
 
 def write_media_md():
@@ -97,6 +103,7 @@ def build(slot):
               "outro_lines": ["Comment below:", "Which story mattered most?"],
               "outro_banner": ["Not investment advice", "Educational only · Not SEBI-registered"],
               "disclaimer": ["Educational only. Not investment advice.", "Not a SEBI-registered adviser."],
+              "quote": quote_of_the_day(now, slot), "side_cards": True,
               "segments": segs}
     (RUN / "script.json").write_text(json.dumps(script, ensure_ascii=False, indent=1), encoding="utf-8")
 
@@ -110,32 +117,43 @@ def build(slot):
                 slug = Path(f).stem
                 if slug not in used:
                     used.append(slug)
-    desc = [d.get("description_intro", ""), "⏱️ Today's market news in under 90 seconds, ✅ every fact checked across 2+ news outlets.", "",
-            f"📰 Today's stories ({now:%d %b %Y}):"]
-    desc += [f"{s['summary']['emoji']} {s['summary']['line']}" for s in d["stories"]]
-    desc += ["", "🔗 Sources:"]
-    for s in d["stories"]:
-        desc.append(f"{s['summary']['emoji']} {s['headline']}:")
-        seen = set()
-        for r in s["sources"]:
-            if r["link"] not in seen and len(seen) < 2:
-                seen.add(r["link"])
-                desc.append(f"  {r['publisher']}: {r['link']}")
-    desc += ["", "📷 Photos & videos:"]
-    for k in used:
-        c = cred.get(k, {})
-        name = (c.get("title") or k).replace("File:", "").rsplit(".", 1)[0][:48]
-        who = (c.get("artist") or "Unknown").split("(")[0].strip()
-        desc.append(f"• {name}: {who}, {c.get('license', '')} — {(c.get('page') or '').replace('https://', '')}")
     hold = [h for h in CONFIG.get("holdings", []) if any(h.lower() in (s["cap"] + s["headline"]).lower() for s in d["stories"])]
-    desc += ["", f"📌 Disclosure: I hold shares of {', '.join(hold)}." if hold else
-             "📌 Disclosure: I do not hold shares of any company mentioned in this video.", "",
-             "⚠️ For educational purposes only. Not investment advice. I am not a SEBI-registered advisor. "
-             "Do your own research or consult a SEBI-registered investment adviser.", "",
-             "👉 Follow StickBiz Brief for daily market news! 🔔", "",
-             "#StockMarket #Sensex #Nifty #MarketNews #Shorts #StickBizBrief"]
-    desc = "\n".join(desc)
-    if len(desc) > 4900:
+
+    def make_desc(n_src, links_in_credits):
+        out = [d.get("description_intro", ""), "⏱️ Today's market news in under 90 seconds, ✅ every fact checked across 2+ news outlets.", "",
+               f"📰 Today's stories ({now:%d %b %Y}):"]
+        out += [f"{s['summary']['emoji']} {s['summary']['line']}" for s in d["stories"]]
+        out += ["", "🔗 Sources:"]
+        for s in d["stories"]:
+            out.append(f"{s['summary']['emoji']} {s['headline']}:")
+            seen = set()
+            for r in s["sources"]:
+                if r["link"] not in seen and len(seen) < n_src:
+                    seen.add(r["link"])
+                    out.append(f"  {r['publisher']}: {r['link']}")
+        out += ["", "📷 Photos & videos:"]
+        for k in used:
+            c = cred.get(k, {})
+            name = (c.get("title") or k).replace("File:", "").rsplit(".", 1)[0][:44]
+            who = (c.get("artist") or "Unknown").split("(")[0].strip()[:40]
+            lic = c.get("license", "")
+            page = (c.get("page") or "").replace("https://", "")
+            # attribution licences (CC BY / BY-SA) always keep their link; others only when there is room
+            keep = page and (links_in_credits or lic.upper().startswith("CC BY"))
+            out.append(f"• {name}: {who}, {lic}" + (f" — {page}" if keep else ""))
+        out += ["", f"📌 Disclosure: I hold shares of {', '.join(hold)}." if hold else
+                "📌 Disclosure: I do not hold shares of any company mentioned in this video.", "",
+                "⚠️ For educational purposes only. Not investment advice. I am not a SEBI-registered advisor. "
+                "Do your own research or consult a SEBI-registered investment adviser.", "",
+                "👉 Follow StickBiz Brief for daily market news! 🔔", "",
+                "#StockMarket #Sensex #Nifty #MarketNews #Shorts #StickBizBrief"]
+        return "\n".join(out)
+
+    for n_src, links in ((2, True), (2, False), (1, False)):     # shrink until it fits YouTube's 5,000 limit
+        desc = make_desc(n_src, links)
+        if len(desc) <= 4900:
+            break
+    else:
         raise SystemExit(f"description too long ({len(desc)} chars)")
     kit = {"slot": slot, "titles": d["titles"][:3], "thumbnail_texts": d["thumbnail_texts"][:3],
            "pinned_comment": d["pinned_comment"], "tags": d["tags"], "description": desc,

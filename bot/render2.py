@@ -800,6 +800,74 @@ def shift(img, dx):
 CUR_T = 0.0
 
 
+def wrap(d, text, f, width):
+    lines, cur = [], ""
+    for w in text.split():
+        if cur and d.textlength(cur + " " + w, font=f) > width:
+            lines.append(cur); cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    return lines + ([cur] if cur else [])
+
+
+_QUOTE_CARD = {}
+
+
+def quote_card():
+    """'Thought of the day' card for the empty space right of the presenter (built once)."""
+    if "img" not in _QUOTE_CARD:
+        q = SCRIPT.get("quote") or {}
+        W, pad = 228, 16
+        tmp = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+        size = 27
+        while True:
+            qf = SEMI(size)
+            lines = wrap(tmp, f"“{q.get('text', '')}”", qf, W - 2 * pad)
+            if len(lines) <= 8 or size <= 20:
+                break
+            size -= 1
+        lh = int(size * 1.28)
+        H = pad + 30 + 10 + lh * len(lines) + 12 + 30 + pad
+        im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(im, "RGBA")
+        d.rounded_rectangle([0, 0, W - 1, H - 1], radius=22, fill=(8, 30, 36, 190), outline=(255, 255, 255, 46), width=2)
+        d.text((pad, pad), "THOUGHT OF THE DAY", font=fit(d, "THOUGHT OF THE DAY", BOLD, 19, W - 2 * pad), fill=AMBER)
+        y = pad + 40
+        for ln in lines:
+            d.text((pad, y), ln, font=qf, fill=(240, 246, 248))
+            y += lh
+        by = "— " + q.get("by", "")
+        d.text((pad, y + 10), by, font=fit(d, by, SEMI, 21, W - 2 * pad), fill=(150, 205, 200))
+        _QUOTE_CARD["img"] = im
+    return _QUOTE_CARD["img"]
+
+
+def side_cards(fr, t, a):
+    """Neat growth cards beside the seated presenter: SUBSCRIBE (left) and a quote of the day (right)."""
+    layer = Image.new("RGBA", (FW, FH), (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer, "RGBA")
+    # left: pulsing subscribe pill + schedule line (above the briefcase)
+    cx, cy = 131, 1262
+    beat = max(0.0, math.sin(t * 2 * math.pi / 2.6)) ** 6          # a soft "heartbeat" every 2.6 s
+    w, h = 204 * (1 + 0.05 * beat), 70 * (1 + 0.05 * beat)
+    ring = (t % 5.2) / 1.2                                          # a ring ripples out every 5.2 s
+    if ring < 1:
+        rr = 1 + 0.35 * ring
+        d.rounded_rectangle([cx - w * rr / 2, cy - h * rr / 2, cx + w * rr / 2, cy + h * rr / 2], radius=int(h * rr / 2),
+                            outline=(230, 33, 23, int(150 * (1 - ring))), width=4)
+    d.rounded_rectangle([cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2], radius=int(h / 2), fill=(230, 33, 23, 255))
+    text_c(d, cx, cy - 22 * (1 + 0.05 * beat), "SUBSCRIBE", BLACK(31 * (1 + 0.05 * beat)), WHITE)
+    text_c(d, cx, cy + 52, "Daily market news", SEMI(24), (235, 242, 244))
+    text_c(d, cx, cy + 86, "8 AM · 4 PM · 9 PM", BOLD(23), AMBER)
+    # right: thought of the day
+    if SCRIPT.get("quote"):
+        q = quote_card()
+        layer.alpha_composite(q, (FW - q.width - 12, 1205))
+    if a < 1:
+        layer.putalpha(layer.getchannel("A").point(lambda v: int(v * a)))
+    fr.alpha_composite(layer)
+
+
 def render_frame(t):
     global CUR_T
     CUR_T = t
@@ -830,6 +898,8 @@ def render_frame(t):
                 "bob": math.sin(t * 2.4) * 3, "look": 0.3 * math.sin(t * 0.7), "case": False,
                 "brow": 0.5 if mouth > 0.7 else 0.0}
         fr.alpha_composite(draw_presenter(pose), (px, py - int(50 * (1 - sk))))
+    if SCRIPT.get("side_cards") and t > SIT_END:
+        side_cards(fr, t, min(1.0, (t - SIT_END) / 0.5))
 
     # ---------- B-roll panel ----------
     bi, beat, bstart = beat_at(si, t)

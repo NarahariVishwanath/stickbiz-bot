@@ -381,12 +381,55 @@ def music_from_file(path, dur):
     return np.tile(a, reps)[:n]
 
 
+def music_warm(dur, bpm=112):
+    """Warm, lower bed (2026-11-26, user: the bright energy bed was 'disturbing'): soft sustained chords an
+    octave down, a round sub bass, a gentle kick and barely-there hats. Same Am-F-C-G, steady but calm."""
+    n = int(dur * SR)
+    out = np.zeros(n)
+    beat = 60 / bpm
+    bar = beat * 4
+
+    def put(clip, at, g=1.0):
+        i = int(at * SR)
+        if 0 <= i < n:
+            e = min(n, i + len(clip))
+            out[i:e] += clip[: e - i] * g
+
+    kn = int(0.30 * SR); kt = np.arange(kn) / SR
+    kick = np.sin(2 * np.pi * np.cumsum(42 + 70 * np.exp(-kt * 22)) / SR) * np.exp(-kt * 9)
+    hn = int(0.04 * SR); ht = np.arange(hn) / SR
+    hnoise = rng.standard_normal(hn)
+    hat = lowpass(hnoise - lowpass(hnoise, 0.5), 0.35) * np.exp(-ht * 120)
+    prog = [(55.0, (110.0, 130.8, 164.8)), (43.65, (87.3, 110.0, 130.8)),
+            (65.41, (130.8, 164.8, 196.0)), (49.0, (98.0, 123.5, 146.8))]
+    bt = np.arange(int(bar * SR)) / SR
+    env = np.minimum(1, bt / 0.6) * np.minimum(1, (bar - bt) / 0.5)          # slow swell in, soft release
+    pads, basses = {}, {}
+    for root, chord in prog:
+        pads[root] = sum(sum(np.sin(2 * np.pi * f * k * (1 + d) * bt) / k ** 2 for k in (1, 2, 3))
+                         for f in chord for d in (-0.003, 0.003)) * env * 0.045
+        q = np.arange(int(beat * SR)) / SR
+        basses[root] = (np.sin(2 * np.pi * root * q) + 0.25 * np.sin(4 * np.pi * root * q)) \
+            * np.minimum(1, q / 0.01) * np.exp(-q * 3.5) * 0.30
+    for b in range(int(dur / bar) + 1):
+        root, _ = prog[b % 4]
+        t0 = b * bar
+        put(pads[root], t0)
+        for q in range(4):
+            put(basses[root], t0 + q * beat)
+            put(kick, t0 + q * beat, 0.42 if q in (0, 2) else 0.28)
+            put(hat, t0 + q * beat + beat / 2, 0.12)
+    return out
+
+
 def pick_music(dur):
     m = SCRIPT.get("music", {})
     if m.get("file"):
         bed = music_from_file(m["file"], dur)
     elif m.get("style", "calm") == "energy":
         bed = music_energy(dur, m.get("bpm", 124))
+    elif m.get("style") == "warm":
+        bed = music_warm(dur, m.get("bpm", 112))
     else:
         return music_bed(dur)
     ref = music_bed(min(dur, 8.0))                      # match the old bed's loudness, then apply the level

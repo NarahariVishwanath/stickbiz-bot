@@ -9,7 +9,7 @@
  "approve_by_minutes_before": -20,
  "elevenlabs": {"voice_id": "dloMvYEKtYloiwx06kR4", "voice_name": "Bhavesh - Indian English & Hindi", "model": "eleven_v3",
                 "language_code": "en", "tempo": 1.15, "settings": {"stability": 0.5, "similarity_boost": 0.8}},
- "music": {"style": "energy", "bpm": 128, "level": 1.6},
+ "music": {"style": "warm", "bpm": 112, "level": 1.2},
  "holdings": [],
  "post_to": {"youtube": true, "instagram": true}
 }
