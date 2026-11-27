@@ -46,6 +46,8 @@ jobs:
           KEY="${{ steps.s.outputs.date }}-${{ steps.s.outputs.slot }}"
           if [ "${{ inputs.skip_wait }}" != "true" ] && python bot/slot.py too-early ${{ steps.s.outputs.slot }}; then
             echo "Too early for the ${{ steps.s.outputs.slot }} slot - nothing to do yet."; echo "go=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if [ "${{ inputs.skip_wait }}" != "true" ] && ! python bot/slot.py window ${{ steps.s.outputs.slot }} ${{ steps.s.outputs.date }}; then
+            echo "Too late for the ${{ steps.s.outputs.slot }} slot today."; echo "go=false" >> "$GITHUB_OUTPUT"; exit 0; fi
           # timers (GitHub's own or the external alarm clock) never make a second Short for the same slot;
           # a manual test with "Start now" ticked is always allowed
           if [ "${{ inputs.skip_wait }}" != "true" ] && gh issue list --state all --search "[$KEY] in:title" --json title -q '.[].title' | grep -qF "[$KEY]"; then
