@@ -1,0 +1,575 @@
+{
+ "title": "📉 Sensex Falls 989 Points: What Pulled Markets Down Today | StickBiz Brief | 27 Nov 2026",
+ "voice_provider": "elevenlabs",
+ "look": "explainer",
+ "elevenlabs": {
+  "voice_id": "dloMvYEKtYloiwx06kR4",
+  "voice_name": "Bhavesh - Indian English & Hindi",
+  "model": "eleven_v3",
+  "language_code": "en",
+  "tempo": 1.15,
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  }
+ },
+ "date_label": "27 NOV 2026 · 4 PM",
+ "ticker": [
+  "Sensex ends 989 points lower; Nifty near 25,600",
+  "Sebi studies the Tata Steel–APL Apollo deal",
+  "Tata Trusts take Chandrasekaran reappointment to court",
+  "Rupee slips 24 paise to 92.62 as oil rises",
+  "Mahanadi Coalfields lists 2% below issue price"
+ ],
+ "captions": false,
+ "gap": 0.35,
+ "lead_in": 0.8,
+ "music": {
+  "style": "warm",
+  "bpm": 112,
+  "level": 1.2
+ },
+ "quote": {
+  "text": "If you want to shine like the sun, first burn like the sun.",
+  "by": "A. P. J. Abdul Kalam"
+ },
+ "segments": [
+  {
+   "id": "hook",
+   "tag": "TODAY'S TOP NEWS",
+   "headline": "Sensex ends 989 points down · Sebi studies Tata Steel deal",
+   "broll": "hook",
+   "cap": "The Sensex lost 989 points today. And a ₹28,000 crore Tata deal is under Sebi's watch.",
+   "tts": "[excited] The Sensex lost nine hundred eighty-nine points today. And a twenty-eight thousand crore rupees Tata deal is under Sebi's watch.",
+   "beats": [
+    {
+     "head": [
+      "TODAY'S",
+      "BIG STORIES"
+     ],
+     "kicker": "27 Nov · 4 PM brief",
+     "tone": "neutral",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "chart_decreasing",
+        "label": "SENSEX -989"
+       },
+       {
+        "icon": "magnifying_glass_tilted_left",
+        "label": "SEBI WATCH"
+       },
+       {
+        "icon": "money_bag",
+        "label": "₹28,000 CR"
+       }
+      ]
+     }
+    }
+   ],
+   "refs": []
+  },
+  {
+   "id": "market",
+   "tag": "MARKET CLOSE",
+   "headline": "Sensex ends 989 points down",
+   "broll": "stocks",
+   "cap": "The Sensex closed 989 points lower. The Nifty ended near 25,600. Traders booked profits after a two-day rally. Information technology shares fell the most. Rising oil prices, a weaker rupee and doubts over the India-US trade deal also weighed.",
+   "tts": "[excited] The Sensex closed nine hundred eighty-nine points lower. The Nifty ended near twenty-five thousand six hundred. Traders booked profits after a two-day rally. Information technology shares fell the most. Rising oil prices, a weaker rupee and doubts over the India-US trade deal also weighed.",
+   "beats": [
+    {
+     "head": [
+      "SENSEX SINKS",
+      "989 POINTS"
+     ],
+     "kicker": "Market close",
+     "tone": "down",
+     "note": "Both indices ended in the red after *two days of gains*, with the Nifty finishing *near 25,600.*",
+     "scene": {
+      "type": "compare",
+      "icon": "chart_decreasing",
+      "left": {
+       "label": "SENSEX",
+       "value": "-989 PTS",
+       "tone": "down"
+      },
+      "right": {
+       "label": "NIFTY",
+       "value": "~25,600",
+       "tone": "down"
+      }
+     }
+    },
+    {
+     "head": [
+      "PROFIT",
+      "BOOKING"
+     ],
+     "kicker": "Why it fell",
+     "tone": "down",
+     "note": "Traders *cashed in gains* after the rally, and *IT shares* took the biggest hit.",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "money_bag",
+        "label": "PROFITS BOOKED"
+       },
+       {
+        "icon": "laptop",
+        "label": "IT SHARES FALL"
+       }
+      ],
+      "arrows": true
+     },
+     "at": "Traders booked profits"
+    },
+    {
+     "head": [
+      "THREE",
+      "PRESSURES"
+     ],
+     "kicker": "Other worries",
+     "tone": "down",
+     "note": "*Costlier oil*, a *weaker rupee* and an *unsettled trade deal* kept sentiment cautious.",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "oil_drum",
+        "label": "OIL UP"
+       },
+       {
+        "icon": "dollar_banknote",
+        "label": "WEAK RUPEE"
+       },
+       {
+        "icon": "handshake",
+        "label": "TRADE DEAL DOUBT"
+       }
+      ],
+      "arrows": false
+     },
+     "at": "Rising oil prices"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Sensex today | Stock Market Live",
+     "link": "https://www.thehindubusinessline.com/markets/sensex-nifty50-today-stock-market-live-updates-27-november-2026/article71746210.ece"
+    },
+    {
+     "publisher": "Economic Times",
+     "title": "Stock Market Live Updates | Closing Bell",
+     "link": "https://economictimes.indiatimes.com/markets/stocks/live-blog/bse-sensex-today-nifty50-stock-market-live-updates-gift-nifty-nse-bse-share-price-27-november-2026/liveblog/136206762.cms"
+    },
+    {
+     "publisher": "Mint",
+     "title": "Why is Indian stock market falling today?",
+     "link": "https://www.livemint.com/market/stock-market-news/why-is-indian-stock-market-falling-today-nifty-down-to-near-25-700-sensex-crashes-700-points-top-3-reasons-explained-11795761327368.html"
+    }
+   ]
+  },
+  {
+   "id": "apl",
+   "tag": "TATA STEEL × APL APOLLO",
+   "headline": "Sebi studies Tata Steel deal",
+   "broll": "stocks",
+   "cap": "Sebi is studying the Tata Steel and APL Apollo deal. It is weighing whether to judge all parts of the deal together. APL Apollo would buy Tata Steel's tubes businesses for ₹28,000 crore, funded by borrowing. Minority shareholders are worried about that debt. APL Apollo shares rebounded about 4% in early trade after a sharp fall.",
+   "tts": "[excited] Sebi is studying the Tata Steel and APL Apollo deal. It is weighing whether to judge all parts of the deal together. APL Apollo would buy Tata Steel's tubes businesses for twenty-eight thousand crore rupees, funded by borrowing. Minority shareholders are worried about that debt. APL Apollo shares rebounded about four percent in early trade after a sharp fall.",
+   "beats": [
+    {
+     "head": [
+      "IS SEBI",
+      "WATCHING?"
+     ],
+     "kicker": "Tata Steel × APL Apollo",
+     "tone": "neutral",
+     "note": "The regulator is checking whether *every part* of the deal should be *judged together.*",
+     "scene": {
+      "type": "clip",
+      "image": "sebi_bhavan",
+      "label": "SEBI IS STUDYING THE DEAL",
+      "credit": "Photo: Jimmy vikas · CC BY-SA 3.0"
+     }
+    },
+    {
+     "head": [
+      "₹28,000 CR",
+      "ON BORROWING"
+     ],
+     "kicker": "Deal leg one",
+     "tone": "neutral",
+     "note": "APL Apollo pays for Tata Steel's tubes and colour-coated steel units with *borrowed money.*",
+     "scene": {
+      "type": "flow",
+      "from": {
+       "icon": "factory",
+       "label": "TATA STEEL TUBES"
+      },
+      "to": {
+       "icon": "office_building",
+       "label": "APL APOLLO"
+      },
+      "chip": "₹28,000 CR"
+     },
+     "at": "APL Apollo would"
+    },
+    {
+     "head": [
+      "DEBT",
+      "WORRY"
+     ],
+     "kicker": "Why it matters",
+     "tone": "down",
+     "note": "Smaller investors fear APL Apollo will carry *a heavy debt load* and say their *interests need safeguards.*",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "money_with_wings",
+        "label": "BORROWING"
+       },
+       {
+        "icon": "warning",
+        "label": "SHAREHOLDER WORRY"
+       }
+      ],
+      "arrows": true
+     },
+     "at": "Minority shareholders are"
+    },
+    {
+     "head": [
+      "SHARES",
+      "BOUNCE 4%"
+     ],
+     "kicker": "After a sharp fall",
+     "tone": "up",
+     "note": "The stock *rose about 4%* in early trade, following a *steep drop* earlier this week.",
+     "scene": {
+      "type": "bignum",
+      "icon": "chart_increasing",
+      "value": "+4%",
+      "tone": "up",
+      "label": "APL APOLLO, EARLY TRADE"
+     },
+     "at": "APL Apollo shares"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Business Standard",
+     "title": "APL Apollo rebounds 4% after crash as Sebi may review Tata Steel deal",
+     "link": "https://www.business-standard.com/markets/news/apl-apollo-rebounds-4-after-30-crash-as-sebi-may-review-tata-steel-deal-126112700265_1.html"
+    },
+    {
+     "publisher": "Mint",
+     "title": "APL Apollo Tubes shares jump 4% as SEBI may scrutinise Tata Steel deal",
+     "link": "https://www.livemint.com/market/stock-market-news/apl-apollo-tubes-shares-jump-4-after-28-crash-in-a-week-as-sebi-may-scrutinise-tata-steel-deal-buy-sell-or-hold-11795758411479.html"
+    }
+   ]
+  },
+  {
+   "id": "tata",
+   "tag": "TATA SONS",
+   "headline": "Tata Sons fight hits court",
+   "broll": "stocks",
+   "cap": "The Tata Sons power struggle has reached court. Two trusts that control Tata Sons asked the Mumbai High Court to declare the reappointment of chairman N. Chandrasekaran invalid. Tata Trusts holds 66% of Tata Sons. The Tata Sons board backs a possible stock market listing, but the charity arm does not.",
+   "tts": "[excited] The Tata Sons power struggle has reached court. Two trusts that control Tata Sons asked the Mumbai High Court to declare the reappointment of chairman N. Chandrasekaran invalid. Tata Trusts holds sixty-six percent of Tata Sons. The Tata Sons board backs a possible stock market listing, but the charity arm does not.",
+   "beats": [
+    {
+     "head": [
+      "TATA VS",
+      "TATA?"
+     ],
+     "kicker": "Tata Sons",
+     "tone": "down",
+     "note": "The group's *controlling trusts* and its *board* disagree, so the fight went to court.",
+     "scene": {
+      "type": "clip",
+      "image": "bombay_house",
+      "label": "TATA GROUP HEADQUARTERS",
+      "credit": "Photo: AroundTheGlobe · CC BY-SA 3.0"
+     }
+    },
+    {
+     "head": [
+      "REAPPOINTMENT",
+      "CHALLENGED"
+     ],
+     "kicker": "In the High Court",
+     "tone": "neutral",
+     "note": "The trusts want the court to call the chairman's *reappointment invalid.*",
+     "scene": {
+      "type": "flow",
+      "from": {
+       "icon": "scroll",
+       "label": "TATA TRUSTS"
+      },
+      "to": {
+       "icon": "balance_scale",
+       "label": "MUMBAI HIGH COURT"
+      },
+      "chip": "CHAIRMAN"
+     },
+     "at": "Two trusts that"
+    },
+    {
+     "head": [
+      "66% STAKE",
+      "IN TATA SONS"
+     ],
+     "kicker": "Who owns what",
+     "tone": "neutral",
+     "note": "The trusts hold *the biggest stake*, which is why their view matters so much.",
+     "scene": {
+      "type": "bignum",
+      "icon": "crown",
+      "value": "66%",
+      "tone": "neutral",
+      "label": "TATA TRUSTS' STAKE IN TATA SONS"
+     },
+     "at": "Tata Trusts holds"
+    },
+    {
+     "head": [
+      "LISTING:",
+      "BOARD VS TRUSTS"
+     ],
+     "kicker": "The second split",
+     "tone": "neutral",
+     "note": "The board backs *a possible listing.* The *charity arm* does not.",
+     "scene": {
+      "type": "compare",
+      "icon": "bank",
+      "left": {
+       "label": "BOARD",
+       "value": "FOR",
+       "tone": "up"
+      },
+      "right": {
+       "label": "TRUSTS",
+       "value": "AGAINST",
+       "tone": "down"
+      }
+     },
+     "at": "The Tata Sons board"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Business Standard",
+     "title": "Inside the Tata Sons power struggle",
+     "link": "https://www.business-standard.com/companies/news/inside-the-tata-sons-power-struggle-the-rules-the-rift-and-the-road-ahead-126112700432_1.html"
+    },
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Inside Tata Sons: The rules, the rift and what happens next",
+     "link": "https://www.thehindubusinessline.com/companies/inside-tata-sons-the-rules-the-rift-and-what-happens-next/article71749777.ece"
+    },
+    {
+     "publisher": "Economic Times",
+     "title": "Tata Sons Leadership Battle: The rules, the rift and what happens next",
+     "link": "https://economictimes.indiatimes.com/news/company/corporate-trends/tata-sons-leadership-battle-the-rules-the-rift-and-what-happens-next-noel-tata-chandrasekaran-reappointment-tata-trusts-bombay-high-court-case/articleshow/136212772.cms"
+    }
+   ]
+  },
+  {
+   "id": "rupee",
+   "tag": "RUPEE",
+   "headline": "Rupee slips as oil climbs",
+   "broll": "stocks",
+   "cap": "The rupee slipped 24 paise to 92.62 per dollar in early trade. Oil prices rose above $95 a barrel after vessels were reportedly targeted near the Strait of Hormuz. Steady foreign fund inflows and a softer dollar limited the fall.",
+   "tts": "[excited] The rupee slipped twenty-four paise to ninety-two point six two per dollar in early trade. Oil prices rose above ninety-five dollars a barrel after vessels were reportedly targeted near the Strait of Hormuz. Steady foreign fund inflows and a softer dollar limited the fall.",
+   "beats": [
+    {
+     "head": [
+      "RUPEE",
+      "SLIPS 24 PAISE"
+     ],
+     "kicker": "Early trade",
+     "tone": "down",
+     "note": "The currency weakened to *₹92.62 per dollar* as oil prices recovered.",
+     "scene": {
+      "type": "bignum",
+      "icon": "dollar_banknote",
+      "value": "92.62",
+      "tone": "down",
+      "label": "RUPEE PER DOLLAR"
+     }
+    },
+    {
+     "head": [
+      "OIL ABOVE",
+      "$95 A BARREL"
+     ],
+     "kicker": "Why it slipped",
+     "tone": "down",
+     "note": "Reports of *vessels being targeted* near the Strait of Hormuz raised *supply worries.*",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "ship",
+        "label": "VESSELS TARGETED"
+       },
+       {
+        "icon": "oil_drum",
+        "label": "OIL ABOVE $95"
+       }
+      ],
+      "arrows": true
+     },
+     "at": "Oil prices rose"
+    },
+    {
+     "head": [
+      "WHAT",
+      "LIMITED IT"
+     ],
+     "kicker": "A cushion",
+     "tone": "up",
+     "note": "*Foreign fund inflows* and a *softer dollar* kept the fall small.",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "money_bag",
+        "label": "FOREIGN INFLOWS"
+       },
+       {
+        "icon": "shield",
+        "label": "SMALLER FALL"
+       }
+      ],
+      "arrows": true
+     },
+     "at": "Steady foreign fund"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Business Standard",
+     "title": "Rupee plunges 24 paise to 92.62 against US dollar during early trade",
+     "link": "https://www.business-standard.com/finance/news/rupee-plunges-24-paise-to-92-62-against-us-dollar-during-early-trade-126112700192_1.html"
+    },
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Rupee plunges 24 paise to 92.62 against US dollar in early trade",
+     "link": "https://www.thehindubusinessline.com/markets/forex/rupee-plunges-24-paise-to-9262-against-us-dollar-in-early-trade/article71749374.ece"
+    }
+   ]
+  },
+  {
+   "id": "mcl",
+   "tag": "MAHANADI COALFIELDS",
+   "headline": "Mahanadi lists below IPO price",
+   "broll": "stocks",
+   "cap": "Mahanadi Coalfields, a Coal India unit, listed at a 2% discount to its ₹136 issue price. The ₹8,981 crore IPO was subscribed only 1.52 times. All the shares on sale came from Coal India, the parent.",
+   "tts": "[excited] Mahanadi Coalfields, a Coal India unit, listed at a two percent discount to its one hundred thirty-six rupees issue price. The eight thousand nine hundred eighty-one crore rupees IPO was subscribed only one point five two times. All the shares on sale came from Coal India, the parent.",
+   "beats": [
+    {
+     "head": [
+      "A QUIET",
+      "DEBUT"
+     ],
+     "kicker": "Stock market listing",
+     "tone": "down",
+     "note": "The shares started trading *about 2% below* the *₹136 issue price.*",
+     "scene": {
+      "type": "compare",
+      "icon": "coin",
+      "left": {
+       "label": "ISSUE PRICE",
+       "value": "₹136",
+       "tone": "neutral"
+      },
+      "right": {
+       "label": "LISTED AT",
+       "value": "-2%",
+       "tone": "down"
+      }
+     }
+    },
+    {
+     "head": [
+      "IPO DEMAND",
+      "WAS MODEST"
+     ],
+     "kicker": "Subscription",
+     "tone": "neutral",
+     "note": "Bids covered the shares on offer just *1.52 times* on a *₹8,981 crore* issue.",
+     "scene": {
+      "type": "bignum",
+      "icon": "bar_chart",
+      "value": "1.52X",
+      "tone": "neutral",
+      "label": "IPO SUBSCRIPTION"
+     },
+     "at": "The ₹8,981 crore"
+    },
+    {
+     "head": [
+      "COAL INDIA",
+      "SELLS STAKE"
+     ],
+     "kicker": "Who sold",
+     "tone": "neutral",
+     "note": "The parent, *Coal India*, was the *seller* of every share in this issue.",
+     "scene": {
+      "type": "flow",
+      "from": {
+       "icon": "factory",
+       "label": "COAL INDIA"
+      },
+      "to": {
+       "icon": "bank",
+       "label": "NEW INVESTORS"
+      },
+      "chip": "SHARES"
+     },
+     "at": "All the shares"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Coal India arm Mahanadi Coalfields makes muted market debut",
+     "link": "https://www.thehindubusinessline.com/markets/coal-india-arm-mahanadi-coalfields-makes-muted-market-debut-shares-fall-2/article71749525.ece"
+    },
+    {
+     "publisher": "Business Standard",
+     "title": "Coal India unit Mahanadi Coalfields lists at 2% discount to IPO price",
+     "link": "https://www.business-standard.com/markets/news/coal-india-unit-mahanadi-coalfields-share-price-lists-at-2-discount-to-ipo-price-126112700213_1.html"
+    },
+    {
+     "publisher": "Economic Times",
+     "title": "Mahanadi Coalfields makes muted D-St debut",
+     "link": "https://economictimes.indiatimes.com/markets/ipos/fpos/mahanadi-coalfields-ipo-listing-today-should-investors-hold-or-sell-shares-of-the-coal-india-subsidiary-heres-what-brokerages-say/articleshow/136207288.cms"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "tag": "STICKBIZ BRIEF",
+   "headline": "See you next time",
+   "broll": "outro",
+   "cap": "This is for information only, not investment advice. See you next time on StickBiz Brief.",
+   "tts": "[excited] This is for information only, not investment advice. See you next time on StickBiz Brief.",
+   "beats": [
+    {
+     "head": [
+      "SEE YOU",
+      "NEXT TIME"
+     ],
+     "kicker": "StickBiz Brief",
+     "tone": "neutral"
+    }
+   ],
+   "refs": []
+  }
+ ]
+}
