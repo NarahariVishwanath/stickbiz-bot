@@ -54,6 +54,9 @@ if __name__ == "__main__":
             print(f"slot={s}\ndate={now().date().isoformat()}\npost={SLOTS[s]['post']}\nskip=false")
     elif cmd == "wait-cutoff":
         sleep_until(at(now().date().isoformat(), SLOTS[sys.argv[2]]["news_cutoff"]))
+    elif cmd == "too-early":   # exit 0 (= too early) when the slot's news cut-off is more than 100 minutes away
+        cut = at(now().date().isoformat(), SLOTS[sys.argv[2]]["news_cutoff"])
+        sys.exit(0 if (cut - now()).total_seconds() > 100 * 60 else 1)
     elif cmd == "minutes-to-post":
         print(int((at(sys.argv[3], SLOTS[sys.argv[2]]["post"]) - now()).total_seconds() // 60))
     elif cmd in ("wait-post", "window"):
