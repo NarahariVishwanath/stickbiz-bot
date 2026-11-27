@@ -1,0 +1,125 @@
+{
+  "hook": {
+    "cap": "A ₹28,000 crore Tata deal is under fire. And the Tata family fight has reached court.",
+    "head": ["TATA UNDER", "THE LENS"],
+    "kicker": "27 Nov · 8 AM brief",
+    "scene": {"type": "icons", "items": [{"icon": "magnifying_glass_tilted_left", "label": "₹28,000 CR DEAL"}, {"icon": "balance_scale", "label": "COURT FIGHT"}, {"icon": "chart_increasing", "label": "MARKET MOOD"}]}
+  },
+  "stories": [
+    {
+      "id": "tatadeal", "tag": "TATA STEEL × APL APOLLO", "headline": "Tata Steel deal draws questions",
+      "cap": "Proxy advisers want SEBI to look closely at the ₹28,000 crore Tata Steel and APL Apollo deal. APL Apollo would buy two Tata Steel businesses, paid for with debt. Tata Steel would also buy the promoters' stake for ₹15,510 crore. APL Apollo shares have fallen more than 30% since the deal was announced.",
+      "beats": [
+        {"at": null, "head": ["IS THE DEAL", "FAIR?"], "kicker": "Tata Steel × APL Apollo", "tone": "neutral",
+         "note": "Advisers say the *linked parts* of the deal should be *judged together.*",
+         "scene": {"type": "icons", "items": [{"icon": "classical_building", "label": "SEBI"}, {"icon": "magnifying_glass_tilted_left", "label": "A CLOSER LOOK"}], "arrows": true}},
+        {"at": "APL Apollo would", "head": ["APL BUYS", "TATA UNITS"], "kicker": "Deal leg one", "tone": "neutral",
+         "note": "The purchase is *funded with debt,* which public shareholders of APL Apollo will *carry.*",
+         "scene": {"type": "flow", "from": {"icon": "factory", "label": "TATA STEEL UNITS"}, "to": {"icon": "office_building", "label": "APL APOLLO"}, "chip": "₹28,000 CR"}},
+        {"at": "Tata Steel would", "head": ["TATA BUYS", "PROMOTERS' STAKE"], "kicker": "Deal leg two", "tone": "neutral",
+         "note": "Tata Steel gets *control* of the tubes maker by buying out the *promoters.*",
+         "scene": {"type": "flow", "from": {"icon": "office_building", "label": "TATA STEEL"}, "to": {"icon": "briefcase", "label": "APL PROMOTERS"}, "chip": "₹15,510 CR"}},
+        {"at": "APL Apollo shares", "head": ["SHARES", "DOWN 30%+"], "kicker": "Market reaction", "tone": "down",
+         "note": "Tata Steel says it is *examining the concerns* raised by investors.",
+         "scene": {"type": "clip", "image": "tata_steel", "label": "TATA STEEL"}}
+      ],
+      "sources": [
+        {"publisher": "Business Standard", "title": "Sebi may scrutinise Tata Steel-APL Apollo deal over RPT, shareholder worry", "link": "https://www.business-standard.com/markets/news/tata-steel-apl-apollo-deal-may-face-sebi-scrutiny-over-shareholder-concerns-126112601279_1.html"},
+        {"publisher": "Mint", "title": "Proxy advisors flag related-party concerns in Tata Steel-APL Apollo transaction", "link": "https://www.livemint.com/companies/proxy-advisors-flag-related-party-concerns-in-tata-steel-apl-apollo-transaction-11795704764028.html"}
+      ],
+      "summary": {"emoji": "🏛️", "line": "Proxy advisers want SEBI to examine the ₹28,000 crore Tata Steel–APL Apollo deal; APL Apollo shares are down over 30% since it was announced."}
+    },
+    {
+      "id": "tatatrusts", "tag": "TATA TRUSTS IN COURT", "headline": "Tata Trusts move High Court",
+      "cap": "Tata Trusts have gone to the Bombay High Court. They challenge the reappointment of N Chandrasekaran as Tata Sons chairman. The court hears the case on Friday, before the Tata Sons board meeting on 30 November. The trusts also seek damages of ₹50 crore and ₹15 crore.",
+      "beats": [
+        {"at": null, "head": ["TATA VS", "TATA?"], "kicker": "Why it matters", "tone": "down",
+         "note": "The trusts say the *September 17 vote* did not get the *required support.*",
+         "scene": {"type": "clip", "image": "bombay_house", "label": "BOMBAY HOUSE"}},
+        {"at": "The court hears", "head": ["HEARING", "ON FRIDAY"], "kicker": "Before the board meet", "tone": "neutral",
+         "note": "The trusts want *no casting vote* by the chairman at the *30 November* board meeting.",
+         "scene": {"type": "icons", "items": [{"icon": "balance_scale", "label": "HIGH COURT"}, {"icon": "calendar", "label": "30 NOV BOARD"}], "arrows": true}},
+        {"at": "The trusts also", "head": ["DAMAGES", "SOUGHT"], "kicker": "The claims", "tone": "neutral",
+         "note": "Two trusts ask for *₹50 crore* and *₹15 crore,* plus 18% yearly interest.",
+         "scene": {"type": "compare", "icon": "scroll", "left": {"label": "SDTT", "value": "₹50 CR", "tone": "neutral"}, "right": {"label": "RDTT", "value": "₹15 CR", "tone": "neutral"}}}
+      ],
+      "sources": [
+        {"publisher": "Business Standard", "title": "HC to hear Tata Trusts' plea against Chandra's reappointment on Friday", "link": "https://www.business-standard.com/companies/news/hc-to-hear-tata-trusts-plea-against-chandrasekaran-s-reappointment-friday-126112600676_1.html"},
+        {"publisher": "Mint", "title": "Bombay HC to hear Tata Trusts' lawsuits against Chandrasekaran's reappointment on Friday ahead of Nov 30 board meeting", "link": "https://www.livemint.com/companies/bombay-hc-to-hear-tata-trusts-lawsuits-against-chandrasekaran-s-reappointment-on-friday-ahead-of-nov-30-board-meeting-11795689108826.html"}
+      ],
+      "summary": {"emoji": "⚖️", "line": "Tata Trusts have sued in the Bombay High Court over Chandrasekaran's reappointment; hearing is Friday, ahead of the 30 November board meeting."}
+    },
+    {
+      "id": "market", "tag": "MARKET MOOD", "headline": "Markets rise, cautious start",
+      "cap": "Indian markets rose for a second day on Thursday. The Sensex gained 390 points and the Nifty gained 65 points. Analysts expect a cautious start today, after a strong rally.",
+      "beats": [
+        {"at": null, "head": ["MARKETS UP", "TWO DAYS"], "kicker": "Thursday close", "tone": "up",
+         "note": "Both indices *extended their gains* for a *second straight day.*",
+         "scene": {"type": "compare", "icon": "chart_increasing", "left": {"label": "SENSEX", "value": "+390", "tone": "up"}, "right": {"label": "NIFTY", "value": "+65", "tone": "up"}}},
+        {"at": "Analysts expect", "head": ["CAUTIOUS", "OPENING?"], "kicker": "Today's start", "tone": "neutral",
+         "note": "After a *strong rally,* analysts see *profit taking* and sideways moves.",
+         "scene": {"type": "clip", "image": "dalal", "label": "DALAL STREET"}}
+      ],
+      "sources": [
+        {"publisher": "Mint", "title": "Top stocks to watch today: NSE, Tata Group, Texmaco Rail, Tata Motors shares in focus on Friday, 27 November", "link": "https://www.livemint.com/market/stock-market-news/top-stocks-to-watch-today-nse-tata-group-texmaco-rail-tata-motors-shares-in-focus-on-friday-27-november-full-list-11795742921342.html"},
+        {"publisher": "Hindu BusinessLine", "title": "Gift Nifty indicates a cautious opening for Indian stocks", "link": "https://www.thehindubusinessline.com/markets/gift-nifty-indicates-a-cautious-opening-for-indian-stocks/article71749206.ece"}
+      ],
+      "summary": {"emoji": "📈", "line": "Sensex added 390 points and Nifty 65 points on Thursday; analysts expect a cautious opening today."}
+    },
+    {
+      "id": "nse", "tag": "NSE × RBI", "headline": "NSE gets RBI nod for bond futures",
+      "cap": "The RBI has cleared the National Stock Exchange to bring in a new product. These are futures that track corporate bond indices.",
+      "beats": [
+        {"at": null, "head": ["BOND FUTURES", "GET RBI NOD"], "kicker": "New product", "tone": "up",
+         "note": "The *RBI approval* covers futures tied to *corporate bond indices.*",
+         "scene": {"type": "flow", "from": {"icon": "bank", "label": "RBI"}, "to": {"icon": "bar_chart", "label": "NSE BOND FUTURES"}, "chip": "APPROVED"}}
+      ],
+      "sources": [
+        {"publisher": "Mint", "title": "Top stocks to watch today: NSE, Tata Group, Texmaco Rail, Tata Motors shares in focus on Friday, 27 November", "link": "https://www.livemint.com/market/stock-market-news/top-stocks-to-watch-today-nse-tata-group-texmaco-rail-tata-motors-shares-in-focus-on-friday-27-november-full-list-11795742921342.html"},
+        {"publisher": "Hindu BusinessLine", "title": "Stocks in focus, Nov 27: TVS group companies, NSE, Unimech, Omnitech, Texmaco Rail, Apeejay, EMS, Waaree Renewable, Bansal Wire, Zydus among the others", "link": "https://www.thehindubusinessline.com/markets/stocks-in-focus-nov-27-tvs-group-companies-nse-unimech-omnitech-texmaco-rail-apeejay-ems-waaree-renewable-bansal-wire-zydus-among-the-others/article71749198.ece"}
+      ],
+      "summary": {"emoji": "🏦", "line": "RBI has cleared NSE to bring in futures that track corporate bond indices."}
+    },
+    {
+      "id": "nvidia", "tag": "NVIDIA PAUSE", "headline": "Nvidia pauses Asia shipments",
+      "cap": "Nvidia has asked partners to pause server shipments to Malaysia, Singapore, Thailand and Indonesia. Dell and Supermicro told buyers their orders will not be sent. This follows new US export curbs on advanced AI chips. It is unclear if the pause is temporary.",
+      "beats": [
+        {"at": null, "head": ["NVIDIA HITS", "PAUSE"], "kicker": "Southeast Asia", "tone": "down",
+         "note": "Shipments of *servers with its chips* to *four countries* are on hold.",
+         "scene": {"type": "flow", "from": {"icon": "laptop", "label": "NVIDIA SERVERS"}, "to": {"icon": "ship", "label": "4 ASIAN NATIONS"}, "chip": "PAUSED"}},
+        {"at": "Dell and Supermicro", "head": ["ORDERS", "NOT SENT"], "kicker": "Server makers", "tone": "down",
+         "note": "These firms *package the chips* into servers and *told buyers* the orders will not ship.",
+         "scene": {"type": "clip", "video": "ai_datacenter", "label": "AI DATA CENTRE"}},
+        {"at": "This follows", "head": ["NEW US", "EXPORT CURBS"], "kicker": "Why now", "tone": "neutral",
+         "note": "Washington wants to shut *routes* Chinese firms may use to get *advanced AI chips.*",
+         "scene": {"type": "icons", "items": [{"icon": "classical_building", "label": "US CURBS"}, {"icon": "locked", "label": "LICENCES"}, {"icon": "laptop", "label": "AI CHIPS"}], "arrows": true}},
+        {"at": "It is unclear", "head": ["TEMPORARY", "OR NOT?"], "kicker": "What's next", "tone": "neutral",
+         "note": "Reports say it is *not clear* how long the *halt* will last.",
+         "scene": {"type": "icons", "items": [{"icon": "hourglass_done", "label": "NO TIMELINE"}]}}
+      ],
+      "sources": [
+        {"publisher": "Business Standard", "title": "Nvidia halts shipments of AI servers to four Southeast Asian countries", "link": "https://www.business-standard.com/world-news/nvidia-halts-shipments-of-ai-servers-to-four-southeast-asian-countries-126112601562_1.html"},
+        {"publisher": "Engadget", "title": "NVIDIA reportedly halts AI chip shipments to Southeast Asia", "link": "https://www.engadget.com/2329200/nvidia-reportedly-halts-chip-shipments-to-southeast-asia/"},
+        {"publisher": "TechCrunch", "title": "Nvidia hits pause on chip shipments to Southeast Asia", "link": "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/"}
+      ],
+      "summary": {"emoji": "💻", "line": "Nvidia has asked partners to pause server shipments to Malaysia, Singapore, Thailand and Indonesia after new US export curbs."}
+    }
+  ],
+  "outro": {"cap": "This is for information only, not investment advice. See you next time on StickBiz Brief."},
+  "ticker": [
+    "Proxy advisers urge SEBI to examine ₹28,000 crore Tata Steel–APL Apollo deal",
+    "Tata Trusts move Bombay High Court; hearing on Friday",
+    "Sensex up 390 points, Nifty up 65 points on Thursday",
+    "NSE gets RBI nod for corporate bond index futures",
+    "Nvidia pauses server shipments to four Southeast Asian countries"
+  ],
+  "titles": [
+    "🔥 Tata Steel ₹28,000 Cr Deal Under Fire | Market Brief",
+    "⚖️ Tata Trusts Move High Court | Sensex Nifty Today",
+    "📉 Nvidia Pauses Asia Shipments | India Market News"
+  ],
+  "thumbnail_texts": ["TATA DEAL UNDER FIRE", "TATA VS TATA?", "NVIDIA HITS PAUSE"],
+  "pinned_comment": "Which story matters most to you today: the Tata Steel deal or the Tata Trusts case? 👇",
+  "tags": "tata steel,apl apollo,tata trusts,tata sons,sensex today,nifty today,sebi,nse,rbi,nvidia,stock market news,india business news,morning market brief,stickbiz brief",
+  "description_intro": "🚨 Tata deal questions, a court fight and a market pause — your 8 AM India market brief! 📊"
+}
