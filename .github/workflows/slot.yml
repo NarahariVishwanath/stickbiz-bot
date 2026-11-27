@@ -16,6 +16,7 @@ on:
     inputs:
       slot: {description: "am | pm | night (blank = by time)", required: false, default: ""}
       skip_wait: {description: "Start now (do not wait for the news cut-off)", type: boolean, default: false}
+      post_now: {description: "Post as soon as I approve (manual run, not tied to a slot time)", type: boolean, default: false}
 
 permissions: {contents: write, issues: write}
 concurrency:
@@ -44,13 +45,13 @@ jobs:
           if [ "${{ steps.s.outputs.skip }}" = "true" ]; then
             echo "GitHub started this run outside every slot window - nothing to do."; echo "go=false" >> "$GITHUB_OUTPUT"; exit 0; fi
           KEY="${{ steps.s.outputs.date }}-${{ steps.s.outputs.slot }}"
-          if [ "${{ inputs.skip_wait }}" != "true" ] && python bot/slot.py too-early ${{ steps.s.outputs.slot }}; then
+          if [ "${{ inputs.skip_wait || inputs.post_now }}" != "true" ] && python bot/slot.py too-early ${{ steps.s.outputs.slot }}; then
             echo "Too early for the ${{ steps.s.outputs.slot }} slot - nothing to do yet."; echo "go=false" >> "$GITHUB_OUTPUT"; exit 0; fi
-          if [ "${{ inputs.skip_wait }}" != "true" ] && ! python bot/slot.py window ${{ steps.s.outputs.slot }} ${{ steps.s.outputs.date }}; then
+          if [ "${{ inputs.skip_wait || inputs.post_now }}" != "true" ] && ! python bot/slot.py window ${{ steps.s.outputs.slot }} ${{ steps.s.outputs.date }}; then
             echo "Too late for the ${{ steps.s.outputs.slot }} slot today."; echo "go=false" >> "$GITHUB_OUTPUT"; exit 0; fi
           # timers (GitHub's own or the external alarm clock) never make a second Short for the same slot;
           # a manual test with "Start now" ticked is always allowed
-          if [ "${{ inputs.skip_wait }}" != "true" ] && gh issue list --state all --search "[$KEY] in:title" --json title -q '.[].title' | grep -qF "[$KEY]"; then
+          if [ "${{ inputs.skip_wait || inputs.post_now }}" != "true" ] && gh issue list --state all --search "[$KEY] in:title" --json title -q '.[].title' | grep -qF "[$KEY]"; then
             echo "The $KEY Short is already written - this extra try stops here."; echo "go=false" >> "$GITHUB_OUTPUT"; exit 0; fi
           echo "go=true" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v4
@@ -62,7 +63,7 @@ jobs:
           pip install -q -r requirements.txt
           npm install -g -s @anthropic-ai/claude-code
       - name: Wait for the news cut-off
-        if: steps.go.outputs.go == 'true' && !inputs.skip_wait
+        if: steps.go.outputs.go == 'true' && !(inputs.skip_wait || inputs.post_now)
         run: python bot/slot.py wait-cutoff ${{ steps.s.outputs.slot }}
       - name: Research (Trend Scout + full articles)
         if: steps.go.outputs.go == 'true'
@@ -77,11 +78,13 @@ jobs:
         if: steps.go.outputs.go == 'true'
         run: |
           python bot/build_script.py build ${{ steps.s.outputs.slot }} || true
-          python bot/review.py ${{ steps.s.outputs.slot }} ${{ steps.s.outputs.date }}
+          KEY="${{ steps.s.outputs.date }}-${{ steps.s.outputs.slot }}"
+          if [ "${{ inputs.post_now }}" = "true" ]; then KEY="$KEY-manual-$(TZ=Asia/Kolkata date +%H%M)"; fi
+          KEY="$KEY" POST_NOW="${{ inputs.post_now }}" python bot/review.py ${{ steps.s.outputs.slot }} ${{ steps.s.outputs.date }}
+          echo "KEY=$KEY" >> "$GITHUB_ENV"
       - name: Save state + open review issue + notify
         if: steps.go.outputs.go == 'true'
         run: |
-          KEY="${{ steps.s.outputs.date }}-${{ steps.s.outputs.slot }}"
           bash bot/state.sh push "$KEY"
           gh label create short-review --color FF5722 --force >/dev/null
           URL=$(gh issue create --label short-review --title "[$KEY] Short for review" --body-file run/review.md)

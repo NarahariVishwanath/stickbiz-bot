@@ -15,11 +15,15 @@ def main(slot, date):
     kit = json.loads((RUN / "kit.json").read_text(encoding="utf-8")) if (RUN / "kit.json").exists() else {}
     checks = (RUN / "checks.md").read_text(encoding="utf-8") if (RUN / "checks.md").exists() else ""
     ok = "✅ PASSED" in checks
-    md = [f"<!-- stickbiz slot={slot} date={date} -->",
+    import os
+    key = os.environ.get("KEY") or f"{date}-{slot}"
+    now = os.environ.get("POST_NOW") == "true"
+    md = [f"<!-- stickbiz slot={slot} date={date} key={key} now={1 if now else 0} -->",
           f"## {LABEL[slot]} Short — {date}", "",
           "**Reply to this issue:** `OK` = approve and post · `SKIP` = don't post this slot · `STOP` = cancel after the preview · "
           "anything else = a change request in plain words (e.g. *make the hook punchier*, *drop the Wipro story*).", "",
-          f"⏰ Posts at {CONFIG['slots'][slot]['post']} IST after your OK (up to {CONFIG['max_late_minutes']} min late is allowed).", "",
+          ("⚡ Manual run: posts as soon as it is ready after your OK (about 5 minutes)." if now else
+           f"⏰ Posts at {CONFIG['slots'][slot]['post']} IST after your OK (up to {CONFIG['max_late_minutes']} min late is allowed)."), "",
           "### 🎬 Script (voice)", "", f"**Hook:** {d['hook']['cap']}", ""]
     for s in d["stories"]:
         pubs = sorted({r["publisher"] for r in s["sources"]})

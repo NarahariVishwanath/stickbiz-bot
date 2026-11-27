@@ -34,8 +34,8 @@ jobs:
           python - <<'EOF' >> "$GITHUB_OUTPUT"
           import os, re
           c = os.environ["COMMENT"].strip()
-          m = re.search(r"slot=(\w+) date=([\d-]+)", os.environ["BODY"])
-          print(f"slot={m.group(1)}\ndate={m.group(2)}")
+          m = re.search(r"slot=(\w+) date=([\d-]+)(?: key=(\S+))?(?: now=(\d))?", os.environ["BODY"])
+          print(f"slot={m.group(1)}\ndate={m.group(2)}\nkey={m.group(3) or m.group(2) + '-' + m.group(1)}\nnow={m.group(4) or '0'}")
           w = re.sub(r"[^a-z]", "", c.lower())
           print("cmd=" + ("ok" if w in ("ok", "okay", "approve", "approved", "yes", "go", "post") else
                           "skip" if w in ("skip", "no", "cancel") else "stop" if w == "stop" else "change"))
@@ -43,7 +43,11 @@ jobs:
       - name: OK -> produce and post
         if: steps.r.outputs.cmd == 'ok'
         run: |
-          SLOT=${{ steps.r.outputs.slot }}; DATE=${{ steps.r.outputs.date }}
+          SLOT=${{ steps.r.outputs.slot }}; DATE=${{ steps.r.outputs.date }}; KEY=${{ steps.r.outputs.key }}; NOW=${{ steps.r.outputs.now }}
+          if [ "$NOW" = "1" ]; then
+            gh label create approved --color 0E8A16 --force >/dev/null; gh issue edit "$ISSUE" --add-label approved
+            gh workflow run produce.yml -f issue="$ISSUE" -f key="$KEY" -f slot="$SLOT" -f date="$DATE" -f test=false -f now=true
+            gh issue comment "$ISSUE" -b "⚡ Approved — voicing, rendering and posting as soon as it is ready."; exit 0; fi
           if ! python bot/slot.py window $SLOT $DATE; then
             gh issue comment "$ISSUE" -b "⏰ Too late for this slot — skipped."; gh issue close "$ISSUE"; exit 0; fi
           gh label create approved --color 0E8A16 --force >/dev/null
@@ -51,7 +55,7 @@ jobs:
           MIN=$(python bot/slot.py minutes-to-post $SLOT $DATE)
           if [ "$MIN" -gt 90 ]; then TEST=true; MSG="🧪 Test mode (the slot is $MIN min away): making the video and the preview only — nothing will be posted."
           else TEST=false; MSG="✅ Approved — voicing, rendering and posting at the slot time."; fi
-          gh workflow run produce.yml -f issue="$ISSUE" -f key="$DATE-$SLOT" -f slot="$SLOT" -f date="$DATE" -f test="$TEST"
+          gh workflow run produce.yml -f issue="$ISSUE" -f key="$KEY" -f slot="$SLOT" -f date="$DATE" -f test="$TEST"
           gh issue comment "$ISSUE" -b "$MSG"
       - name: SKIP
         if: steps.r.outputs.cmd == 'skip'
@@ -70,14 +74,14 @@ jobs:
       - name: Change request -> Claude revises, checks run again
         if: steps.r.outputs.cmd == 'change'
         run: |
-          KEY="${{ steps.r.outputs.date }}-${{ steps.r.outputs.slot }}"
+          KEY="${{ steps.r.outputs.key }}"
           pip install -q -r requirements.txt
           npm install -g -s @anthropic-ai/claude-code
           gh issue comment "$ISSUE" -b "✍️ Working on your changes…"
           bash bot/state.sh pull "$KEY"
           python bot/write.py ${{ steps.r.outputs.slot }} --feedback "$COMMENT" || true
           python bot/build_script.py build ${{ steps.r.outputs.slot }} || true
-          python bot/review.py ${{ steps.r.outputs.slot }} ${{ steps.r.outputs.date }}
+          KEY="$KEY" POST_NOW=$([ "${{ steps.r.outputs.now }}" = "1" ] && echo true || echo false) python bot/review.py ${{ steps.r.outputs.slot }} ${{ steps.r.outputs.date }}
           bash bot/state.sh push "$KEY"
           gh issue edit "$ISSUE" --body-file run/review.md
           gh issue comment "$ISSUE" -b "🔁 Updated script is in the issue description above. Reply OK, SKIP or more changes."

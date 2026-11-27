@@ -8,6 +8,7 @@ on:
       slot: {required: true}
       date: {required: true}
       test: {description: "true = make the video + preview only, post nothing", required: false, default: "false"}
+      now: {description: "true = post as soon as the video is ready (manual run)", required: false, default: "false"}
 
 permissions: {contents: write, issues: write}
 env:
@@ -94,13 +95,13 @@ jobs:
           URL="${{ github.server_url }}/${{ github.repository }}/releases/download/$TAG/final.mp4"
           echo "url=$URL" >> "$GITHUB_OUTPUT"
           if [ "${{ inputs.test }}" = "true" ]; then NOTE="Test mode: preview only, nothing will be posted."
-          else NOTE="Posting at the slot time. Reply STOP on the review page to cancel."; fi
+          elif [ "${{ inputs.now }}" = "true" ]; then NOTE="Posting now."; else NOTE="Posting at the slot time. Reply STOP on the review page to cancel."; fi
           gh issue comment "$ISSUE" -b "🎬 Preview: $URL — $NOTE"
           python bot/notify.py "StickBiz video ready" "$NOTE" \
             --click "$URL" --action "Watch preview|$URL" --action "Review page|${{ github.server_url }}/${{ github.repository }}/issues/$ISSUE" --tags movie_camera
       - name: Wait for the slot time
         id: wait
-        if: inputs.test != 'true'
+        if: inputs.test != 'true' && inputs.now != 'true'
         run: |
           if python bot/slot.py wait-post ${{ inputs.slot }} ${{ inputs.date }}; then echo "go=true" >> "$GITHUB_OUTPUT"; else echo "go=false" >> "$GITHUB_OUTPUT"; fi
       - name: Stopped or too late?
@@ -108,7 +109,7 @@ jobs:
         run: |
           if [ "${{ inputs.test }}" = "true" ]; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=test mode - preview only" >> "$GITHUB_OUTPUT";
           elif gh issue view "$ISSUE" --json labels -q '.labels[].name' | grep -qx stop; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=STOP" >> "$GITHUB_OUTPUT";
-          elif [ "${{ steps.wait.outputs.go }}" != "true" ]; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=too late" >> "$GITHUB_OUTPUT";
+          elif [ "${{ inputs.now }}" != "true" ] && [ "${{ steps.wait.outputs.go }}" != "true" ]; then echo "go=false" >> "$GITHUB_OUTPUT"; echo "why=too late" >> "$GITHUB_OUTPUT";
           else echo "go=true" >> "$GITHUB_OUTPUT"; fi
       - name: Post to YouTube
         id: yt
