@@ -1,0 +1,114 @@
+{
+  "hook": {
+    "cap": "The Sensex fell nearly 1,000 points today. And SEBI is now looking at a big Tata Steel takeover deal.",
+    "head": ["TONIGHT'S", "BIG STORIES"],
+    "kicker": "27 Nov · 9 PM brief",
+    "scene": {"type": "icons", "items": [{"icon": "chart_decreasing", "label": "SENSEX FALLS"}, {"icon": "magnifying_glass_tilted_left", "label": "SEBI CHECK"}, {"icon": "bank", "label": "RBI MOVE"}]}
+  },
+  "stories": [
+    {
+      "id": "market",
+      "tag": "MARKET CLOSE",
+      "headline": "Sensex sheds nearly 1,000",
+      "cap": "The Sensex fell nearly 1,000 points on Friday. The Nifty lost 277 points. Brent crude rose above $96 a barrel, which brings back worry about India's import bill.",
+      "beats": [
+        {"at": null, "head": ["SENSEX DOWN", "NEARLY 1,000"], "kicker": "Friday's close", "tone": "down",
+         "note": "Indian shares ended *the day lower*, and the Nifty gave up *277 points.*",
+         "scene": {"type": "compare", "icon": "chart_decreasing", "left": {"label": "SENSEX", "value": "-989", "tone": "down"}, "right": {"label": "NIFTY", "value": "-277", "tone": "down"}}},
+        {"at": "Brent crude rose", "head": ["OIL ABOVE", "$96?"], "kicker": "Why it matters", "tone": "down",
+         "note": "Costlier oil can raise *India's import bill*, so investors turned *more careful.*",
+         "scene": {"type": "icons", "items": [{"icon": "oil_drum", "label": "BRENT $96+"}, {"icon": "money_with_wings", "label": "IMPORT BILL"}], "arrows": true}}
+      ],
+      "sources": [
+        {"publisher": "Mint", "title": "Sensex tumbles 1,000 points, Nifty drops 277 points", "link": "https://www.livemint.com/market/stock-market-news/stock-market-today-sensex-tumbles-1-000-points-nifty-drops-277-points-as-tcs-infosys-shriram-finance-lead-losses-11795774138976.html"},
+        {"publisher": "Business Standard", "title": "Rupee falls as Brent crude rises on supply concerns", "link": "https://www.business-standard.com/finance/news/rbi-cuts-crr-maintenance-requirement-for-banks-back-to-90-from-dec-1-126112700971_1.html"}
+      ],
+      "summary": {"emoji": "📉", "line": "The Sensex fell nearly 1,000 points and the Nifty lost 277 points as Brent crude rose above $96 a barrel."}
+    },
+    {
+      "id": "tata",
+      "tag": "TATA STEEL × APL APOLLO",
+      "headline": "SEBI eyes Tata-APL deal",
+      "cap": "SEBI says it is looking at the Tata Steel and APL Apollo deal. Tata Steel will buy the promoters' stake for ₹15,510 crore. It will also make an open offer for up to 26% more. Proxy advisory firms worry that small shareholders may lose out.",
+      "beats": [
+        {"at": null, "head": ["IS SEBI", "WATCHING?"], "kicker": "Tata Steel × APL Apollo", "tone": "neutral",
+         "note": "The regulator says *minority shareholders* matter, and it is *looking at the deal.*",
+         "scene": {"type": "clip", "image": "sebi_bhavan", "label": "SEBI IS LOOKING"}},
+        {"at": "Tata Steel will", "head": ["TATA BUYS", "THE PROMOTERS"], "kicker": "Deal leg one", "tone": "neutral",
+         "note": "Tata Steel is taking *control* of the tube maker by *buying the promoters' stake.*",
+         "scene": {"type": "flow", "from": {"icon": "factory", "label": "TATA STEEL"}, "to": {"icon": "office_building", "label": "APL PROMOTERS"}, "chip": "₹15,510 CR"}},
+        {"at": "It will also", "head": ["THEN AN", "OPEN OFFER"], "kicker": "Deal leg two", "tone": "neutral",
+         "note": "Public shareholders can also *sell their shares* in an offer for up to *26% more.*",
+         "scene": {"type": "bignum", "icon": "handshake", "value": "26%", "tone": "neutral", "label": "OPEN OFFER, UP TO"}},
+        {"at": "Proxy advisory firms", "head": ["SMALL HOLDERS", "AT RISK?"], "kicker": "The concern", "tone": "down",
+         "note": "Advisers say the *structure* of the deal may not be *fair to minority shareholders.*",
+         "scene": {"type": "icons", "items": [{"icon": "balance_scale", "label": "IS IT FAIR?"}, {"icon": "warning", "label": "PROXY ALERT"}]}}
+      ],
+      "sources": [
+        {"publisher": "Hindu BusinessLine", "title": "SEBI to look into Tata Steel-APL Apollo deal over minority concerns", "link": "https://www.thehindubusinessline.com/companies/sebi-to-look-into-tata-steelapl-apollo-deal-over-minority-concerns/article71749659.ece"},
+        {"publisher": "Mint", "title": "Tata Steel-APL Apollo deal under Sebi scrutiny", "link": "https://www.livemint.com/market/tata-steel-apl-apollo-deal-under-sebi-scrutiny-what-chairman-tuhin-kanta-pandey-said-on-minority-shareholders-11795787306824.html"},
+        {"publisher": "Business Standard", "title": "Sebi grants Tata Steel extension for APL Apollo Tubes open offer", "link": "https://www.business-standard.com/markets/news/sebi-grants-tata-steel-extension-till-dec-8-for-apl-apollo-tubes-open-offer-126112701221_1.html"}
+      ],
+      "summary": {"emoji": "🏛️", "line": "SEBI is looking at the Tata Steel–APL Apollo deal, which includes a ₹15,510 crore promoter stake buy and an open offer for up to 26% more."}
+    },
+    {
+      "id": "rbi",
+      "tag": "RBI LIQUIDITY MOVE",
+      "headline": "RBI eases daily CRR rule",
+      "cap": "The RBI has cut the daily cash reserve rule for banks to 90% from 99%. It starts on 1 December. Banking liquidity has slipped into deficit. The next RBI policy review is coming, and a 25 basis point rate hike is widely expected.",
+      "beats": [
+        {"at": null, "head": ["RBI EASES", "THE CRR RULE"], "kicker": "Banks get relief", "tone": "up",
+         "note": "Banks must keep *less cash idle* with the RBI each day, from *99% down to 90%.*",
+         "scene": {"type": "compare", "icon": "bank", "left": {"label": "BEFORE", "value": "99%", "tone": "down"}, "right": {"label": "FROM 1 DEC", "value": "90%", "tone": "up"}}},
+        {"at": "Banking liquidity has", "head": ["WHY NOW?", "CASH IS TIGHT"], "kicker": "Why it matters", "tone": "down",
+         "note": "System liquidity *slipped into deficit*, and that has pushed *short-term rates higher.*",
+         "scene": {"type": "icons", "items": [{"icon": "money_bag", "label": "LESS CASH"}, {"icon": "up_arrow", "label": "HIGHER RATES"}], "arrows": true}},
+        {"at": "The next RBI", "head": ["POLICY", "REVIEW NEXT"], "kicker": "What next", "tone": "neutral",
+         "note": "Most experts expect a *25 basis point* rate hike at the *policy review.*",
+         "scene": {"type": "clip", "image": "rbi", "label": "RBI, MUMBAI"}}
+      ],
+      "sources": [
+        {"publisher": "Hindu BusinessLine", "title": "RBI cuts banks' minimum daily CRR maintenance requirement to 90%", "link": "https://www.thehindubusinessline.com/money-and-banking/rbi-cuts-banks-minimum-daily-crr-maintenance-requirement-to-90-from-december-1/article71750640.ece"},
+        {"publisher": "Mint", "title": "RBI rolls back tighter daily CRR requirement as liquidity slips into deficit", "link": "https://www.livemint.com/market/rbi-reverses-daily-crr-rule-as-bank-liquidity-tightens-11795780978865.html"},
+        {"publisher": "Business Standard", "title": "RBI cuts CRR maintenance requirement for banks back to 90%", "link": "https://www.business-standard.com/finance/news/rbi-cuts-crr-maintenance-requirement-for-banks-back-to-90-from-dec-1-126112700971_1.html"}
+      ],
+      "summary": {"emoji": "🏦", "line": "The RBI cut the daily CRR maintenance rule to 90% from 99% from 1 December as liquidity turned to deficit."}
+    },
+    {
+      "id": "spacex",
+      "tag": "SPACEX DATA CENTRES",
+      "headline": "1 million AI satellites OK'd",
+      "cap": "In the US, the FCC has approved up to 1 million SpaceX satellites. They are meant to work as data centres in space, powered by sunlight. Amazon called it a lofty ambition, not a real plan. The approval has conditions, and the full network has until 2040.",
+      "beats": [
+        {"at": null, "head": ["1 MILLION", "SATELLITES?"], "kicker": "AI in orbit", "tone": "up",
+         "note": "The US regulator approved *SpaceX's plan* for AI computing *powered by sunlight.*",
+         "scene": {"type": "bignum", "icon": "satellite", "value": "1 MILLION", "tone": "up", "label": "SATELLITES APPROVED"}},
+        {"at": "Amazon called it", "head": ["REAL PLAN", "OR DREAM?"], "kicker": "The doubts", "tone": "down",
+         "note": "Amazon and others *objected*, and the approval is *conditional*, with a *2040 deadline.*",
+         "scene": {"type": "icons", "items": [{"icon": "red_question_mark", "label": "AMAZON DOUBTS"}, {"icon": "hourglass_done", "label": "BY 2040"}]}}
+      ],
+      "sources": [
+        {"publisher": "CNBC", "title": "SpaceX wins FCC approval for orbital data center satellites", "link": "https://www.cnbc.com/2026/11/25/spacex-fcc-satellite-approval.html"},
+        {"publisher": "BBC", "title": "US approves SpaceX plan to send a million data satellites to space", "link": "https://www.bbc.co.uk/news/articles/cwp836l8n1jgo?at_medium=RSS&at_campaign=rss"},
+        {"publisher": "TechCrunch", "title": "FCC approves SpaceX plan to put AI data centers in space", "link": "https://techcrunch.com/2026/11/25/fcc-approves-spacex-plan-to-put-ai-data-centers-in-space/"}
+      ],
+      "summary": {"emoji": "🛰️", "line": "The US FCC approved up to 1 million SpaceX satellites for space-based AI data centres, with conditions and a 2040 deadline."}
+    }
+  ],
+  "outro": {"cap": "This is for information only, not investment advice. See you next time on StickBiz Brief."},
+  "ticker": [
+    "Sensex ends nearly 1,000 points lower, Nifty down 277",
+    "SEBI is looking at the Tata Steel–APL Apollo deal",
+    "RBI trims banks' daily CRR rule to 90% from 1 December",
+    "US regulator clears 1 million SpaceX data-centre satellites"
+  ],
+  "titles": [
+    "📉 Sensex Falls Nearly 1,000 Points: Tonight's Market Brief",
+    "🔍 SEBI Eyes Tata Steel–APL Apollo Deal | RBI CRR Cut",
+    "🏦 RBI Eases CRR Rule + Sensex Slides | StickBiz Brief"
+  ],
+  "thumbnail_texts": ["SENSEX -1,000", "SEBI WATCHES TATA", "RBI CRR CUT"],
+  "pinned_comment": "Which story mattered most to you tonight: the market fall, the Tata Steel deal or the RBI move? 👇",
+  "tags": "sensex today,nifty today,stock market news,sebi,tata steel,apl apollo,rbi,crr,banking liquidity,brent crude,spacex,india market news,stickbiz brief",
+  "description_intro": "📺 Tonight's India market wrap: Sensex slides, SEBI eyes a Tata Steel deal, RBI eases the CRR rule and more! 🚀"
+}
