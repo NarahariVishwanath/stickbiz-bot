@@ -45,12 +45,14 @@ def decimal_words(s):
             return to_hindi_words(int(a))
         if b == "5" and int(a) in (1, 2):
             return {1: "डेढ़", 2: "ढाई"}[int(a)]
-        return f"{to_hindi_words(int(a or 0))} दशमलव " + " ".join(DIGITS[int(d)] for d in b)
+        # anchors say "ek point aath", "zero point chaar paanch"
+        whole = to_hindi_words(int(a)) if int(a or 0) else "zero"
+        return f"{whole} point " + " ".join(DIGITS[int(d)] for d in b)
     return to_hindi_words(int(s))
 
 
 UNIT = r"(lakh crore|crore|cr|lakh|thousand|million|mn|billion|bn|trillion|tn)?"
-NUM = r"(\d{1,3}(?:,\d{2,3})+|\d+(?:\.\d+)?)"
+NUM = r"(?<![A-Za-z\d.,])(\d{1,3}(?:,\d{2,3})+|\d+(?:\.\d+)?)"
 CUR_RE = re.compile(r"(₹|Rs\.?\s?|INR\s?|\$|US\$|€|£)\s?" + NUM + r"\s?" + UNIT, re.I)
 RANGE_RE = re.compile(r"(₹|Rs\.?\s?|\$)\s?" + NUM + r"\s?(?:-|–|to|se)\s?(?:₹|Rs\.?\s?|\$)?\s?" + NUM + r"\s?" + UNIT, re.I)
 PCT_RE = re.compile(NUM + r"\s?(%|per cent|percent)", re.I)

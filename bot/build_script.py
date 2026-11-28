@@ -57,7 +57,10 @@ def write_media_md():
 
 
 def spoken(cap):
-    t = speak_numbers(cap, lang="en")
+    lang = CONFIG.get("numbers_spoken_in", "en")
+    t = speak_numbers(cap, lang=lang)
+    if lang == "hi":
+        return "[excited] " + re.sub(r"pts", "points", t)
     # "is four December" -> "is the fourth of December"
     t = re.sub(r"\b((?:twenty|thirty)-)?(" + "|".join(ORD) + r") (" + "|".join(MONTHS) + r")\b",
                lambda m: "the " + (m.group(1) or "") + ORD[m.group(2)] + " of " + m.group(3), t)

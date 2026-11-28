@@ -16,3 +16,5 @@ run_x/
 run_t/
 client_secret*.json
 *.apps.googleusercontent.com.json
+run_c/
+run_h/

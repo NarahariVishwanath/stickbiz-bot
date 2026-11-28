@@ -23,6 +23,13 @@ SEBI = [r"\bbuy (it|now|this|these|the stock|shares)\b", r"\bsell (it|now|this|t
         r"\bsure[- ]shot\b", r"\bmultibagger\b", r"\bjackpot\b", r"\bto the moon\b", r"\bdouble your money\b",
         r"\brisk[- ]free\b", r"\bdon'?t miss\b", r"\blast chance\b", r"\binvest (now|today)\b"]
 COUNTING = r"\b(first|second|third|fourth|fifth|next|last) story\b"
+COUNTING_HI = r"\b(pehli|pehla|doosri|dusri|teesri|tisri|chauthi|agli|aakhri) (khabar|story|news)\b"
+# Hinglish advice/hype words (SEBI)
+SEBI += [r"\bpakka (return|profit|munafa)\b", r"\babhi (kharido|kharid lo|le lo|bech do)\b", r"\bbech do\b",
+         r"\bkharid (lo|lijiye)\b", r"\bpais[ae] double\b", r"\bguarantee\b"]
+# numbers spelled out in Hindi words (they must be digits; the voice step says them in Hindi)
+HI_NUM_WORDS = (r"\b(ek|do|teen|chaar|char|paanch|panch|chhah|saat|aath|nau|das|bees|pachaas|sau|hazaar|hazar)"
+                r"\s+(lakh|crore|hazaar|hazar|sau|percent|pratishat|mahine|saal|din)\b")
 
 
 def words(t):
@@ -180,6 +187,14 @@ def main():
         m = re.search(COUNTING, t, re.I)
         if m:
             block.append(f"[{where}] says “{m.group(0)}” — don't count stories out loud.")
+        m = re.search(COUNTING_HI, t, re.I)
+        if m:
+            block.append(f"[{where}] says “{m.group(0)}” — don't count stories out loud.")
+        if re.search(r"[\u0900-\u097F]", t):
+            block.append(f"[{where}] has Devanagari letters — write Hinglish in Roman letters.")
+        m = re.search(HI_NUM_WORDS, t, re.I)
+        if m:
+            block.append(f"[{where}] spells a number in words (“{m.group(0)}”) — write digits (e.g. 5 lakh, 3 mahine).")
 
     # 5. length
     chars = sum(len(x) for _, x in texts[:len(d["stories"]) + 1]) + len(d["outro"]["cap"])

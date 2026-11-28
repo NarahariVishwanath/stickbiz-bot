@@ -32,7 +32,7 @@ def main(video):
     if "#shorts" not in title.lower() and len(title) <= 90:
         title += " #Shorts"
     meta = {"snippet": {"title": title[:100], "description": kit["description"][:4990], "tags": tags,
-                        "categoryId": "27", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
+                        "categoryId": "27", "defaultLanguage": "en", "defaultAudioLanguage": "hi"},
             "status": {"privacyStatus": "private" if os.environ.get("YT_TEST") == "1" else "public", "selfDeclaredMadeForKids": False}}
     at = token()
     size = os.path.getsize(video)
