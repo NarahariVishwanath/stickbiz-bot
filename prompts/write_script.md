@@ -43,7 +43,7 @@ icons and clips you may use). Write `run/draft.json` exactly in the format at th
 - Do NOT say "First story", "Next story", "Pehli khabar", "Agli khabar" or count stories. The tone itself marks the switch.
 - Figures ALWAYS as digits with symbols, never as words: ₹11,000 crore, $1.7 billion, 1.8%, 4 December, 14 countries,
   3 mahine. Use "crore"/"lakh" for rupees. (The voice step turns digits into spoken Hindi numbers automatically —
-  "ग्यारह हज़ार करोड़ रुपये", "एक point आठ percent" — so never spell numbers out yourself.)
+  "ग्यारह हज़ार करोड़ रुपये", "twelve point six percent" (decimals in English, whole numbers in Hindi) — so never spell numbers out yourself.)
 - The hook (`hook.cap`, Hinglish): 2 short sentences, about 5–7 seconds, teasing the 2 biggest stories with a strong number.
 - Outro `cap` exactly: "Yeh sirf information ke liye hai, investment advice nahi. Milte hain next time, StickBiz Brief par."
 

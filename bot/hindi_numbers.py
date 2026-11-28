@@ -43,11 +43,8 @@ def decimal_words(s):
         a, b = s.split(".", 1)
         if b.strip("0") == "":
             return to_hindi_words(int(a))
-        if b == "5" and int(a) in (1, 2):
-            return {1: "डेढ़", 2: "ढाई"}[int(a)]
-        # anchors say "ek point aath", "zero point chaar paanch"
-        whole = to_hindi_words(int(a)) if int(a or 0) else "zero"
-        return f"{whole} point " + " ".join(DIGITS[int(d)] for d in b)
+        # the user's rule (28 Nov 2026): decimals in English words -> "twelve point six", "seven point three five"
+        return f"{to_english_words(int(a or 0))} point " + " ".join(EN_ONES[int(d)] for d in b)
     return to_hindi_words(int(s))
 
 
@@ -65,6 +62,16 @@ UNIT_WORD = {"lakh crore": "लाख करोड़", "crore": "करोड�
 NUMBER_LANG = "en"   # "en" = numbers said in English (default), "hi" = Hindi number words
 
 
+EN_UNIT = {"lakh crore": "lakh crore", "crore": "crore", "cr": "crore", "lakh": "lakh", "thousand": "thousand",
+           "million": "million", "mn": "million", "billion": "billion", "bn": "billion", "trillion": "trillion", "tn": "trillion"}
+EN_CUR = {"₹": "rupees", "rs": "rupees", "inr": "rupees", "$": "dollars", "us$": "dollars", "€": "euros", "£": "pounds"}
+
+
+def _is_dec(s):
+    s = s.replace(",", "")
+    return "." in s and s.split(".", 1)[1].strip("0") != ""
+
+
 def speak_numbers(text, lang=None):
     """Replace digits in voice text with spoken words (English by default, Hindi with lang="hi")."""
     if (lang or NUMBER_LANG) == "en":
@@ -73,8 +80,9 @@ def speak_numbers(text, lang=None):
         sym = m.group(1).strip().rstrip(".").lower()
         unit = (m.group(3) or "").lower()
         words = decimal_words(m.group(2))
-        tail = CUR_WORD.get(sym, "")
-        return f"{words} {UNIT_WORD[unit]} {tail}".replace("  ", " ").strip() if unit else f"{words} {tail}".strip()
+        en = _is_dec(m.group(2))
+        tail = (EN_CUR if en else CUR_WORD).get(sym, "")
+        return f"{words} {(EN_UNIT if en else UNIT_WORD)[unit]} {tail}".replace("  ", " ").strip() if unit else f"{words} {tail}".strip()
 
     def pct(m):
         return f"{decimal_words(m.group(1))} percent"
@@ -84,13 +92,15 @@ def speak_numbers(text, lang=None):
             y = int(m.group(1))                          # a year: "do hazaar chhabbees"
             return to_hindi_words(y)
         unit = (m.group(2) or "").strip().lower()
-        return f"{decimal_words(m.group(1))}" + (f" {UNIT_WORD[unit]}" if unit else "")
+        units = EN_UNIT if _is_dec(m.group(1)) else UNIT_WORD
+        return f"{decimal_words(m.group(1))}" + (f" {units[unit]}" if unit else "")
 
     def rng(m):
         sym = m.group(1).strip().rstrip(".").lower()
         unit = (m.group(4) or "").lower()
-        mid = f" {UNIT_WORD[unit]}" if unit else ""
-        return f"{decimal_words(m.group(2))} से {decimal_words(m.group(3))}{mid} {CUR_WORD.get(sym, '')}".strip()
+        en = _is_dec(m.group(2)) or _is_dec(m.group(3))
+        mid = f" {(EN_UNIT if en else UNIT_WORD)[unit]}" if unit else ""
+        return f"{decimal_words(m.group(2))} से {decimal_words(m.group(3))}{mid} {(EN_CUR if en else CUR_WORD).get(sym, '')}".strip()
 
     pad = lambda f: (lambda m: f" {f(m)} ")  # keep a space on both sides so words never glue together
     text = RANGE_RE.sub(pad(rng), text)
