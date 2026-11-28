@@ -1,0 +1,366 @@
+{
+ "title": "Tata Sons Court Row: No Relief for Trusts ⚖️ 28 Nov Brief | StickBiz Brief | 28 Nov 2026",
+ "voice_provider": "elevenlabs",
+ "look": "explainer",
+ "elevenlabs": {
+  "voice_id": "dloMvYEKtYloiwx06kR4",
+  "voice_name": "Bhavesh - Indian English & Hindi",
+  "model": "eleven_v3",
+  "language_code": "hi",
+  "tempo": 1.15,
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  }
+ },
+ "date_label": "28 NOV 2026 · 4 PM",
+ "ticker": [
+  "No court relief for Tata Trusts; Tata Sons board meets 30 Nov",
+  "Flipkart CEO leaves 4 Dec; Walmart's Nicholas visits 30 Nov",
+  "India's October inflation 6.09%, above RBI ceiling",
+  "FSSAI sanctions prosecution against Bisleri over Bengal sample"
+ ],
+ "captions": false,
+ "gap": 0.35,
+ "lead_in": 0.8,
+ "music": {
+  "style": "warm",
+  "bpm": 112,
+  "level": 1.2
+ },
+ "quote": {
+  "text": "The secret of getting ahead is getting started.",
+  "by": "Mark Twain"
+ },
+ "segments": [
+  {
+   "id": "hook",
+   "tag": "TODAY'S TOP NEWS",
+   "headline": "Tata board meet goes ahead · Flipkart CEO exit, staff payout",
+   "broll": "hook",
+   "cap": "Tata Trusts ko court se relief nahi mila. Aur India ki inflation 6.09% par pahunch gayi.",
+   "tts": "[excited] Tata Trusts ko court se relief nahi mila. Aur India ki inflation छह point शून्य नौ percent par pahunch gayi.",
+   "beats": [
+    {
+     "head": [
+      "TATA FIGHT",
+      "& 6.09%"
+     ],
+     "kicker": "28 Nov · 4 PM brief",
+     "tone": "neutral",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "balance_scale",
+        "label": "TATA COURT ROW"
+       },
+       {
+        "icon": "chart_increasing",
+        "label": "INFLATION 6.09%"
+       },
+       {
+        "icon": "warning",
+        "label": "BISLERI CASE"
+       }
+      ]
+     }
+    }
+   ],
+   "refs": []
+  },
+  {
+   "id": "tata",
+   "tag": "TATA SONS",
+   "headline": "Tata board meet goes ahead",
+   "broll": "stocks",
+   "cap": "Bombay High Court ne Tata Trusts ko interim relief nahi diya. Tata Sons ki board meeting 30 November ko hogi, par faisle court ke final order par depend karenge. Trusts ke paas 66% hai, aur RBI ne Tata Sons ki listing zaroori kar di hai.",
+   "tts": "[excited] Bombay High Court ne Tata Trusts ko interim relief nahi diya. Tata Sons ki board meeting तीस November ko hogi, par faisle court ke final order par depend karenge. Trusts ke paas छियासठ percent hai, aur RBI ne Tata Sons ki listing zaroori kar di hai.",
+   "beats": [
+    {
+     "head": [
+      "NO RELIEF",
+      "FOR TRUSTS"
+     ],
+     "kicker": "Bombay High Court",
+     "tone": "down",
+     "note": "The court refused any *interim relief*, so the Tata Trusts could not *stop the board meeting.*",
+     "scene": {
+      "type": "clip",
+      "image": "bombay_house",
+      "label": "TATA SONS HQ",
+      "credit": "Photo: AroundTheGlobe · CC BY-SA 3.0"
+     }
+    },
+    {
+     "head": [
+      "MEETING",
+      "ON 30 NOV"
+     ],
+     "kicker": "Board meeting",
+     "tone": "neutral",
+     "note": "The meeting can go on, but any decision stays *subject to the court's final order.*",
+     "scene": {
+      "type": "bignum",
+      "icon": "calendar",
+      "value": "30 NOV",
+      "tone": "neutral",
+      "label": "TATA SONS BOARD MEETING"
+     },
+     "at": "Tata Sons ki"
+    },
+    {
+     "head": [
+      "66% STAKE",
+      "& LISTING?"
+     ],
+     "kicker": "Why it matters",
+     "tone": "neutral",
+     "note": "The trusts own *66%* of Tata Sons, and the RBI has *made a listing mandatory.*",
+     "scene": {
+      "type": "compare",
+      "icon": "classical_building",
+      "left": {
+       "label": "TRUSTS' STAKE",
+       "value": "66%",
+       "tone": "up"
+      },
+      "right": {
+       "label": "LISTING",
+       "value": "RBI SAYS YES",
+       "tone": "neutral"
+      }
+     },
+     "at": "Trusts ke paas"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Tata Sons files caveats after Bombay HC refuses relief to Tata trusts' plea",
+     "link": "https://www.thehindubusinessline.com/companies/tata-sons-files-caveats-after-bombay-hc-refuses-relief-to-tata-trusts-plea/article71753773.ece"
+    },
+    {
+     "publisher": "Mint",
+     "title": "Tata Sons files caveats in Bombay HC, SC ahead of possible Tata trusts' appeal over board meeting",
+     "link": "https://www.livemint.com/companies/news/tata-sons-files-caveats-in-bombay-hc-sc-ahead-of-possible-tata-trusts-appeal-over-board-meeting-all-about-the-row-11795846285289.html"
+    },
+    {
+     "publisher": "Business Standard",
+     "title": "Tata Sons files caveats in Bombay HC, SC ahead of November 30 board meet",
+     "link": "https://www.business-standard.com/companies/news/tata-sons-caveat-bombay-high-court-supreme-court-tata-trusts-board-meeting-126112800254_1.html"
+    }
+   ]
+  },
+  {
+   "id": "flipkart",
+   "tag": "FLIPKART",
+   "headline": "Flipkart CEO exit, staff payou",
+   "broll": "stocks",
+   "cap": "Flipkart ke CEO Kalyan Krishnamurthy ka last day 4 December hai. Reports ke mutabiq Walmart ke Chris Nicholas 30 November ko employees se milenge, aur ESOP holders ke liye cash payout ka plan aa sakta hai.",
+   "tts": "[excited] Flipkart ke CEO Kalyan Krishnamurthy ka last day चार December hai. Reports ke mutabiq Walmart ke Chris Nicholas तीस November ko employees se milenge, aur ESOP holders ke liye cash payout ka plan aa sakta hai.",
+   "beats": [
+    {
+     "head": [
+      "FLIPKART",
+      "CEO EXITS"
+     ],
+     "kicker": "Leadership change",
+     "tone": "neutral",
+     "note": "Kalyan Krishnamurthy's *last day is 4 December*, and Balaji Thiagarajan will *lead in the interim.*",
+     "scene": {
+      "type": "flow",
+      "from": {
+       "icon": "briefcase",
+       "label": "KALYAN K."
+      },
+      "to": {
+       "icon": "office_building",
+       "label": "FLIPKART"
+      },
+      "chip": "LAST DAY 4 DEC"
+     }
+    },
+    {
+     "head": [
+      "CASH PAYOUT",
+      "FOR ESOPS?"
+     ],
+     "kicker": "Walmart's visit",
+     "tone": "neutral",
+     "note": "The IPO is delayed, so staff want cash for options. The *amount is not final* yet.",
+     "scene": {
+      "type": "clip",
+      "video": "ecommerce_warehouse",
+      "label": "FLIPKART · WALMART VISIT 30 NOV",
+      "credit": "Video: Pexels"
+     },
+     "at": "Reports ke mutabiq"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Inc42",
+     "title": "Walmart International CEO To Meet Flipkart Staff After Kalyan Krishnamurthy's Exit",
+     "link": "https://inc42.com/buzz/walmart-international-ceo-to-meet-flipkart-staff-after-kalyan-krishnamurthys-exit-report/"
+    },
+    {
+     "publisher": "Mint",
+     "title": "Walmart's Chris Nicholas likely to visit India on 30 November as Flipkart's Krishnamurthy steps down",
+     "link": "https://www.livemint.com/companies/news/walmarts-chris-nicholas-likely-to-visit-india-on-30-november-as-flipkarts-krishnamurthy-steps-down-what-we-know-11795853815607.html"
+    }
+   ]
+  },
+  {
+   "id": "inflation",
+   "tag": "INFLATION",
+   "headline": "Inflation crosses RBI ceiling",
+   "broll": "stocks",
+   "cap": "October mein retail inflation 6.09% rahi, jo 2 saal mein pehli baar RBI ke ceiling se upar gayi. Finance Ministry ke mutabiq aane wale mahino mein inflation aur badh sakti hai, lekin crude $100 se neeche hai.",
+   "tts": "[excited] October mein retail inflation छह point शून्य नौ percent rahi, jo दो saal mein pehli baar RBI ke ceiling se upar gayi. Finance Ministry ke mutabiq aane wale mahino mein inflation aur badh sakti hai, lekin crude एक सौ डॉलर se neeche hai.",
+   "beats": [
+    {
+     "head": [
+      "INFLATION",
+      "HITS 6.09%"
+     ],
+     "kicker": "October data",
+     "tone": "down",
+     "note": "It is the *first time in 2 years* that inflation went above the RBI's *upper limit.*",
+     "scene": {
+      "type": "bignum",
+      "icon": "chart_increasing",
+      "value": "6.09%",
+      "tone": "down",
+      "label": "RETAIL INFLATION, OCTOBER"
+     }
+    },
+    {
+     "head": [
+      "MORE RISE",
+      "AHEAD?"
+     ],
+     "kicker": "Finance Ministry view",
+     "tone": "neutral",
+     "note": "Festive and *wedding demand* may push prices up, while crude *below $100* and a firmer rupee may help.",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "calendar",
+        "label": "WEDDING SEASON"
+       },
+       {
+        "icon": "up_arrow",
+        "label": "PRICES MAY RISE"
+       },
+       {
+        "icon": "oil_drum",
+        "label": "CRUDE < $100"
+       }
+      ],
+      "arrows": false
+     },
+     "at": "Finance Ministry ke"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Business Standard",
+     "title": "Weather, supply risks may push up India inflation in coming months: FinMin",
+     "link": "https://www.business-standard.com/economy/news/weather-supply-risks-may-push-up-india-inflation-in-coming-months-finmin-126112800436_1.html"
+    },
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "Upside risks to inflation likely in coming months on festive, wedding demand: FinMin report",
+     "link": "https://www.thehindubusinessline.com/economy/upside-risks-to-inflation-likely-in-coming-months-on-festive-wedding-demand-finmin-report/article71754064.ece"
+    }
+   ]
+  },
+  {
+   "id": "bisleri",
+   "tag": "BISLERI",
+   "headline": "FSSAI acts against Bisleri",
+   "broll": "stocks",
+   "cap": "FSSAI ne Bisleri ke khilaf prosecution sanction kiya, kyunki West Bengal ke sample mein coliform bacteria mila. Bisleri kehti hai ki 2 independent labs mein sample pass hua, aur company ne testing review karne ko kaha hai.",
+   "tts": "[excited] FSSAI ne Bisleri ke khilaf prosecution sanction kiya, kyunki West Bengal ke sample mein coliform bacteria mila. Bisleri kehti hai ki दो independent labs mein sample pass hua, aur company ne testing review karne ko kaha hai.",
+   "beats": [
+    {
+     "head": [
+      "BISLERI",
+      "SAMPLE FAILS"
+     ],
+     "kicker": "Food regulator action",
+     "tone": "down",
+     "note": "A West Bengal batch was found *unsafe* with *coliform bacteria*, and it is the second such action after Goa.",
+     "scene": {
+      "type": "icons",
+      "items": [
+       {
+        "icon": "magnifying_glass_tilted_left",
+        "label": "FSSAI TEST"
+       },
+       {
+        "icon": "warning",
+        "label": "COLIFORM FOUND"
+       }
+      ],
+      "arrows": true
+     }
+    },
+    {
+     "head": [
+      "TWO LABS",
+      "DISAGREE"
+     ],
+     "kicker": "Company's side",
+     "tone": "neutral",
+     "note": "The batch was recalled, but Bisleri says *2 independent labs* passed it and wants a *review of testing.*",
+     "scene": {
+      "type": "clip",
+      "video": "chemical_lab",
+      "label": "LAB RESULTS DIFFER",
+      "credit": "Video: Pexels"
+     },
+     "at": "Bisleri kehti hai"
+    }
+   ],
+   "refs": [
+    {
+     "publisher": "Hindu BusinessLine",
+     "title": "FSSAI sanctions prosecution against Bisleri over bacteria-positive sample",
+     "link": "https://www.thehindubusinessline.com/companies/fssai-sanctions-prosecution-against-bisleri-over-bacteria-positive-sample/article71753820.ece"
+    },
+    {
+     "publisher": "Business Standard",
+     "title": "FSSAI sanctions prosecution against Bisleri again after Bengal sample fails",
+     "link": "https://www.business-standard.com/industry/news/fssai-sanctions-prosecution-against-bisleri-again-after-bengal-sample-fails-126112800021_1.html"
+    },
+    {
+     "publisher": "Economic Times",
+     "title": "Bisleri cites independent lab tests to dispute FSSAI findings in Bengal case",
+     "link": "https://economictimes.indiatimes.com/industry/cons-products/food/bisleri-cites-independent-lab-tests-to-dispute-fssai-findings-in-bengal-case/articleshow/136240286.cms"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "tag": "STICKBIZ BRIEF",
+   "headline": "See you next time",
+   "broll": "outro",
+   "cap": "Yeh sirf information ke liye hai, investment advice nahi. Milte hain next time, StickBiz Brief par.",
+   "tts": "[excited] Yeh sirf information ke liye hai, investment advice nahi. Milte hain next time, StickBiz Brief par.",
+   "beats": [
+    {
+     "head": [
+      "SEE YOU",
+      "NEXT TIME"
+     ],
+     "kicker": "StickBiz Brief",
+     "tone": "neutral"
+    }
+   ],
+   "refs": []
+  }
+ ]
+}

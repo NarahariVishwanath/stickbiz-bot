@@ -1,0 +1,107 @@
+{
+  "hook": {
+    "cap": "Tata Trusts ko court se relief nahi mila. Aur India ki inflation 6.09% par pahunch gayi.",
+    "head": ["TATA FIGHT", "& 6.09%"],
+    "kicker": "28 Nov · 4 PM brief",
+    "scene": {"type": "icons", "items": [{"icon": "balance_scale", "label": "TATA COURT ROW"}, {"icon": "chart_increasing", "label": "INFLATION 6.09%"}, {"icon": "warning", "label": "BISLERI CASE"}]}
+  },
+  "stories": [
+    {
+      "id": "tata",
+      "tag": "TATA SONS",
+      "headline": "Tata board meet goes ahead",
+      "cap": "Bombay High Court ne Tata Trusts ko interim relief nahi diya. Tata Sons ki board meeting 30 November ko hogi, par faisle court ke final order par depend karenge. Trusts ke paas 66% hai, aur RBI ne Tata Sons ki listing zaroori kar di hai.",
+      "beats": [
+        {"at": null, "head": ["NO RELIEF", "FOR TRUSTS"], "kicker": "Bombay High Court", "tone": "down",
+         "note": "The court refused any *interim relief*, so the Tata Trusts could not *stop the board meeting.*",
+         "scene": {"type": "clip", "image": "bombay_house", "label": "TATA SONS HQ"}},
+        {"at": "Tata Sons ki", "head": ["MEETING", "ON 30 NOV"], "kicker": "Board meeting", "tone": "neutral",
+         "note": "The meeting can go on, but any decision stays *subject to the court's final order.*",
+         "scene": {"type": "bignum", "icon": "calendar", "value": "30 NOV", "tone": "neutral", "label": "TATA SONS BOARD MEETING"}},
+        {"at": "Trusts ke paas", "head": ["66% STAKE", "& LISTING?"], "kicker": "Why it matters", "tone": "neutral",
+         "note": "The trusts own *66%* of Tata Sons, and the RBI has *made a listing mandatory.*",
+         "scene": {"type": "compare", "icon": "classical_building", "left": {"label": "TRUSTS' STAKE", "value": "66%", "tone": "up"}, "right": {"label": "LISTING", "value": "RBI SAYS YES", "tone": "neutral"}}}
+      ],
+      "sources": [
+        {"publisher": "Hindu BusinessLine", "title": "Tata Sons files caveats after Bombay HC refuses relief to Tata trusts' plea", "link": "https://www.thehindubusinessline.com/companies/tata-sons-files-caveats-after-bombay-hc-refuses-relief-to-tata-trusts-plea/article71753773.ece"},
+        {"publisher": "Mint", "title": "Tata Sons files caveats in Bombay HC, SC ahead of possible Tata trusts' appeal over board meeting", "link": "https://www.livemint.com/companies/news/tata-sons-files-caveats-in-bombay-hc-sc-ahead-of-possible-tata-trusts-appeal-over-board-meeting-all-about-the-row-11795846285289.html"},
+        {"publisher": "Business Standard", "title": "Tata Sons files caveats in Bombay HC, SC ahead of November 30 board meet", "link": "https://www.business-standard.com/companies/news/tata-sons-caveat-bombay-high-court-supreme-court-tata-trusts-board-meeting-126112800254_1.html"}
+      ],
+      "summary": {"emoji": "🏛️", "line": "The Bombay High Court gave the Tata Trusts no interim relief, so the Tata Sons board meets on 30 November, subject to the final court order."}
+    },
+    {
+      "id": "flipkart",
+      "tag": "FLIPKART",
+      "headline": "Flipkart CEO exit, staff payout",
+      "cap": "Flipkart ke CEO Kalyan Krishnamurthy ka last day 4 December hai. Reports ke mutabiq Walmart ke Chris Nicholas 30 November ko employees se milenge, aur ESOP holders ke liye cash payout ka plan aa sakta hai.",
+      "beats": [
+        {"at": null, "head": ["FLIPKART", "CEO EXITS"], "kicker": "Leadership change", "tone": "neutral",
+         "note": "Kalyan Krishnamurthy's *last day is 4 December*, and Balaji Thiagarajan will *lead in the interim.*",
+         "scene": {"type": "flow", "from": {"icon": "briefcase", "label": "KALYAN K."}, "to": {"icon": "office_building", "label": "FLIPKART"}, "chip": "LAST DAY 4 DEC"}},
+        {"at": "Reports ke mutabiq", "head": ["CASH PAYOUT", "FOR ESOPS?"], "kicker": "Walmart's visit", "tone": "neutral",
+         "note": "The IPO is delayed, so staff want cash for options. The *amount is not final* yet.",
+         "scene": {"type": "clip", "video": "ecommerce_warehouse", "label": "FLIPKART · WALMART VISIT 30 NOV"}}
+      ],
+      "sources": [
+        {"publisher": "Inc42", "title": "Walmart International CEO To Meet Flipkart Staff After Kalyan Krishnamurthy's Exit", "link": "https://inc42.com/buzz/walmart-international-ceo-to-meet-flipkart-staff-after-kalyan-krishnamurthys-exit-report/"},
+        {"publisher": "Mint", "title": "Walmart's Chris Nicholas likely to visit India on 30 November as Flipkart's Krishnamurthy steps down", "link": "https://www.livemint.com/companies/news/walmarts-chris-nicholas-likely-to-visit-india-on-30-november-as-flipkarts-krishnamurthy-steps-down-what-we-know-11795853815607.html"}
+      ],
+      "summary": {"emoji": "🛒", "line": "Flipkart CEO Kalyan Krishnamurthy leaves on 4 December, and Walmart's Chris Nicholas is expected on 30 November with a possible ESOP cash payout."}
+    },
+    {
+      "id": "inflation",
+      "tag": "INFLATION",
+      "headline": "Inflation crosses RBI ceiling",
+      "cap": "October mein retail inflation 6.09% rahi, jo 2 saal mein pehli baar RBI ke ceiling se upar gayi. Finance Ministry ke mutabiq aane wale mahino mein inflation aur badh sakti hai, lekin crude $100 se neeche hai.",
+      "beats": [
+        {"at": null, "head": ["INFLATION", "HITS 6.09%"], "kicker": "October data", "tone": "down",
+         "note": "It is the *first time in 2 years* that inflation went above the RBI's *upper limit.*",
+         "scene": {"type": "bignum", "icon": "chart_increasing", "value": "6.09%", "tone": "down", "label": "RETAIL INFLATION, OCTOBER"}},
+        {"at": "Finance Ministry ke", "head": ["MORE RISE", "AHEAD?"], "kicker": "Finance Ministry view", "tone": "neutral",
+         "note": "Festive and *wedding demand* may push prices up, while crude *below $100* and a firmer rupee may help.",
+         "scene": {"type": "icons", "items": [{"icon": "calendar", "label": "WEDDING SEASON"}, {"icon": "up_arrow", "label": "PRICES MAY RISE"}, {"icon": "oil_drum", "label": "CRUDE < $100"}], "arrows": false}}
+      ],
+      "sources": [
+        {"publisher": "Business Standard", "title": "Weather, supply risks may push up India inflation in coming months: FinMin", "link": "https://www.business-standard.com/economy/news/weather-supply-risks-may-push-up-india-inflation-in-coming-months-finmin-126112800436_1.html"},
+        {"publisher": "Hindu BusinessLine", "title": "Upside risks to inflation likely in coming months on festive, wedding demand: FinMin report", "link": "https://www.thehindubusinessline.com/economy/upside-risks-to-inflation-likely-in-coming-months-on-festive-wedding-demand-finmin-report/article71754064.ece"}
+      ],
+      "summary": {"emoji": "📈", "line": "India's October retail inflation was 6.09%, above the RBI ceiling for the first time in two years, and the Finance Ministry sees more upside risk."}
+    },
+    {
+      "id": "bisleri",
+      "tag": "BISLERI",
+      "headline": "FSSAI acts against Bisleri",
+      "cap": "FSSAI ne Bisleri ke khilaf prosecution sanction kiya, kyunki West Bengal ke sample mein coliform bacteria mila. Bisleri kehti hai ki 2 independent labs mein sample pass hua, aur company ne testing review karne ko kaha hai.",
+      "beats": [
+        {"at": null, "head": ["BISLERI", "SAMPLE FAILS"], "kicker": "Food regulator action", "tone": "down",
+         "note": "A West Bengal batch was found *unsafe* with *coliform bacteria*, and it is the second such action after Goa.",
+         "scene": {"type": "icons", "items": [{"icon": "magnifying_glass_tilted_left", "label": "FSSAI TEST"}, {"icon": "warning", "label": "COLIFORM FOUND"}], "arrows": true}},
+        {"at": "Bisleri kehti hai", "head": ["TWO LABS", "DISAGREE"], "kicker": "Company's side", "tone": "neutral",
+         "note": "The batch was recalled, but Bisleri says *2 independent labs* passed it and wants a *review of testing.*",
+         "scene": {"type": "clip", "video": "chemical_lab", "label": "LAB RESULTS DIFFER"}}
+      ],
+      "sources": [
+        {"publisher": "Hindu BusinessLine", "title": "FSSAI sanctions prosecution against Bisleri over bacteria-positive sample", "link": "https://www.thehindubusinessline.com/companies/fssai-sanctions-prosecution-against-bisleri-over-bacteria-positive-sample/article71753820.ece"},
+        {"publisher": "Business Standard", "title": "FSSAI sanctions prosecution against Bisleri again after Bengal sample fails", "link": "https://www.business-standard.com/industry/news/fssai-sanctions-prosecution-against-bisleri-again-after-bengal-sample-fails-126112800021_1.html"},
+        {"publisher": "Economic Times", "title": "Bisleri cites independent lab tests to dispute FSSAI findings in Bengal case", "link": "https://economictimes.indiatimes.com/industry/cons-products/food/bisleri-cites-independent-lab-tests-to-dispute-fssai-findings-in-bengal-case/articleshow/136240286.cms"}
+      ],
+      "summary": {"emoji": "💧", "line": "FSSAI sanctioned prosecution against Bisleri over a West Bengal sample with coliform bacteria, while the company cites two independent lab reports in its defence."}
+    }
+  ],
+  "outro": {"cap": "Yeh sirf information ke liye hai, investment advice nahi. Milte hain next time, StickBiz Brief par."},
+  "ticker": [
+    "No court relief for Tata Trusts; Tata Sons board meets 30 Nov",
+    "Flipkart CEO leaves 4 Dec; Walmart's Nicholas visits 30 Nov",
+    "India's October inflation 6.09%, above RBI ceiling",
+    "FSSAI sanctions prosecution against Bisleri over Bengal sample"
+  ],
+  "titles": [
+    "Tata Sons Court Row: No Relief for Trusts ⚖️ 28 Nov Brief",
+    "India Inflation 6.09% Above RBI Ceiling 📈 Market News",
+    "Flipkart CEO Exits, Bisleri in FSSAI Case 🛒 Today's News"
+  ],
+  "thumbnail_texts": ["TATA COURT ROW", "INFLATION 6.09%", "FLIPKART CEO EXIT"],
+  "pinned_comment": "Which story matters most to you today: Tata Sons, Flipkart, inflation or Bisleri? Tell us below 👇",
+  "tags": "tata sons,tata trusts,noel tata,flipkart,kalyan krishnamurthy,india inflation,rbi,bisleri,fssai,share market news,business news india,hinglish news,stickbiz brief",
+  "description_intro": "⚖️📈 Tata Sons court row, India's 6.09% inflation, Flipkart's CEO exit and the Bisleri FSSAI case: today's top money news in one quick brief!"
+}
