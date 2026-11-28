@@ -1,0 +1,121 @@
+{
+  "hook": {
+    "cap": "A ₹28,000 crore deal has SEBI watching closely. And the RBI changes a key rule for banks.",
+    "head": ["TODAY'S", "BIG STORIES"],
+    "kicker": "28 Nov · 8 AM brief",
+    "scene": {"type": "icons", "items": [{"icon": "magnifying_glass_tilted_left", "label": "SEBI WATCH"}, {"icon": "bank", "label": "RBI RULE"}, {"icon": "money_bag", "label": "ZEE BUYBACK"}]}
+  },
+  "stories": [
+    {
+      "id": "tata",
+      "tag": "TATA STEEL × APL APOLLO",
+      "headline": "SEBI eyes Tata-APL deal",
+      "cap": "SEBI is looking closely at the Tata Steel and APL Apollo deal. Tata Steel will sell its tubes businesses to APL Apollo for ₹28,000 crore. Proxy advisers warn that minority shareholders could carry the cost. SEBI has now given Tata Steel until 8 December to publish its open offer statement.",
+      "beats": [
+        {"at": null, "head": ["IS SEBI", "WATCHING?"], "kicker": "Tata Steel × APL Apollo", "tone": "neutral",
+         "note": "The regulator says it is *looking at the deal*, because a *takeover and an offer* are involved.",
+         "scene": {"type": "icons", "items": [{"icon": "classical_building", "label": "SEBI"}, {"icon": "magnifying_glass_tilted_left", "label": "A CLOSER LOOK"}], "arrows": true}},
+        {"at": "Tata Steel will", "head": ["APL BUYS", "TATA'S TUBES"], "kicker": "Deal leg one", "tone": "neutral",
+         "note": "Tata Steel moves its *tubes and colour-coated* businesses to APL Apollo.",
+         "scene": {"type": "flow", "from": {"icon": "factory", "label": "TATA STEEL"}, "to": {"icon": "office_building", "label": "APL APOLLO"}, "chip": "₹28,000 CR"}},
+        {"at": "Proxy advisers warn", "head": ["WHO PAYS", "THE COST?"], "kicker": "The concern", "tone": "down",
+         "note": "Investors fear a *disproportionate share* of cost and risk falls on *minority shareholders.*",
+         "scene": {"type": "icons", "items": [{"icon": "warning", "label": "PROXY ADVISERS"}, {"icon": "balance_scale", "label": "MINORITY HOLDERS"}], "arrows": true}},
+        {"at": "SEBI has now", "head": ["MORE TIME", "TILL 8 DEC"], "kicker": "Open offer deadline", "tone": "neutral",
+         "note": "The original deadline was *1 December*, and Tata Steel asked for the *extra time.*",
+         "scene": {"type": "bignum", "icon": "calendar", "value": "8 DEC", "tone": "neutral", "label": "NEW DEADLINE"}}
+      ],
+      "sources": [
+        {"publisher": "Business Standard", "title": "Sebi grants Tata Steel extension till Dec 8 for APL Apollo Tubes open offer", "link": "https://www.business-standard.com/markets/news/sebi-grants-tata-steel-extension-till-dec-8-for-apl-apollo-tubes-open-offer-126112701221_1.html"},
+        {"publisher": "Hindu BusinessLine", "title": "SEBI grants Tata Steel extension till December 8 for detailed public statement on APL Apollo Tubes open offer", "link": "https://www.thehindubusinessline.com/companies/sebi-grants-tata-steel-extension-till-december-8-for-detailed-public-statement-on-apl-apollo-tubes-open-offer/article71751821.ece"},
+        {"publisher": "Mint", "title": "Tata Steel-APL Apollo deal under Sebi scrutiny? What Chairman Tuhin Kanta Pandey said on minority shareholders", "link": "https://www.livemint.com/market/tata-steel-apl-apollo-deal-under-sebi-scrutiny-what-chairman-tuhin-kanta-pandey-said-on-minority-shareholders-11795787306824.html"}
+      ],
+      "summary": {"emoji": "🏛️", "line": "SEBI is examining the ₹28,000 crore Tata Steel–APL Apollo deal and gave Tata Steel until 8 December for its open offer statement."}
+    },
+    {
+      "id": "rbi",
+      "tag": "RBI CRR",
+      "headline": "RBI eases daily CRR rule",
+      "cap": "From 1 December, the RBI will ease a rule for banks. The daily minimum for the cash reserve ratio falls from 99% to 90%. Banking liquidity has slipped into deficit, pushing short-term rates higher. A 25 basis point rate hike is widely expected at the next policy review.",
+      "beats": [
+        {"at": null, "head": ["RBI EASES", "BANK RULE"], "kicker": "From 1 December", "tone": "up",
+         "note": "CRR is the slice of deposits that banks must keep with the *RBI*, and it earns *no interest.*",
+         "scene": {"type": "clip", "image": "rbi", "label": "RESERVE BANK OF INDIA"}},
+        {"at": "The daily minimum", "head": ["99% TO", "90%"], "kicker": "Daily CRR minimum", "tone": "up",
+         "note": "The overall CRR stays at *3%*; only the *daily* minimum is relaxed.",
+         "scene": {"type": "compare", "icon": "bank", "left": {"label": "SINCE OCTOBER", "value": "99%", "tone": "down"}, "right": {"label": "FROM 1 DEC", "value": "90%", "tone": "up"}}},
+        {"at": "Banking liquidity has", "head": ["CASH IS", "GETTING TIGHT"], "kicker": "Why now", "tone": "down",
+         "note": "With the system in *deficit*, short-term borrowing costs have *hardened.*",
+         "scene": {"type": "icons", "items": [{"icon": "chart_decreasing", "label": "LIQUIDITY DEFICIT"}, {"icon": "up_arrow", "label": "HIGHER SHORT RATES"}], "arrows": true}},
+        {"at": "A 25 basis", "head": ["RATE HIKE", "AHEAD?"], "kicker": "Policy review", "tone": "neutral",
+         "note": "Economists widely expect a *25 basis point hike*, though some see room for a *larger one.*",
+         "scene": {"type": "bignum", "icon": "megaphone", "value": "25 BPS", "tone": "neutral", "label": "WIDELY EXPECTED HIKE"}}
+      ],
+      "sources": [
+        {"publisher": "Hindu BusinessLine", "title": "RBI reverses October CRR tightening, eases daily reserve maintenance norm", "link": "https://www.thehindubusinessline.com/money-and-banking/rbi-reverses-october-crr-tightening-eases-daily-reserve-maintenance-norm/article71751691.ece"},
+        {"publisher": "Mint", "title": "RBI rolls back tighter daily CRR requirement as banking liquidity slips into deficit", "link": "https://www.livemint.com/market/rbi-reverses-daily-crr-rule-as-bank-liquidity-tightens-11795780978865.html"},
+        {"publisher": "Business Standard", "title": "RBI restores 90% daily CRR requirement for banks as liquidity tightens", "link": "https://www.business-standard.com/finance/news/rbi-cuts-crr-maintenance-requirement-for-banks-back-to-90-from-dec-1-126112700971_1.html"}
+      ],
+      "summary": {"emoji": "🏦", "line": "From 1 December the RBI cuts the daily CRR minimum from 99% to 90% as banking liquidity turns to deficit; a 25 bps hike is widely expected."}
+    },
+    {
+      "id": "zee",
+      "tag": "ZEE BUYBACK",
+      "headline": "Zee buyback opens 1 Dec",
+      "cap": "Zee Entertainment's ₹600 crore share buyback opens on 1 December and closes on 7 December. The price is ₹91 per share. The promoters will not take part.",
+      "beats": [
+        {"at": null, "head": ["ZEE'S ₹600 CR", "BUYBACK"], "kicker": "1 to 7 December", "tone": "neutral",
+         "note": "The company buys back its own shares through a *tender offer*, with bids settled by *14 December.*",
+         "scene": {"type": "flow", "from": {"icon": "office_building", "label": "ZEE ENTERTAINMENT"}, "to": {"icon": "money_bag", "label": "SHAREHOLDERS"}, "chip": "₹600 CR"}},
+        {"at": "The promoters will", "head": ["PROMOTERS", "STAY OUT"], "kicker": "Who takes part", "tone": "neutral",
+         "note": "The offer price is *₹91 per share*, and the *promoters* have chosen not to participate.",
+         "scene": {"type": "bignum", "icon": "receipt", "value": "₹91", "tone": "neutral", "label": "BUYBACK PRICE PER SHARE"}}
+      ],
+      "sources": [
+        {"publisher": "Business Standard", "title": "Zee Entertainment buyback to open on Dec 1, set to close on Dec 7", "link": "https://www.business-standard.com/companies/news/zee-entertainment-buyback-to-open-on-dec-1-set-to-close-on-dec-7-126112701272_1.html"},
+        {"publisher": "Mint", "title": "Zee Entertainment ₹600 crore buyback opens on December 1; what eligible shareholders need to know", "link": "https://www.livemint.com/market/stock-market-news/zee-entertainment-rs-600-crore-buyback-opens-on-december-1-what-eligible-shareholders-need-to-know-11795797877733.html"},
+        {"publisher": "Economic Times", "title": "Zee Entertainment launches Re 600 crore share buyback at Rs 91 per share; window opens December 1", "link": "https://economictimes.indiatimes.com/markets/stocks/news/zee-entertainment-launches-re-600-crore-share-buyback-at-rs-91-per-share-window-opens-december-1/articleshow/136226381.cms"}
+      ],
+      "summary": {"emoji": "💰", "line": "Zee Entertainment's ₹600 crore buyback at ₹91 per share runs from 1 to 7 December; promoters are not participating."}
+    },
+    {
+      "id": "nvidia",
+      "tag": "NVIDIA CEO RETURN",
+      "headline": "Huang returns to Nvidia",
+      "cap": "Jensen Huang is back as Nvidia's CEO, after resigning on 12 November. Nvidia shares jumped sharply on the news. Donald Trump says he helped bring him back. US stocks rose on Friday, with tech leading.",
+      "beats": [
+        {"at": null, "head": ["NVIDIA'S CEO", "IS BACK"], "kicker": "Overnight in the US", "tone": "up",
+         "note": "Huang left on *12 November*, and the board later *reinstated him.*",
+         "scene": {"type": "clip", "image": "huang", "label": "JENSEN HUANG"}},
+        {"at": "Nvidia shares jumped", "head": ["SHARES", "JUMP FAST"], "kicker": "Market reaction", "tone": "up",
+         "note": "Trump told CNBC he *stepped in*, and the stock *jumped sharply* on the return.",
+         "scene": {"type": "icons", "items": [{"icon": "handshake", "label": "TRUMP STEPS IN"}, {"icon": "chart_increasing", "label": "NVIDIA SHARES UP"}], "arrows": true}},
+        {"at": "US stocks rose", "head": ["WALL STREET", "ENDS HIGHER"], "kicker": "Friday close", "tone": "up",
+         "note": "*US indexes rose* on Friday, with *technology stocks* leading the move.",
+         "scene": {"type": "icons", "items": [{"icon": "chart_increasing", "label": "US INDEXES UP"}, {"icon": "laptop", "label": "TECH LEADS"}], "arrows": false}}
+      ],
+      "sources": [
+        {"publisher": "CNBC", "title": "Jensen Huang's return did little to ease AI jitters. We bought on weakness", "link": "https://www.cnbc.com/investingclub/2026/11/27/jensen-huangs-return-did-little-to-ease-ai-jitters-we-bought-on-weakness.html"},
+        {"publisher": "Fortune", "title": "Jensen Huang was gone for 11 days. That was Nvidia's succession test, and the board failed it", "link": "https://fortune.com/2026/11/27/nvidia-jensen-huang-succession-test-board-failed-andrea-petrone/"},
+        {"publisher": "Yahoo Finance", "title": "US Equity Indexes Rise as Jensen Huang's Return to Nvidia Guardrails AI Trade While Investors Slice Growth Exposure This Week", "link": "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-rise-jensen-183902792.html"}
+      ],
+      "summary": {"emoji": "🇺🇸", "line": "Jensen Huang returned as Nvidia CEO after resigning on 12 November; Nvidia jumped and US stocks rose on Friday."}
+    }
+  ],
+  "outro": {"cap": "This is for information only, not investment advice. See you next time on StickBiz Brief."},
+  "ticker": [
+    "SEBI examines Tata Steel–APL Apollo ₹28,000 crore deal",
+    "RBI cuts daily CRR minimum to 90% from 1 December",
+    "Zee's ₹600 crore buyback at ₹91 opens 1 December",
+    "Jensen Huang returns as Nvidia CEO; US stocks rise"
+  ],
+  "titles": [
+    "SEBI Eyes Tata Steel–APL Deal & RBI CRR Change 🏛️",
+    "RBI Eases CRR Rule + Zee ₹600 Cr Buyback 🏦",
+    "Nvidia CEO Is Back! India Market Brief 28 Nov 🚀"
+  ],
+  "thumbnail_texts": ["SEBI WATCHING", "RBI CRR RELIEF", "HUANG IS BACK"],
+  "pinned_comment": "Which story matters most to you today: the Tata–APL deal or the RBI's CRR change? Tell us below 👇",
+  "tags": "sebi,tata steel,apl apollo,rbi,crr,zee entertainment,buyback,nvidia,jensen huang,share market news,india market,sensex nifty,business news,stickbiz brief",
+  "description_intro": "☀️ Your 8 AM market brief: SEBI on the Tata–APL deal, the RBI's CRR change, Zee's buyback and Nvidia's CEO return! 📈"
+}
